@@ -1,0 +1,54 @@
+EXPORTS
+  ;***************************************************
+  ;Common Functions
+  ;****************************************************
+  ShowVariableResistor_fmiGetTypesPlatform @1
+  ShowVariableResistor_fmiGetVersion @2
+  ShowVariableResistor_fmiSetDebugLogging @3
+  ShowVariableResistor_fmiInstantiate @4
+  ShowVariableResistor_fmiFreeInstance @5
+  ShowVariableResistor_fmiSetupExperiment @6
+  ShowVariableResistor_fmiEnterInitializationMode @7
+  ShowVariableResistor_fmiExitInitializationMode @8
+  ShowVariableResistor_fmiTerminate @9
+  ShowVariableResistor_fmiReset @10
+  ShowVariableResistor_fmiGetReal @11
+  ShowVariableResistor_fmiGetInteger @12
+  ShowVariableResistor_fmiGetBoolean @13
+  ShowVariableResistor_fmiGetString @14
+  ShowVariableResistor_fmiSetReal @15
+  ShowVariableResistor_fmiSetInteger @16
+  ShowVariableResistor_fmiSetBoolean @17
+  ShowVariableResistor_fmiSetString @18
+  ShowVariableResistor_fmiGetFMUstate @19
+  ShowVariableResistor_fmiSetFMUstate @20
+  ShowVariableResistor_fmiFreeFMUstate @21
+  ShowVariableResistor_fmiSerializedFMUstateSize @22
+  ShowVariableResistor_fmiSerializeFMUstate @23
+  ShowVariableResistor_fmiDeSerializeFMUstate @24
+  ShowVariableResistor_fmiGetDirectionalDerivative @25
+  ;***************************************************
+  ;Functions for FMI for Model Exchange
+  ;****************************************************
+  ShowVariableResistor_fmiEnterEventMode @26
+  ShowVariableResistor_fmiNewDiscreteStates @27
+  ShowVariableResistor_fmiEnterContinuousTimeMode @28
+  ShowVariableResistor_fmiCompletedIntegratorStep @29
+  ShowVariableResistor_fmiSetTime @30
+  ShowVariableResistor_fmiSetContinuousStates @31
+  ShowVariableResistor_fmiGetDerivatives @32
+  ShowVariableResistor_fmiGetEventIndicators @33
+  ShowVariableResistor_fmiGetContinuousStates @34
+  ShowVariableResistor_fmiGetNominalsOfContinuousStates @35
+  ;***************************************************
+  ;Functions for FMI for Co-Simulation
+  ;****************************************************
+  ShowVariableResistor_fmiSetRealInputDerivatives @36
+  ShowVariableResistor_fmiGetRealOutputDerivatives @37
+  ShowVariableResistor_fmiDoStep @38
+  ShowVariableResistor_fmiCancelStep @39
+  ShowVariableResistor_fmiGetStatus @40
+  ShowVariableResistor_fmiGetRealStatus @41
+  ShowVariableResistor_fmiGetIntegerStatus @42
+  ShowVariableResistor_fmiGetBooleanStatus @43
+  ShowVariableResistor_fmiGetStringStatus @44

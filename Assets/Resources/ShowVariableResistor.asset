@@ -1,0 +1,882 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 230ae089dd87dc0478b8764182759ebb, type: 3}
+  m_Name: ShowVariableResistor
+  m_EditorClassIdentifier: Assembly-CSharp::ModelDescription
+  fmiVersion: 2.0
+  guid: 7b00330035006300320062006300380036002d0031003700610039002d0034003700660032002d0038003900300038002d003300320064003300380035003800330038003300390036007d00
+  modelName: ShowVariableResistor
+  coSimulation:
+    modelIdentifier: ShowVariableResistor
+  modelVariables:
+  - name: Ground1.p.v
+    valueReference: 0
+    description: Potential at the pin
+    causality: 
+    variability: 
+    initial: exact
+    type: 0
+    start: 0.0
+  - name: Ground2.p.i
+    valueReference: 1
+    description: Current flowing into the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: Ground2.p.v
+    valueReference: 2
+    description: Potential at the pin
+    causality: 
+    variability: 
+    initial: exact
+    type: 0
+    start: 0.0
+  - name: R1.LossPower
+    valueReference: 3
+    description: Loss power leaving component via heatPort
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R1.R_actual
+    valueReference: 4
+    description: Actual resistance = R*(1 + alpha*(T_heatPort - T_ref))
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R1.n.v
+    valueReference: 5
+    description: Potential at the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R1.v
+    valueReference: 6
+    description: Voltage drop of the two pins (= p.v - n.v)
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R2.LossPower
+    valueReference: 7
+    description: Loss power leaving component via heatPort
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R2.R_actual
+    valueReference: 8
+    description: Actual resistance = R*(1 + alpha*(T_heatPort - T_ref))
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R2.v
+    valueReference: 9
+    description: Voltage drop of the two pins (= p.v - n.v)
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R3.LossPower
+    valueReference: 10
+    description: Loss power leaving component via heatPort
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R3.R_actual
+    valueReference: 11
+    description: Actual resistance = R*(1 + alpha*(T_heatPort - T_ref))
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R3.i
+    valueReference: 12
+    description: Current flowing from pin p to pin n
+    causality: 
+    variability: 
+    initial: approx
+    type: 0
+    start: 0.0
+  - name: R3.v
+    valueReference: 13
+    description: Voltage drop of the two pins (= p.v - n.v)
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R4.LossPower
+    valueReference: 14
+    description: Loss power leaving component via heatPort
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R4.R_actual
+    valueReference: 15
+    description: Actual resistance = R*(1 + alpha*(T_heatPort - T_ref))
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R4.n.v
+    valueReference: 16
+    description: Potential at the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R4.v
+    valueReference: 17
+    description: Voltage drop of the two pins (= p.v - n.v)
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R5.LossPower
+    valueReference: 18
+    description: Loss power leaving component via heatPort
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R5.R_actual
+    valueReference: 19
+    description: Actual resistance = R*(1 + alpha*(T_heatPort - T_ref))
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R5.i
+    valueReference: 20
+    description: Current flowing from pin p to pin n
+    causality: 
+    variability: 
+    initial: approx
+    type: 0
+    start: 0.0
+  - name: R5.v
+    valueReference: 21
+    description: Voltage drop of the two pins (= p.v - n.v)
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: SineVoltage1.i
+    valueReference: 22
+    description: Current flowing from pin p to pin n
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: SineVoltage1.v
+    valueReference: 23
+    description: Voltage drop of the two pins (= p.v - n.v)
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: VariableResistor.LossPower
+    valueReference: 24
+    description: Loss power leaving component via heatPort
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: VariableResistor.R_actual
+    valueReference: 25
+    description: Actual resistance = R*(1 + alpha*(T_heatPort - T_ref))
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: VariableResistor.v
+    valueReference: 26
+    description: Voltage drop of the two pins (= p.v - n.v)
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: u
+    valueReference: 27
+    description: 
+    causality: input
+    variability: 
+    initial: 
+    type: 0
+    start: 0.0
+  - name: R1.R
+    valueReference: 28
+    description: Resistance at temperature T_ref
+    causality: parameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 1.0
+  - name: R1.T
+    valueReference: 29
+    description: Fixed device temperature if useHeatPort = false
+    causality: calculatedParameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 
+  - name: R1.T_heatPort
+    valueReference: 30
+    description: Temperature of heatPort
+    causality: calculatedParameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 
+  - name: R1.T_ref
+    valueReference: 31
+    description: Reference temperature
+    causality: parameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 300.15
+  - name: R1.alpha
+    valueReference: 32
+    description: Temperature coefficient of resistance (R_actual = R*(1 + alpha*(T_heatPort
+      - T_ref))
+    causality: parameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 0.0
+  - name: R2.R
+    valueReference: 33
+    description: Resistance at temperature T_ref
+    causality: parameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 1.0
+  - name: R2.T
+    valueReference: 34
+    description: Fixed device temperature if useHeatPort = false
+    causality: calculatedParameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 
+  - name: R2.T_heatPort
+    valueReference: 35
+    description: Temperature of heatPort
+    causality: calculatedParameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 
+  - name: R2.T_ref
+    valueReference: 36
+    description: Reference temperature
+    causality: parameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 300.15
+  - name: R2.alpha
+    valueReference: 37
+    description: Temperature coefficient of resistance (R_actual = R*(1 + alpha*(T_heatPort
+      - T_ref))
+    causality: parameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 0.0
+  - name: R3.R
+    valueReference: 38
+    description: Resistance at temperature T_ref
+    causality: parameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 1.0
+  - name: R3.T
+    valueReference: 39
+    description: Fixed device temperature if useHeatPort = false
+    causality: calculatedParameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 
+  - name: R3.T_heatPort
+    valueReference: 40
+    description: Temperature of heatPort
+    causality: calculatedParameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 
+  - name: R3.T_ref
+    valueReference: 41
+    description: Reference temperature
+    causality: parameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 300.15
+  - name: R3.alpha
+    valueReference: 42
+    description: Temperature coefficient of resistance (R_actual = R*(1 + alpha*(T_heatPort
+      - T_ref))
+    causality: parameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 0.0
+  - name: R4.R
+    valueReference: 43
+    description: Resistance at temperature T_ref
+    causality: parameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 1.0
+  - name: R4.T
+    valueReference: 44
+    description: Fixed device temperature if useHeatPort = false
+    causality: calculatedParameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 
+  - name: R4.T_heatPort
+    valueReference: 45
+    description: Temperature of heatPort
+    causality: calculatedParameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 
+  - name: R4.T_ref
+    valueReference: 46
+    description: Reference temperature
+    causality: parameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 300.15
+  - name: R4.alpha
+    valueReference: 47
+    description: Temperature coefficient of resistance (R_actual = R*(1 + alpha*(T_heatPort
+      - T_ref))
+    causality: parameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 0.0
+  - name: R5.R
+    valueReference: 48
+    description: Resistance at temperature T_ref
+    causality: parameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 1.0
+  - name: R5.T
+    valueReference: 49
+    description: Fixed device temperature if useHeatPort = false
+    causality: calculatedParameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 
+  - name: R5.T_heatPort
+    valueReference: 50
+    description: Temperature of heatPort
+    causality: calculatedParameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 
+  - name: R5.T_ref
+    valueReference: 51
+    description: Reference temperature
+    causality: parameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 300.15
+  - name: R5.alpha
+    valueReference: 52
+    description: Temperature coefficient of resistance (R_actual = R*(1 + alpha*(T_heatPort
+      - T_ref))
+    causality: parameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 0.0
+  - name: SineVoltage1.V
+    valueReference: 53
+    description: Amplitude of sine wave
+    causality: parameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 1.0
+  - name: SineVoltage1.f
+    valueReference: 54
+    description: Frequency of sine wave
+    causality: parameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 1.0
+  - name: SineVoltage1.offset
+    valueReference: 55
+    description: Voltage offset
+    causality: parameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 0.0
+  - name: SineVoltage1.phase
+    valueReference: 56
+    description: Phase of sine wave
+    causality: parameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 0.0
+  - name: SineVoltage1.signalSource.amplitude
+    valueReference: 57
+    description: Amplitude of sine wave
+    causality: calculatedParameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 
+  - name: SineVoltage1.signalSource.f
+    valueReference: 58
+    description: Frequency of sine wave
+    causality: calculatedParameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 
+  - name: SineVoltage1.signalSource.offset
+    valueReference: 59
+    description: Offset of output signal y
+    causality: calculatedParameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 
+  - name: SineVoltage1.signalSource.phase
+    valueReference: 60
+    description: Phase of sine wave
+    causality: calculatedParameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 
+  - name: SineVoltage1.signalSource.startTime
+    valueReference: 61
+    description: Output y = offset for time < startTime
+    causality: calculatedParameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 
+  - name: SineVoltage1.startTime
+    valueReference: 62
+    description: Time offset
+    causality: parameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 0.0
+  - name: VariableResistor.T
+    valueReference: 63
+    description: Fixed device temperature if useHeatPort = false
+    causality: calculatedParameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 
+  - name: VariableResistor.T_heatPort
+    valueReference: 64
+    description: Temperature of heatPort
+    causality: calculatedParameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 
+  - name: VariableResistor.T_ref
+    valueReference: 65
+    description: Reference temperature
+    causality: parameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 300.15
+  - name: VariableResistor.alpha
+    valueReference: 66
+    description: Temperature coefficient of resistance (R_actual = R*(1 + alpha*(T_heatPort
+      - T_ref))
+    causality: parameter
+    variability: fixed
+    initial: 
+    type: 0
+    start: 0.0
+  - name: Ground1.p.i
+    valueReference: 67
+    description: Current flowing into the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R1.i
+    valueReference: 12
+    description: Current flowing from pin p to pin n
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R1.n.i
+    valueReference: 69
+    description: Current flowing into the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R1.p.i
+    valueReference: 12
+    description: Current flowing into the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R1.p.v
+    valueReference: 71
+    description: Potential at the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R2.i
+    valueReference: 12
+    description: Current flowing from pin p to pin n
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R2.n.i
+    valueReference: 73
+    description: Current flowing into the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R2.n.v
+    valueReference: 13
+    description: Potential at the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R2.p.i
+    valueReference: 12
+    description: Current flowing into the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R2.p.v
+    valueReference: 5
+    description: Potential at the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R3.n.i
+    valueReference: 77
+    description: Current flowing into the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R3.n.v
+    valueReference: 2
+    description: Potential at the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R3.p.i
+    valueReference: 12
+    description: Current flowing into the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R3.p.v
+    valueReference: 13
+    description: Potential at the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R4.i
+    valueReference: 20
+    description: Current flowing from pin p to pin n
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R4.n.i
+    valueReference: 82
+    description: Current flowing into the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R4.p.i
+    valueReference: 20
+    description: Current flowing into the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R4.p.v
+    valueReference: 84
+    description: Potential at the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R5.n.i
+    valueReference: 85
+    description: Current flowing into the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R5.n.v
+    valueReference: 2
+    description: Potential at the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R5.p.i
+    valueReference: 20
+    description: Current flowing into the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R5.p.v
+    valueReference: 21
+    description: Potential at the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: SineVoltage1.n.i
+    valueReference: 89
+    description: Current flowing into the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: SineVoltage1.n.v
+    valueReference: 90
+    description: Potential at the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: SineVoltage1.p.i
+    valueReference: 22
+    description: Current flowing into the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: SineVoltage1.p.v
+    valueReference: 0
+    description: Potential at the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: SineVoltage1.signalSource.y
+    valueReference: 23
+    description: Connector of Real output signal
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: VariableResistor.R
+    valueReference: 27
+    description: 
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: VariableResistor.i
+    valueReference: 20
+    description: Current flowing from pin p to pin n
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: VariableResistor.n.i
+    valueReference: 96
+    description: Current flowing into the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: VariableResistor.n.v
+    valueReference: 21
+    description: Potential at the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: VariableResistor.p.i
+    valueReference: 20
+    description: Current flowing into the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: VariableResistor.p.v
+    valueReference: 16
+    description: Potential at the pin
+    causality: 
+    variability: 
+    initial: 
+    type: 0
+    start: 
+  - name: R1.useHeatPort
+    valueReference: 0
+    description: = true, if heatPort is enabled
+    causality: calculatedParameter
+    variability: fixed
+    initial: 
+    type: 3
+    start: 
+  - name: R2.useHeatPort
+    valueReference: 1
+    description: = true, if heatPort is enabled
+    causality: calculatedParameter
+    variability: fixed
+    initial: 
+    type: 3
+    start: 
+  - name: R3.useHeatPort
+    valueReference: 2
+    description: = true, if heatPort is enabled
+    causality: calculatedParameter
+    variability: fixed
+    initial: 
+    type: 3
+    start: 
+  - name: R4.useHeatPort
+    valueReference: 3
+    description: = true, if heatPort is enabled
+    causality: calculatedParameter
+    variability: fixed
+    initial: 
+    type: 3
+    start: 
+  - name: R5.useHeatPort
+    valueReference: 4
+    description: = true, if heatPort is enabled
+    causality: calculatedParameter
+    variability: fixed
+    initial: 
+    type: 3
+    start: 
+  - name: SineVoltage1.signalSource.continuous
+    valueReference: 5
+    description: Make output continuous by starting at offset + amplitude*sin(phase)
+    causality: calculatedParameter
+    variability: fixed
+    initial: 
+    type: 3
+    start: 
+  - name: VariableResistor.useHeatPort
+    valueReference: 6
+    description: = true, if heatPort is enabled
+    causality: calculatedParameter
+    variability: fixed
+    initial: 
+    type: 3
+    start: 
