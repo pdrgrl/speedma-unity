@@ -160,13 +160,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 628856658}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00a2c4522d4e1b54b8895c6a37dc759f, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ada05d73239f6e4b8b6496d7e4014e4, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TestVariableResistor
-  fmuName: ShowVariableResistor
-  inputU: 1
-  voltageVariableResistor: 0
-  voltageR2: 0
+  m_EditorClassIdentifier: '::'
+  switchOn: 0
+  outputVoltage: 0
 --- !u!1 &662069244
 GameObject:
   m_ObjectHideFlags: 0

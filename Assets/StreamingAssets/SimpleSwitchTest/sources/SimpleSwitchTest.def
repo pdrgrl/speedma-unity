@@ -1,0 +1,54 @@
+EXPORTS
+  ;***************************************************
+  ;Common Functions
+  ;****************************************************
+  SimpleSwitchTest_fmiGetTypesPlatform @1
+  SimpleSwitchTest_fmiGetVersion @2
+  SimpleSwitchTest_fmiSetDebugLogging @3
+  SimpleSwitchTest_fmiInstantiate @4
+  SimpleSwitchTest_fmiFreeInstance @5
+  SimpleSwitchTest_fmiSetupExperiment @6
+  SimpleSwitchTest_fmiEnterInitializationMode @7
+  SimpleSwitchTest_fmiExitInitializationMode @8
+  SimpleSwitchTest_fmiTerminate @9
+  SimpleSwitchTest_fmiReset @10
+  SimpleSwitchTest_fmiGetReal @11
+  SimpleSwitchTest_fmiGetInteger @12
+  SimpleSwitchTest_fmiGetBoolean @13
+  SimpleSwitchTest_fmiGetString @14
+  SimpleSwitchTest_fmiSetReal @15
+  SimpleSwitchTest_fmiSetInteger @16
+  SimpleSwitchTest_fmiSetBoolean @17
+  SimpleSwitchTest_fmiSetString @18
+  SimpleSwitchTest_fmiGetFMUstate @19
+  SimpleSwitchTest_fmiSetFMUstate @20
+  SimpleSwitchTest_fmiFreeFMUstate @21
+  SimpleSwitchTest_fmiSerializedFMUstateSize @22
+  SimpleSwitchTest_fmiSerializeFMUstate @23
+  SimpleSwitchTest_fmiDeSerializeFMUstate @24
+  SimpleSwitchTest_fmiGetDirectionalDerivative @25
+  ;***************************************************
+  ;Functions for FMI for Model Exchange
+  ;****************************************************
+  SimpleSwitchTest_fmiEnterEventMode @26
+  SimpleSwitchTest_fmiNewDiscreteStates @27
+  SimpleSwitchTest_fmiEnterContinuousTimeMode @28
+  SimpleSwitchTest_fmiCompletedIntegratorStep @29
+  SimpleSwitchTest_fmiSetTime @30
+  SimpleSwitchTest_fmiSetContinuousStates @31
+  SimpleSwitchTest_fmiGetDerivatives @32
+  SimpleSwitchTest_fmiGetEventIndicators @33
+  SimpleSwitchTest_fmiGetContinuousStates @34
+  SimpleSwitchTest_fmiGetNominalsOfContinuousStates @35
+  ;***************************************************
+  ;Functions for FMI for Co-Simulation
+  ;****************************************************
+  SimpleSwitchTest_fmiSetRealInputDerivatives @36
+  SimpleSwitchTest_fmiGetRealOutputDerivatives @37
+  SimpleSwitchTest_fmiDoStep @38
+  SimpleSwitchTest_fmiCancelStep @39
+  SimpleSwitchTest_fmiGetStatus @40
+  SimpleSwitchTest_fmiGetRealStatus @41
+  SimpleSwitchTest_fmiGetIntegerStatus @42
+  SimpleSwitchTest_fmiGetBooleanStatus @43
+  SimpleSwitchTest_fmiGetStringStatus @44

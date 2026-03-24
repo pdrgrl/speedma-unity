@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmiModelDescription
+  fmiVersion="2.0"
+  modelName="SimpleSwitchTest"
+  guid="{699f9b33-dab8-40e8-980e-0416d44baa7c}"
+  description="A simple test to verify Boolean Inputs and Real Outputs via FMI"
+  version=""
+  generationTool="OpenModelica Compiler OpenModelica v1.26.3 (64-bit)"
+  generationDateAndTime="2026-03-24T23:49:06Z"
+  variableNamingConvention="structured"
+  numberOfEventIndicators="0">
+  <CoSimulation
+    modelIdentifier="SimpleSwitchTest"
+    needsExecutionTool="false"
+    canHandleVariableCommunicationStepSize="true"
+    canInterpolateInputs="true"
+    maxOutputDerivativeOrder="1"
+    canRunAsynchronuously = "false"
+    canBeInstantiatedOnlyOncePerProcess="false"
+    canNotUseMemoryManagementFunctions="false"
+    canGetAndSetFMUstate="false"
+    canSerializeFMUstate="false"
+    providesDirectionalDerivative="false">
+    <SourceFiles>
+      <File name="SimpleSwitchTest.c" />
+      <File name="SimpleSwitchTest_functions.c" />
+      <File name="SimpleSwitchTest_records.c" />
+      <File name="SimpleSwitchTest_01exo.c" />
+      <File name="SimpleSwitchTest_02nls.c" />
+      <File name="SimpleSwitchTest_03lsy.c" />
+      <File name="SimpleSwitchTest_04set.c" />
+      <File name="SimpleSwitchTest_05evt.c" />
+      <File name="SimpleSwitchTest_06inz.c" />
+      <File name="SimpleSwitchTest_07dly.c" />
+      <File name="SimpleSwitchTest_08bnd.c" />
+      <File name="SimpleSwitchTest_09alg.c" />
+      <File name="SimpleSwitchTest_10asr.c" />
+      <File name="SimpleSwitchTest_11mix.c" />
+      <File name="SimpleSwitchTest_12jac.c" />
+      <File name="SimpleSwitchTest_13opt.c" />
+      <File name="SimpleSwitchTest_14lnz.c" />
+      <File name="SimpleSwitchTest_15syn.c" />
+      <File name="SimpleSwitchTest_16dae.c" />
+      <File name="SimpleSwitchTest_17inl.c" />
+      <File name="SimpleSwitchTest_18spd.c" />
+      <File name="SimpleSwitchTest_init_fmu.c" />
+      <File name="SimpleSwitchTest_FMU.c" />
+      <File name="fmi-export/fmu2_model_interface.c" />
+      <File name="fmi-export/fmu_read_flags.c" />
+      <File name="./gc/memory_pool.c" />
+      <File name="./gc/omc_gc.c" />
+      <File name="./util/base_array.c" />
+      <File name="./util/boolean_array.c" />
+      <File name="./util/context.c" />
+      <File name="./util/division.c" />
+      <File name="./util/doubleEndedList.c" />
+      <File name="./util/generic_array.c" />
+      <File name="./util/index_spec.c" />
+      <File name="./util/integer_array.c" />
+      <File name="./util/list.c" />
+      <File name="./util/modelica_string_lit.c" />
+      <File name="./util/modelica_string.c" />
+      <File name="./util/ModelicaUtilities.c" />
+      <File name="./util/omc_error.c" />
+      <File name="./util/omc_file.c" />
+      <File name="./util/omc_init.c" />
+      <File name="./util/omc_mmap.c" />
+      <File name="./util/omc_msvc.c" />
+      <File name="./util/omc_numbers.c" />
+      <File name="./util/parallel_helper.c" />
+      <File name="./util/rational.c" />
+      <File name="./util/real_array.c" />
+      <File name="./util/ringbuffer.c" />
+      <File name="./util/simulation_options.c" />
+      <File name="./util/string_array.c" />
+      <File name="./util/utility.c" />
+      <File name="./util/varinfo.c" />
+      <File name="./math-support/pivot.c" />
+      <File name="./simulation/arrayIndex.c" />
+      <File name="./simulation/jacobian_util.c" />
+      <File name="./simulation/omc_simulation_util.c" />
+      <File name="./simulation/options.c" />
+      <File name="./simulation/simulation_info_json.c" />
+      <File name="./simulation/simulation_omc_assert.c" />
+      <File name="./simulation/solver/delay.c" />
+      <File name="./simulation/solver/fmi_events.c" />
+      <File name="./simulation/solver/model_help.c" />
+      <File name="./simulation/solver/omc_math.c" />
+      <File name="./simulation/solver/spatialDistribution.c" />
+      <File name="./simulation/solver/stateset.c" />
+      <File name="./simulation/solver/synchronous.c" />
+      <File name="./simulation/solver/initialization/initialization.c" />
+      <File name="./meta/meta_modelica_catch.c" />
+      <File name="./external_solvers/dgesv.c" />
+      <File name="./external_solvers/dgetrf.c" />
+      <File name="./external_solvers/dgetri.c" />
+      <File name="./external_solvers/dtrtri.c" />
+      <File name="./external_solvers/dtrti2.c" />
+      <File name="./external_solvers/dlamch.c" />
+      <File name="./external_solvers/ilaenv.c" />
+      <File name="./external_solvers/xerbla.c" />
+      <File name="./external_solvers/dgetf2.c" />
+      <File name="./external_solvers/dgetrs.c" />
+      <File name="./external_solvers/dlaswp.c" />
+      <File name="./external_solvers/ieeeck.c" />
+      <File name="./external_solvers/iparmq.c" />
+      <File name="./external_solvers/dgemm.c" />
+      <File name="./external_solvers/dger.c" />
+      <File name="./external_solvers/dgemv.c" />
+      <File name="./external_solvers/dscal.c" />
+      <File name="./external_solvers/dswap.c" />
+      <File name="./external_solvers/dtrsm.c" />
+      <File name="./external_solvers/dtrmm.c" />
+      <File name="./external_solvers/dtrmv.c" />
+      <File name="./external_solvers/idamax.c" />
+      <File name="./external_solvers/lsame.c" />
+      <File name="./external_solvers/i_nint.c" />
+      <File name="./external_solvers/pow_di.c" />
+      <File name="./external_solvers/s_cmp.c" />
+      <File name="./external_solvers/s_copy.c" />
+      <File name="./external_solvers/s_cat.c" />
+      <File name="./external_solvers/F77_aloc.c" />
+      <File name="./external_solvers/exit_.c" />
+      <File name="./external_solvers/enorm_.c" />
+      <File name="./external_solvers/hybrj_.c" />
+      <File name="./external_solvers/dpmpar_.c" />
+      <File name="./external_solvers/qrfac_.c" />
+      <File name="./external_solvers/qform_.c" />
+      <File name="./external_solvers/dogleg_.c" />
+      <File name="./external_solvers/r1updt_.c" />
+      <File name="./external_solvers/r1mpyq_.c" />
+      <File name="ModelicaExternalC/ModelicaStandardTables.c" />
+      <File name="ModelicaExternalC/ModelicaMatIO.c" />
+      <File name="ModelicaExternalC/ModelicaIO.c" />
+      <File name="ModelicaExternalC/ModelicaStandardTablesDummyUsertab.c" />
+      <File name="ModelicaExternalC/snprintf.c" />
+    </SourceFiles>
+  </CoSimulation>
+  <UnitDefinitions>
+    <Unit name="1/K">
+      <BaseUnit K="-1" />
+    </Unit>
+    <Unit name="K">
+      <BaseUnit K="1" />
+    </Unit>
+    <Unit name="Ohm">
+      <BaseUnit m="2" s="-3" A="-2" kg="1" />
+    </Unit>
+    <Unit name="W">
+      <BaseUnit m="2" s="-3" kg="1" />
+    </Unit>
+    <Unit name="V">
+      <BaseUnit m="2" s="-3" A="-1" kg="1" />
+    </Unit>
+    <Unit name="A">
+      <BaseUnit A="1" />
+    </Unit>
+  </UnitDefinitions>
+  <LogCategories>
+    <Category name="logEvents" />
+    <Category name="logSingularLinearSystems" />
+    <Category name="logNonlinearSystems" />
+    <Category name="logDynamicStateSelection" />
+    <Category name="logStatusWarning" />
+    <Category name="logStatusDiscard" />
+    <Category name="logStatusError" />
+    <Category name="logStatusFatal" />
+    <Category name="logStatusPending" />
+    <Category name="logAll" />
+    <Category name="logFmi2Call" />
+  </LogCategories>
+  <DefaultExperiment startTime="0.0" stopTime="10.0" tolerance="1e-6" stepSize="0.02"/>
+  <ModelVariables>
+  <!-- Index of variable = "1" -->
+  <ScalarVariable
+    name="der(_D_outputAlias_outputVoltage)"
+    valueReference="0"
+    description="Measures the voltage on the resistor"
+    >
+    <Real/>
+  </ScalarVariable>
+  <!-- Index of variable = "2" -->
+  <ScalarVariable
+    name="Ground.p.i"
+    valueReference="3"
+    description="Current flowing into the pin"
+    initial="exact">
+    <Real start="0.0" unit="A"/>
+  </ScalarVariable>
+  <!-- Index of variable = "3" -->
+  <ScalarVariable
+    name="Ground.p.v"
+    valueReference="4"
+    description="Potential at the pin"
+    initial="exact">
+    <Real start="0.0" unit="V"/>
+  </ScalarVariable>
+  <!-- Index of variable = "4" -->
+  <ScalarVariable
+    name="Resistor.LossPower"
+    valueReference="5"
+    description="Loss power leaving component via heatPort"
+    >
+    <Real unit="W"/>
+  </ScalarVariable>
+  <!-- Index of variable = "5" -->
+  <ScalarVariable
+    name="Resistor.R_actual"
+    valueReference="6"
+    description="Actual resistance = R*(1 + alpha*(T_heatPort - T_ref))"
+    >
+    <Real unit="Ohm"/>
+  </ScalarVariable>
+  <!-- Index of variable = "6" -->
+  <ScalarVariable
+    name="Resistor.i"
+    valueReference="7"
+    description="Current flowing from pin p to pin n"
+    >
+    <Real unit="A"/>
+  </ScalarVariable>
+  <!-- Index of variable = "7" -->
+  <ScalarVariable
+    name="Sensor.n.i"
+    valueReference="8"
+    description="Current flowing into the pin"
+    initial="exact">
+    <Real start="0.0" unit="A"/>
+  </ScalarVariable>
+  <!-- Index of variable = "8" -->
+  <ScalarVariable
+    name="Sensor.p.i"
+    valueReference="9"
+    description="Current flowing into the pin"
+    initial="exact">
+    <Real start="0.0" unit="A"/>
+  </ScalarVariable>
+  <!-- Index of variable = "9" -->
+  <ScalarVariable
+    name="outputVoltage"
+    valueReference="10"
+    description="Measures the voltage on the resistor"
+    causality="output"
+    >
+    <Real/>
+  </ScalarVariable>
+  <!-- Index of variable = "10" -->
+  <ScalarVariable
+    name="BooleanToRealConverter.realFalse"
+    valueReference="11"
+    description="Output signal for false Boolean input"
+    variability="fixed"
+    causality="parameter"
+    >
+    <Real start="0.0"/>
+  </ScalarVariable>
+  <!-- Index of variable = "11" -->
+  <ScalarVariable
+    name="BooleanToRealConverter.realTrue"
+    valueReference="12"
+    description="Output signal for true Boolean input"
+    variability="fixed"
+    causality="parameter"
+    >
+    <Real start="5.0"/>
+  </ScalarVariable>
+  <!-- Index of variable = "12" -->
+  <ScalarVariable
+    name="Resistor.R"
+    valueReference="13"
+    description="Resistance at temperature T_ref"
+    variability="fixed"
+    causality="parameter"
+    >
+    <Real start="100.0" unit="Ohm"/>
+  </ScalarVariable>
+  <!-- Index of variable = "13" -->
+  <ScalarVariable
+    name="Resistor.T"
+    valueReference="14"
+    description="Fixed device temperature if useHeatPort = false"
+    variability="fixed"
+    causality="calculatedParameter"
+    >
+    <Real min="0.0" nominal="300.0" unit="K"/>
+  </ScalarVariable>
+  <!-- Index of variable = "14" -->
+  <ScalarVariable
+    name="Resistor.T_heatPort"
+    valueReference="15"
+    description="Temperature of heatPort"
+    variability="fixed"
+    causality="calculatedParameter"
+    >
+    <Real min="0.0" nominal="300.0" unit="K"/>
+  </ScalarVariable>
+  <!-- Index of variable = "15" -->
+  <ScalarVariable
+    name="Resistor.T_ref"
+    valueReference="16"
+    description="Reference temperature"
+    variability="fixed"
+    causality="parameter"
+    >
+    <Real start="300.15" min="0.0" nominal="300.0" unit="K"/>
+  </ScalarVariable>
+  <!-- Index of variable = "16" -->
+  <ScalarVariable
+    name="Resistor.alpha"
+    valueReference="17"
+    description="Temperature coefficient of resistance (R_actual = R*(1 + alpha*(T_heatPort - T_ref))"
+    variability="fixed"
+    causality="parameter"
+    >
+    <Real start="0.0" unit="1/K"/>
+  </ScalarVariable>
+  <!-- Index of variable = "17" -->
+  <ScalarVariable
+    name="BooleanToRealConverter.y"
+    valueReference="10"
+    description="Connector of Real output signal"
+    >
+    <Real/>
+  </ScalarVariable>
+  <!-- Index of variable = "18" -->
+  <ScalarVariable
+    name="DC_Source.i"
+    valueReference="19"
+    description="Current flowing from pin p to pin n"
+    >
+    <Real unit="A"/>
+  </ScalarVariable>
+  <!-- Index of variable = "19" -->
+  <ScalarVariable
+    name="DC_Source.n.i"
+    valueReference="7"
+    description="Current flowing into the pin"
+    >
+    <Real unit="A"/>
+  </ScalarVariable>
+  <!-- Index of variable = "20" -->
+  <ScalarVariable
+    name="DC_Source.n.v"
+    valueReference="4"
+    description="Potential at the pin"
+    >
+    <Real unit="V"/>
+  </ScalarVariable>
+  <!-- Index of variable = "21" -->
+  <ScalarVariable
+    name="DC_Source.p.i"
+    valueReference="22"
+    description="Current flowing into the pin"
+    >
+    <Real unit="A"/>
+  </ScalarVariable>
+  <!-- Index of variable = "22" -->
+  <ScalarVariable
+    name="DC_Source.p.v"
+    valueReference="10"
+    description="Potential at the pin"
+    >
+    <Real unit="V"/>
+  </ScalarVariable>
+  <!-- Index of variable = "23" -->
+  <ScalarVariable
+    name="DC_Source.v"
+    valueReference="10"
+    description="Voltage between pin p and n (= p.v - n.v) as input signal"
+    >
+    <Real unit="V"/>
+  </ScalarVariable>
+  <!-- Index of variable = "24" -->
+  <ScalarVariable
+    name="Resistor.n.i"
+    valueReference="25"
+    description="Current flowing into the pin"
+    >
+    <Real unit="A"/>
+  </ScalarVariable>
+  <!-- Index of variable = "25" -->
+  <ScalarVariable
+    name="Resistor.n.v"
+    valueReference="4"
+    description="Potential at the pin"
+    >
+    <Real unit="V"/>
+  </ScalarVariable>
+  <!-- Index of variable = "26" -->
+  <ScalarVariable
+    name="Resistor.p.i"
+    valueReference="7"
+    description="Current flowing into the pin"
+    >
+    <Real unit="A"/>
+  </ScalarVariable>
+  <!-- Index of variable = "27" -->
+  <ScalarVariable
+    name="Resistor.p.v"
+    valueReference="10"
+    description="Potential at the pin"
+    >
+    <Real unit="V"/>
+  </ScalarVariable>
+  <!-- Index of variable = "28" -->
+  <ScalarVariable
+    name="Resistor.v"
+    valueReference="10"
+    description="Voltage drop of the two pins (= p.v - n.v)"
+    >
+    <Real unit="V"/>
+  </ScalarVariable>
+  <!-- Index of variable = "29" -->
+  <ScalarVariable
+    name="Sensor.n.v"
+    valueReference="4"
+    description="Potential at the pin"
+    >
+    <Real unit="V"/>
+  </ScalarVariable>
+  <!-- Index of variable = "30" -->
+  <ScalarVariable
+    name="Sensor.p.v"
+    valueReference="10"
+    description="Potential at the pin"
+    >
+    <Real unit="V"/>
+  </ScalarVariable>
+  <!-- Index of variable = "31" -->
+  <ScalarVariable
+    name="Sensor.v"
+    valueReference="10"
+    description="Voltage between pin p and n (= p.v - n.v) as output signal"
+    >
+    <Real unit="V"/>
+  </ScalarVariable>
+  <!-- Index of variable = "32" -->
+  <ScalarVariable
+    name="switchOn"
+    valueReference="0"
+    description="If true, power is on"
+    variability="discrete"
+    causality="input"
+    >
+    <Boolean start="false"/>
+  </ScalarVariable>
+  <!-- Index of variable = "33" -->
+  <ScalarVariable
+    name="Resistor.useHeatPort"
+    valueReference="1"
+    description="= true, if heatPort is enabled"
+    variability="fixed"
+    causality="calculatedParameter"
+    >
+    <Boolean/>
+  </ScalarVariable>
+  <!-- Index of variable = "34" -->
+  <ScalarVariable
+    name="BooleanToRealConverter.u"
+    valueReference="0"
+    description="Connector of Boolean input signal"
+    variability="discrete"
+    >
+    <Boolean/>
+  </ScalarVariable>
+  </ModelVariables>
+  <ModelStructure>
+    <Outputs>
+      <Unknown index="9" dependencies="32" dependenciesKind="dependent" />
+    </Outputs>
+    <InitialUnknowns>
+      <Unknown index="9" dependencies="10 11 32" dependenciesKind="dependent dependent dependent" />
+      <Unknown index="13" dependencies="15" dependenciesKind="dependent" />
+      <Unknown index="14" dependencies="" dependenciesKind="" />
+      <Unknown index="33" dependencies="" dependenciesKind="" />
+    </InitialUnknowns>
+  </ModelStructure>
+</fmiModelDescription>
