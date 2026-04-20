@@ -7,33 +7,33 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Base_Baked.002
-    second: {fileID: 2100000, guid: 679e79023cdee94428798537e787f0cc, type: 2}
+      name: Base_Baked.003
+    second: {fileID: 2100000, guid: 5734a7dec7f0a9749abdbd38295ab186, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Bolts_Baked.002
-    second: {fileID: 2100000, guid: 248361be71910324985eae760f810093, type: 2}
+      name: Bolts_Baked.003
+    second: {fileID: 2100000, guid: 8aed1b5a89f53a044b26768930c0cbfa, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Holder_Baked.002
-    second: {fileID: 2100000, guid: 9f262220be4a29541ada1e21feb64a05, type: 2}
+      name: Holder_Baked.003
+    second: {fileID: 2100000, guid: 7d9aa7da16585894b8a9995f774d5dd3, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Lamp_Baked.002
-    second: {fileID: 2100000, guid: 55a9da117461d424385b336f9a4b5657, type: 2}
+      name: Lamp_Baked.003
+    second: {fileID: 2100000, guid: bb0c45a87ed284946839e83fb7fe7082, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Neck_Baked.002
-    second: {fileID: 2100000, guid: 0fc98a3222a514147a0ab023c4f0d259, type: 2}
+      name: Neck_Baked.003
+    second: {fileID: 2100000, guid: 40eb5011a49fdd64c8965df3af668797, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Shade_Baked.002
-    second: {fileID: 2100000, guid: 997de591ae590e54ba59e6f36663c23a, type: 2}
+      name: Shade_Baked.003
+    second: {fileID: 2100000, guid: 8d2e6417f7d8ba94e969d54484c3f75a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
