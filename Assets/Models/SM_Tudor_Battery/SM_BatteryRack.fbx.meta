@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Case_Baked
-    second: {fileID: 2100000, guid: 7f8f817afe492d444a98295643fa0213, type: 2}
+      name: Case_Baked.001
+    second: {fileID: 2100000, guid: 0b72f2053672a294491331ba2c0bb556, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -22,8 +22,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Sphere_Baked.001
-    second: {fileID: 2100000, guid: da3e9b928e654c54daaa6de95b821331, type: 2}
+      name: Sphere_Baked
+    second: {fileID: 2100000, guid: 1a933c313ad9bb84eb0c9eabca409d89, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -57,13 +57,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: liquid_Baked
-    second: {fileID: 2100000, guid: 533195b12f12d10458477e7274f25116, type: 2}
+      name: liquid_Baked.002
+    second: {fileID: 2100000, guid: a6cf4324e6b3c8b4298f99f657070908, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: sandNDmud_Baked
-    second: {fileID: 2100000, guid: 8b5dc5520e5da2848b30e7bdd93b6528, type: 2}
+      name: sandNDmud_Baked.002
+    second: {fileID: 2100000, guid: fb7efb9a6d4666d459005bd147da6da1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
