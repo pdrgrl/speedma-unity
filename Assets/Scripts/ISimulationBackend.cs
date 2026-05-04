@@ -19,9 +19,9 @@ public interface ISimulationBackend
     /// </summary>
     void Step(float dt);
 
-    float  GetReal(string variableName);
-    bool   GetBoolean(string variableName);
-    int    GetInteger(string variableName);
+    float GetReal(string variableName);
+    bool GetBoolean(string variableName);
+    int GetInteger(string variableName);
 
     /// <summary>Reset the simulation to t = 0.</summary>
     void Reset();
