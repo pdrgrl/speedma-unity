@@ -13,27 +13,49 @@ public class SimpleSwitchTest : MonoBehaviour
     public RemoteFmuSimulation sim;
 
     [Header("Input")]
-    [Tooltip("Toggle in Play Mode to switch the circuit on/off.")]
     public bool switchOn = false;
     public Button activateButton;
 
     [Header("Output (read from simulation)")]
     public float outputVoltage = 0f;
     public Light lightComponent;
-    public float voltageThreshold = 0.5f; // Turn light on when voltage exceeds this
+    public float voltageThreshold = 0.5f;
+
+    [Header("Switch Visuals")]
+    [Tooltip("Drag Sphere.024_Baked here")]
+    public Transform switchHandle;
+    public Vector3 rotationOff = new Vector3(0f, 0f, 0f);
+    public Vector3 rotationOn = new Vector3(0f, 0f, 45f);
+    public float rotationSpeed = 5f; // smooth lerp speed
+
+    private Quaternion targetRotation;
 
     void Start()
     {
-        // Wire the button to toggle the switch
         if (activateButton != null)
-        {
             activateButton.onClick.AddListener(ToggleSwitch);
-        }
+
+        // Set initial rotation
+        targetRotation = Quaternion.Euler(rotationOff);
+        if (switchHandle != null)
+            switchHandle.localRotation = targetRotation;
     }
 
-    void ToggleSwitch()
+    public void ToggleSwitch()
     {
         switchOn = !switchOn;
+        targetRotation = Quaternion.Euler(switchOn ? rotationOn : rotationOff);
+    }
+
+    void Update()
+    {
+        // Smoothly rotate the handle towards the target
+        if (switchHandle != null)
+            switchHandle.localRotation = Quaternion.Lerp(
+                switchHandle.localRotation,
+                targetRotation,
+                Time.deltaTime * rotationSpeed
+            );
     }
 
     void FixedUpdate()
@@ -45,10 +67,7 @@ public class SimpleSwitchTest : MonoBehaviour
         sim.Step(Time.fixedDeltaTime);
         outputVoltage = sim.GetReal("outputVoltage");
 
-        // Turn light on/off based on voltage
         if (lightComponent != null)
-        {
             lightComponent.enabled = outputVoltage > voltageThreshold;
-        }
     }
 }
