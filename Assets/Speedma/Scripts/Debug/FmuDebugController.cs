@@ -1,13 +1,10 @@
 // Assets/Speedma/Scripts/Debug/FmuDebugController.cs
 // ============================================================
 // Keyboard-driven FMU input controller.
-// Talks to SpeedmaSimManager via FmuSceneLink.
+// Modelo: ChamuscaDigitalTwin
 //
 // Controls:
-//   C        → toggle sw_carga
-//   D        → toggle sw_descarga
-//   R / F    → R_carga +10 / -10 Ohm
-//   T / G    → V_fonte  +10 / -10 V
+//   D        → toggle sw_dinamo (liga/desliga dínamo ASEA)
 //   `        → toggle HUD
 // ============================================================
 
@@ -20,13 +17,8 @@ namespace Speedma.Debug
         [Header("References")]
         [SerializeField] private FmuSceneLink sceneLink;
 
-        [Header("Initial values")]
-        [SerializeField] private float rCarga = 50f;
-        [SerializeField] private float vFonte = 110f;
-
-        private bool _swCarga = false;
-        private bool _swDesc  = false;
-        private bool _showHud = true;
+        private bool _swDinamo = false;
+        private bool _showHud  = true;
 
         private GUIStyle _boxStyle, _labelStyle, _onStyle, _offStyle;
         private bool _stylesReady;
@@ -37,12 +29,7 @@ namespace Speedma.Debug
         {
             bool changed = false;
 
-            if (Input.GetKeyDown(KeyCode.C))         { _swCarga = !_swCarga; changed = true; }
-            if (Input.GetKeyDown(KeyCode.D))         { _swDesc  = !_swDesc;  changed = true; }
-            if (Input.GetKeyDown(KeyCode.R))         { rCarga = Mathf.Clamp(rCarga + 10f, 1f, 10000f); changed = true; }
-            if (Input.GetKeyDown(KeyCode.F))         { rCarga = Mathf.Clamp(rCarga - 10f, 1f, 10000f); changed = true; }
-            if (Input.GetKeyDown(KeyCode.T))         { vFonte = Mathf.Clamp(vFonte + 10f, 0f, 500f);   changed = true; }
-            if (Input.GetKeyDown(KeyCode.G))         { vFonte = Mathf.Clamp(vFonte - 10f, 0f, 500f);   changed = true; }
+            if (Input.GetKeyDown(KeyCode.D))         { _swDinamo = !_swDinamo; changed = true; }
             if (Input.GetKeyDown(KeyCode.BackQuote)) _showHud = !_showHud;
 
             if (changed) PushAll();
@@ -50,9 +37,7 @@ namespace Speedma.Debug
 
         private void PushAll()
         {
-            sceneLink?.SetSwitches(_swCarga, _swDesc);
-            sceneLink?.SetRCarga(rCarga);
-            sceneLink?.SetVFonte(vFonte);
+            sceneLink?.SetSwDinamo(_swDinamo);
         }
 
         private void OnGUI()
@@ -60,23 +45,22 @@ namespace Speedma.Debug
             if (!_showHud) return;
             EnsureStyles();
 
-            float w = 260f, h = 220f;
+            float w = 280f, h = 200f;
             GUI.Box(new Rect(10, 10, w, h), "", _boxStyle);
 
             float x = 18f, y = 18f, dy = 22f;
 
-            Label(x, y, "── FMU Debug Controller ──");                                    y += dy;
-            LabelColored(x, y, $"[C]  sw_carga    : {OnOff(_swCarga)}", _swCarga);  y += dy;
-            LabelColored(x, y, $"[D]  sw_descarga : {OnOff(_swDesc)}",  _swDesc);   y += dy;
-            Label(x, y, $"[R/F] R_carga   : {rCarga:F0} Ω");                         y += dy;
-            Label(x, y, $"[T/G] V_fonte   : {vFonte:F0} V");                         y += dy;
+            Label(x, y, "── Chamusca Digital Twin ──");                                    y += dy;
+            LabelColored(x, y, $"[D]  sw_dinamo : {OnOff(_swDinamo)}", _swDinamo);        y += dy;
             y += 6;
 
-            float i_c = sceneLink != null ? sceneLink.CurrentAmps : 0f;
-            float v_c = sceneLink != null ? sceneLink.VoltageCap  : 0f;
+            float ampD = sceneLink != null ? sceneLink.AmpDinamo  : 0f;
+            float ampB = sceneLink != null ? sceneLink.AmpBateria : 0f;
+            float vBat = sceneLink != null ? sceneLink.VBat       : 0f;
 
-            Label(x, y, $"i_c  : {i_c:F4} A");  y += dy;
-            Label(x, y, $"v_c  : {v_c:F2} V");  y += dy;
+            Label(x, y, $"amp_dinamo  : {ampD:F4} A");  y += dy;
+            Label(x, y, $"amp_bateria : {ampB:F4} A");  y += dy;
+            Label(x, y, $"v_bat       : {vBat:F3} V");  y += dy;
             y += 4;
             Label(x, y, "[`] toggle HUD");
         }
@@ -84,10 +68,10 @@ namespace Speedma.Debug
         private static string OnOff(bool v) => v ? "ON  ✓" : "OFF ✗";
 
         private void Label(float x, float y, string text)
-            => GUI.Label(new Rect(x, y, 240f, 20f), text, _labelStyle);
+            => GUI.Label(new Rect(x, y, 260f, 20f), text, _labelStyle);
 
         private void LabelColored(float x, float y, string text, bool on)
-            => GUI.Label(new Rect(x, y, 240f, 20f), text, on ? _onStyle : _offStyle);
+            => GUI.Label(new Rect(x, y, 260f, 20f), text, on ? _onStyle : _offStyle);
 
         private void EnsureStyles()
         {

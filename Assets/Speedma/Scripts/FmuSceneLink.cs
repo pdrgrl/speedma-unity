@@ -1,12 +1,15 @@
 // Assets/Speedma/Scripts/FmuSceneLink.cs
 // ============================================================
 // Bridges SpeedmaSimManager to the 3D scene instruments.
+// Modelo: ChamuscaDigitalTwin (Dínamo ASEA + Bateria Tudor)
 //
-// - Reads i_c_out / v_c_out from SpeedmaSimManager each frame
-// - Drives DynamoAmp  (positive i_c = charging)
-// - Drives BatteryAmp (negative i_c = discharging)
-// - Exposes SetRCarga / SetSwitches for FmuDebugController
-//   and future RheostatInput / ReducerInput scripts
+// Outputs lidos do FMU:
+//   amp_dinamo_out  → DynamoAmp
+//   amp_bateria_out → BatteryAmp
+//   v_bat_out       → (futuro VoltController)
+//
+// Inputs enviados ao FMU:
+//   sw_dinamo       → liga/desliga dínamo
 // ============================================================
 
 using UnityEngine;
@@ -23,32 +26,31 @@ namespace Speedma
         [SerializeField] private AmpController batteryAmp;
 
         [Header("FMU Output Names")]
-        [SerializeField] private string outputCurrent = "i_c_out";
-        [SerializeField] private string outputVoltage = "v_c_out";
+        [SerializeField] private string outputAmpDinamo  = "amp_dinamo_out";
+        [SerializeField] private string outputAmpBateria = "amp_bateria_out";
+        [SerializeField] private string outputVBat       = "v_bat_out";
 
         [Header("FMU Input Names")]
-        [SerializeField] private string inputRCarga  = "R_carga";
-        [SerializeField] private string inputSwCarga = "sw_carga";
-        [SerializeField] private string inputSwDesc  = "sw_descarga";
+        [SerializeField] private string inputSwDinamo = "sw_dinamo";
 
         // Public read for debug HUD
-        public float CurrentAmps { get; private set; }
-        public float VoltageCap  { get; private set; }
+        public float AmpDinamo  { get; private set; }
+        public float AmpBateria { get; private set; }
+        public float VBat       { get; private set; }
 
         private void Update()
         {
             if (sim == null || !sim.IsSessionActive) return;
 
-            CurrentAmps = sim.GetOutput(outputCurrent);
-            VoltageCap  = sim.GetOutput(outputVoltage);
+            AmpDinamo  = sim.GetOutput(outputAmpDinamo);
+            AmpBateria = sim.GetOutput(outputAmpBateria);
+            VBat       = sim.GetOutput(outputVBat);
 
-            if (dynamoAmp  != null) dynamoAmp.SetValue( Mathf.Max(0f,  CurrentAmps));
-            if (batteryAmp != null) batteryAmp.SetValue(Mathf.Max(0f, -CurrentAmps));
+            if (dynamoAmp  != null) dynamoAmp.SetValue(Mathf.Max(0f, AmpDinamo));
+            if (batteryAmp != null) batteryAmp.SetValue(Mathf.Max(0f, AmpBateria));
         }
 
-        // ── Called by FmuDebugController / RheostatInput / ReducerInput ──
-        public void SetRCarga(float value)              => sim?.SetInput(inputRCarga,  value);
-        public void SetSwitches(bool carga, bool desc)  { sim?.SetInput(inputSwCarga, carga); sim?.SetInput(inputSwDesc, desc); }
-        public void SetVFonte(float value)              => sim?.SetInput("V_fonte",    value);
+        // ── Called by FmuDebugController ──────────────────────────────────
+        public void SetSwDinamo(bool on) => sim?.SetInput(inputSwDinamo, on);
     }
 }
