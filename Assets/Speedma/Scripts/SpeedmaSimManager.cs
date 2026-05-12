@@ -1,12 +1,8 @@
 // Assets/Speedma/Scripts/SpeedmaSimManager.cs
 // ============================================================
 // Runtime counterpart of the Editor FMU Tester.
-// Runs an FMU session in Play mode via the Speedma backend.
-//
-// - Starts session on Awake
-// - Steps at a fixed interval (SimDt)
-// - Exposes GetOutput(name) / SetInput(name, value)
-// - FmuSceneLink + other scripts call these each frame
+// Mirrors FmuTester exactly: send step → wait response → repeat.
+// Inputs persist between steps (never cleared).
 // ============================================================
 
 using System;
@@ -25,7 +21,7 @@ namespace Speedma
         [SerializeField] private string fmuName    = "CircuitoRC_Interativo";
 
         [Header("Simulation")]
-        [SerializeField] private float simDt = 0.001f;   // keep <= tau/10
+        [SerializeField] private float simDt = 0.001f;
 
         // ── State ────────────────────────────────────────────────────
         public bool   IsSessionActive { get; private set; }
@@ -33,61 +29,49 @@ namespace Speedma
         public string SessionId       { get; private set; }
         public string StatusMessage   { get; private set; } = "Idle";
 
-        private Dictionary<string, float>  _outputs = new();
-        private Dictionary<string, object> _inputs  = new();
-        private bool _stepping = false;
+        // Outputs are read by FmuSceneLink every Unity frame
+        private readonly Dictionary<string, float>  _outputs = new();
+        // Inputs persist — never cleared, overwritten by SetInput()
+        private readonly Dictionary<string, object> _inputs  = new();
 
         // ══════════════════════════════════════════════════════════════
 
-        private void Awake()
-        {
-            StartCoroutine(StartSession());
-        }
-
-        private void OnDestroy()
-        {
-            if (!string.IsNullOrEmpty(SessionId))
-                StartCoroutine(StopSession());
-        }
+        private void Awake()    => StartCoroutine(StartSession());
+        private void OnDestroy() { if (!string.IsNullOrEmpty(SessionId)) StartCoroutine(StopSession()); }
 
         // ── Public API ───────────────────────────────────────────────
-
-        public float GetOutput(string name)
-            => _outputs.TryGetValue(name, out var v) ? v : 0f;
-
-        public void SetInput(string name, float value)   => _inputs[name] = value;
-        public void SetInput(string name, bool  value)   => _inputs[name] = value;
-        public void SetInput(string name, int   value)   => _inputs[name] = value;
+        public float GetOutput(string name)             => _outputs.TryGetValue(name, out var v) ? v : 0f;
+        public void  SetInput(string name, float value) => _inputs[name] = value;
+        public void  SetInput(string name, bool  value) => _inputs[name] = value;
+        public void  SetInput(string name, int   value) => _inputs[name] = value;
 
         // ── Session lifecycle ────────────────────────────────────────
 
         private IEnumerator StartSession()
         {
             StatusMessage = "Starting session...";
-            string body = $"{{\"fmu_name\":\"{fmuName}\"}}";
-            yield return PostJson($"{backendUrl}/sim/start", body, json =>
-            {
-                SessionId     = ParseString(json, "session_id");
-                IsSessionActive = !string.IsNullOrEmpty(SessionId);
-                StatusMessage = IsSessionActive ? "Session active" : "Failed to start";
-            });
+            yield return PostJson($"{backendUrl}/sim/start",
+                $"{{\"fmu_name\":\"{fmuName}\"}}",
+                json =>
+                {
+                    SessionId       = ParseString(json, "session_id");
+                    IsSessionActive = !string.IsNullOrEmpty(SessionId);
+                    StatusMessage   = IsSessionActive ? "Session active" : "Failed to start";
+                });
 
             if (IsSessionActive)
                 StartCoroutine(StepLoop());
         }
 
+        // Mirrors FmuTester: one step at a time, wait for HTTP response.
+        // yield return null gives Unity one frame between steps so the
+        // scene can read outputs and write new inputs before the next send.
         private IEnumerator StepLoop()
         {
-            var wait = new WaitForSecondsRealtime(simDt);
             while (IsSessionActive)
             {
-                if (!_stepping)
-                {
-                    _stepping = true;
-                    yield return SendStep();
-                    _stepping = false;
-                }
-                yield return wait;
+                yield return SendStep();   // wait for full HTTP round-trip
+                yield return null;         // one frame pause → FmuSceneLink reads, FmuDebugController writes
             }
         }
 
@@ -102,8 +86,9 @@ namespace Speedma
             {
                 if (!first) sb.Append(',');
                 first = false;
-                string val = kv.Value is bool b ? (b ? "true" : "false")
-                           : Convert.ToString(kv.Value, System.Globalization.CultureInfo.InvariantCulture);
+                string val = kv.Value is bool b
+                    ? (b ? "true" : "false")
+                    : Convert.ToString(kv.Value, System.Globalization.CultureInfo.InvariantCulture);
                 sb.Append($"\"{kv.Key}\":{val}");
             }
             sb.Append("}}");
@@ -111,7 +96,6 @@ namespace Speedma
             yield return PostJson($"{backendUrl}/sim/step", sb.ToString(), json =>
             {
                 SimTime = ParseFloat(json, "\"t\"");
-                // parse all outputs from flat JSON
                 ParseAllFloats(json, _outputs);
                 StatusMessage = $"t = {SimTime:F3} s";
             });
@@ -124,7 +108,7 @@ namespace Speedma
                 $"{{\"session_id\":\"{SessionId}\"}}", _ => { });
         }
 
-        // ── HTTP helpers ─────────────────────────────────────────────
+        // ── HTTP ─────────────────────────────────────────────────────
 
         private IEnumerator PostJson(string url, string body, Action<string> onSuccess)
         {
@@ -138,7 +122,7 @@ namespace Speedma
             if (req.result == UnityWebRequest.Result.Success)
                 onSuccess(req.downloadHandler.text);
             else
-                StatusMessage = $"Error: {req.error}";
+                StatusMessage = $"HTTP error: {req.error}";
         }
 
         // ── JSON helpers ─────────────────────────────────────────────
@@ -169,18 +153,15 @@ namespace Speedma
                 System.Globalization.CultureInfo.InvariantCulture, out float v) ? v : 0f;
         }
 
-        // Extracts every numeric value in the output JSON into the dictionary
         private static void ParseAllFloats(string json, Dictionary<string, float> dict)
         {
-            // Looks for "outputs":{...} block first, falls back to flat scan
             int start = json.IndexOf("\"outputs\"", StringComparison.Ordinal);
             string block = start >= 0 ? json.Substring(start) : json;
-
             int pos = 0;
             while (pos < block.Length)
             {
-                int q1 = block.IndexOf('"', pos);       if (q1 < 0) break;
-                int q2 = block.IndexOf('"', q1 + 1);   if (q2 < 0) break;
+                int q1 = block.IndexOf('"', pos);     if (q1 < 0) break;
+                int q2 = block.IndexOf('"', q1 + 1); if (q2 < 0) break;
                 string key = block.Substring(q1 + 1, q2 - q1 - 1);
                 pos = q2 + 1;
                 while (pos < block.Length && (block[pos] == ' ' || block[pos] == ':')) pos++;
