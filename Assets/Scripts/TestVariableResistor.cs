@@ -1,17 +1,15 @@
 using UnityEngine;
+using Speedma;
 
 /// <summary>
-/// Tests a variable resistor circuit wired to the remote FMU simulation.
-/// Mirrors the original TestVariableResistor but talks to the backend
-/// instead of loading a native FMU – fully WebGL-safe.
+/// Tests a variable resistor circuit via SpeedmaSimManager.
+/// SpeedmaSimManager drives its own step loop — this script only
+/// writes inputs and reads outputs each frame.
 /// </summary>
 public class TestVariableResistor : MonoBehaviour
 {
     [Header("Simulation backend")]
-    public RemoteFmuSimulation sim;
-
-    [Header("FMU name (informational only)")]
-    public string fmuName = "ShowVariableResistor";
+    public SpeedmaSimManager sim;
 
     [Header("Input")]
     public float inputU = 1.0f;
@@ -20,14 +18,13 @@ public class TestVariableResistor : MonoBehaviour
     public float voltageVariableResistor;
     public float voltageR2;
 
-    void FixedUpdate()
+    void Update()
     {
-        if (sim == null || !sim.IsReady) return;
+        if (sim == null || !sim.IsSessionActive) return;
 
-        sim.SetReal("u", inputU);
-        sim.Step(Time.fixedDeltaTime);
+        sim.SetInput("u", inputU);
 
-        voltageVariableResistor = sim.GetReal("VariableResistor.v");
-        voltageR2               = sim.GetReal("R2.v");
+        voltageVariableResistor = sim.GetOutput("VariableResistor.v");
+        voltageR2               = sim.GetOutput("R2.v");
     }
 }

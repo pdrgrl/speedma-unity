@@ -1,19 +1,19 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Speedma;
 
 /// <summary>
-/// Tests a simple boolean switch wired to the remote FMU simulation.
-/// Drop a RemoteFmuSimulation component anywhere in the scene and drag
-/// it into the <see cref="sim"/> slot in the Inspector.
-/// No FMI2 / native code – fully WebGL-safe.
+/// Tests a simple boolean switch via SpeedmaSimManager.
+/// SpeedmaSimManager drives its own step loop — this script only
+/// writes inputs and reads outputs each frame.
 /// </summary>
 public class SimpleSwitchTest : MonoBehaviour
 {
     [Header("Simulation backend")]
-    public RemoteFmuSimulation sim;
+    public SpeedmaSimManager sim;
 
     [Header("Input")]
-    public bool switchOn = false;
+    public bool   switchOn = false;
     public Button activateButton;
 
     [Header("Output (read from simulation)")]
@@ -24,9 +24,9 @@ public class SimpleSwitchTest : MonoBehaviour
     [Header("Switch Visuals")]
     [Tooltip("Drag Sphere.024_Baked here")]
     public Transform switchHandle;
-    public Vector3 rotationOff = new Vector3(0f, 0f, 0f);
-    public Vector3 rotationOn = new Vector3(0f, 0f, 45f);
-    public float rotationSpeed = 5f; // smooth lerp speed
+    public Vector3 rotationOff = new Vector3(0f, 0f,  0f);
+    public Vector3 rotationOn  = new Vector3(0f, 0f, 45f);
+    public float   rotationSpeed = 5f;
 
     private Quaternion targetRotation;
 
@@ -35,7 +35,6 @@ public class SimpleSwitchTest : MonoBehaviour
         if (activateButton != null)
             activateButton.onClick.AddListener(ToggleSwitch);
 
-        // Set initial rotation
         targetRotation = Quaternion.Euler(rotationOff);
         if (switchHandle != null)
             switchHandle.localRotation = targetRotation;
@@ -49,23 +48,14 @@ public class SimpleSwitchTest : MonoBehaviour
 
     void Update()
     {
-        // Smoothly rotate the handle towards the target
         if (switchHandle != null)
             switchHandle.localRotation = Quaternion.Lerp(
-                switchHandle.localRotation,
-                targetRotation,
-                Time.deltaTime * rotationSpeed
-            );
-    }
+                switchHandle.localRotation, targetRotation, Time.deltaTime * rotationSpeed);
 
-    void FixedUpdate()
-    {
-        if (sim == null || !sim.IsReady)
-            return;
+        if (sim == null || !sim.IsSessionActive) return;
 
-        sim.SetBoolean("switchOn", switchOn);
-        sim.Step(Time.fixedDeltaTime);
-        outputVoltage = sim.GetReal("outputVoltage");
+        sim.SetInput("switchOn", switchOn);
+        outputVoltage = sim.GetOutput("outputVoltage");
 
         if (lightComponent != null)
             lightComponent.enabled = outputVoltage > voltageThreshold;
