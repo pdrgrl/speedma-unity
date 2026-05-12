@@ -1,12 +1,12 @@
-// Assets/Speedma/Scripts/FmuSceneLink.cs  v2
+// Assets/Speedma/Scripts/FmuSceneLink.cs
 // ============================================================
-// Bridges RemoteFmuSimulation to the 3D scene instruments.
+// Bridges SpeedmaSimManager to the 3D scene instruments.
 //
-// - Reads i_c_out / v_c_out from RemoteFmuSimulation each frame
+// - Reads i_c_out / v_c_out from SpeedmaSimManager each frame
 // - Drives DynamoAmp  (positive i_c = charging)
 // - Drives BatteryAmp (negative i_c = discharging)
-// - Exposes SetRCarga / SetSwitches for RheostatInput / ReducerInput
-//   (and FmuDebugController during development)
+// - Exposes SetRCarga / SetSwitches for FmuDebugController
+//   and future RheostatInput / ReducerInput scripts
 // ============================================================
 
 using UnityEngine;
@@ -16,7 +16,7 @@ namespace Speedma
     public class FmuSceneLink : MonoBehaviour
     {
         [Header("Simulation Backend")]
-        [SerializeField] private RemoteFmuSimulation sim;
+        [SerializeField] private SpeedmaSimManager sim;
 
         [Header("Instruments")]
         [SerializeField] private AmpController dynamoAmp;
@@ -37,30 +37,18 @@ namespace Speedma
 
         private void Update()
         {
-            if (sim == null || !sim.IsReady) return;
+            if (sim == null || !sim.IsSessionActive) return;
 
-            CurrentAmps = sim.GetReal(outputCurrent);
-            VoltageCap  = sim.GetReal(outputVoltage);
+            CurrentAmps = sim.GetOutput(outputCurrent);
+            VoltageCap  = sim.GetOutput(outputVoltage);
 
             if (dynamoAmp  != null) dynamoAmp.SetValue( Mathf.Max(0f,  CurrentAmps));
             if (batteryAmp != null) batteryAmp.SetValue(Mathf.Max(0f, -CurrentAmps));
         }
 
-        // ── Called by RheostatInput / FmuDebugController ──────────────
-        public void SetRCarga(float value)
-        {
-            sim?.SetReal(inputRCarga, value);
-        }
-
-        public void SetSwitches(bool carga, bool descarga)
-        {
-            sim?.SetBoolean(inputSwCarga, carga);
-            sim?.SetBoolean(inputSwDesc,  descarga);
-        }
-
-        public void SetVFonte(float value)
-        {
-            sim?.SetReal("V_fonte", value);
-        }
+        // ── Called by FmuDebugController / RheostatInput / ReducerInput ──
+        public void SetRCarga(float value)              => sim?.SetInput(inputRCarga,  value);
+        public void SetSwitches(bool carga, bool desc)  { sim?.SetInput(inputSwCarga, carga); sim?.SetInput(inputSwDesc, desc); }
+        public void SetVFonte(float value)              => sim?.SetInput("V_fonte",    value);
     }
 }
