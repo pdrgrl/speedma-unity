@@ -1,46 +1,39 @@
 using UnityEngine;
+using Speedma;
 
 /// <summary>
 /// Central simulation coordinator for the Chamusca 1920 scene.
-/// Wire <see cref="sim"/> to the RemoteFmuSimulation component in the
-/// Inspector.  Add public fields below for every FMU variable your
-/// scene needs to read or write.
-///
-/// This script is the single place that calls sim.Step() – all other
-/// scripts should only call Set*/Get* and let this drive the clock.
+/// This is the ONLY script that calls sim.Step() — all others
+/// only call SetInput/GetOutput via FmuSceneLink.
 /// </summary>
 public class CircuitoSimulacao : MonoBehaviour
 {
     [Header("Simulation backend")]
     public RemoteFmuSimulation sim;
 
-    // ── Add your scene-specific inputs here ───────────────────────
-    [Header("Inputs")]
-    public bool engineRunning  = false;
-    public bool switchMercury  = false;
-    public float reostatValue  = 0f;   // 0–1 normalised
+    [Header("Step size (s) — keep ≤ 0.0005 for this RC circuit")]
+    public float simDt = 0.001f;
 
-    // ── Add your scene-specific outputs here ──────────────────────
-    [Header("Outputs (updated each FixedUpdate)")]
-    public float batteryVoltage;
-    public float dynamoVoltage;
-    public float loadCurrent;
+    // ── Inputs (set by FmuDebugController / RheostatInput / ReducerInput) ──
+    // These are pushed to the FMU every step via FmuSceneLink.
+    // Do NOT set them here — let the input controllers write to FmuSceneLink.
+
+    // ── Outputs (read from FMU, available to any script) ──────────────────
+    [Header("Outputs (updated each step)")]
+    public float i_c_out;   // Condensador current (A)
+    public float v_c_out;   // Condensador voltage (V)
 
     void FixedUpdate()
     {
         if (sim == null || !sim.IsReady) return;
 
-        // — Push inputs —
-        sim.SetBoolean("engineRunning", engineRunning);
-        sim.SetBoolean("switchMercury", switchMercury);
-        sim.SetReal("reostatValue",  reostatValue);
+        // ── Advance simulation ───────────────────────────────
+        // Inputs are already buffered in RemoteFmuSimulation by
+        // FmuSceneLink.SetSwitches / SetRCarga / SetVFonte.
+        sim.Step(simDt);
 
-        // — Advance one physics step —
-        sim.Step(Time.fixedDeltaTime);
-
-        // — Pull outputs —
-        batteryVoltage = sim.GetReal("batteryVoltage");
-        dynamoVoltage  = sim.GetReal("dynamoVoltage");
-        loadCurrent    = sim.GetReal("loadCurrent");
+        // ── Pull outputs (for debug Inspector visibility) ───
+        i_c_out = sim.GetReal("i_c_out");
+        v_c_out = sim.GetReal("v_c_out");
     }
 }
