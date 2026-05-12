@@ -1,12 +1,12 @@
-// Assets/Speedma/Scripts/FmuSceneLink.cs
+// Assets/Speedma/Scripts/FmuSceneLink.cs  v2
 // ============================================================
-// Bridges the running FMU session (via SpeedmaSimManager) to
-// the 3D scene instruments.
+// Bridges RemoteFmuSimulation to the 3D scene instruments.
 //
-// - Reads i_c_out and v_c_out from the FMU every frame
-// - Drives the two AmpControllers
-// - Exposes R_carga and sw_* as properties so RheostatInput
-//   and ReducerInput can push values into the FMU
+// - Reads i_c_out / v_c_out from RemoteFmuSimulation each frame
+// - Drives DynamoAmp  (positive i_c = charging)
+// - Drives BatteryAmp (negative i_c = discharging)
+// - Exposes SetRCarga / SetSwitches for RheostatInput / ReducerInput
+//   (and FmuDebugController during development)
 // ============================================================
 
 using UnityEngine;
@@ -15,68 +15,52 @@ namespace Speedma
 {
     public class FmuSceneLink : MonoBehaviour
     {
+        [Header("Simulation Backend")]
+        [SerializeField] private RemoteFmuSimulation sim;
+
         [Header("Instruments")]
-        [SerializeField] private AmpController dynamoAmp;   // amperímetro do dinamo
-        [SerializeField] private AmpController batteryAmp;  // amperímetro da bateria
+        [SerializeField] private AmpController dynamoAmp;
+        [SerializeField] private AmpController batteryAmp;
 
         [Header("FMU Output Names")]
         [SerializeField] private string outputCurrent = "i_c_out";
         [SerializeField] private string outputVoltage = "v_c_out";
 
         [Header("FMU Input Names")]
-        [SerializeField] private string inputRCarga    = "R_carga";
-        [SerializeField] private string inputSwCarga   = "sw_carga";
-        [SerializeField] private string inputSwDesc    = "sw_descarga";
+        [SerializeField] private string inputRCarga  = "R_carga";
+        [SerializeField] private string inputSwCarga = "sw_carga";
+        [SerializeField] private string inputSwDesc  = "sw_descarga";
 
-        // ── Runtime state (read by RheostatInput / ReducerInput) ──────
-        private float _rCarga    = 50f;
-        private bool  _swCarga   = false;
-        private bool  _swDesc    = false;
-
-        // Last read values (public for UI / debug)
-        public float CurrentAmps   { get; private set; }
-        public float VoltageCap    { get; private set; }
-
-        // ── FMU session reference ─────────────────────────────────────
-        // We look for SpeedmaSimManager in the scene; it owns the HTTP loop.
-        private SpeedmaSimManager _sim;
-
-        private void Start()
-        {
-            _sim = FindFirstObjectByType<SpeedmaSimManager>();
-            if (_sim == null)
-                Debug.LogWarning("[FmuSceneLink] SpeedmaSimManager not found in scene.");
-        }
+        // Public read for debug HUD
+        public float CurrentAmps { get; private set; }
+        public float VoltageCap  { get; private set; }
 
         private void Update()
         {
-            if (_sim == null || !_sim.IsSessionActive) return;
+            if (sim == null || !sim.IsReady) return;
 
-            // ── Read outputs from last FMU step ──────────────────────
-            CurrentAmps = _sim.GetOutput(outputCurrent);
-            VoltageCap  = _sim.GetOutput(outputVoltage);
+            CurrentAmps = sim.GetReal(outputCurrent);
+            VoltageCap  = sim.GetReal(outputVoltage);
 
-            // Dynamo amp: charging current (positive i_c)
             if (dynamoAmp  != null) dynamoAmp.SetValue( Mathf.Max(0f,  CurrentAmps));
-
-            // Battery amp: discharge current (negative i_c, shown as positive)
             if (batteryAmp != null) batteryAmp.SetValue(Mathf.Max(0f, -CurrentAmps));
         }
 
-        // ── Called by RheostatInput ───────────────────────────────────
+        // ── Called by RheostatInput / FmuDebugController ──────────────
         public void SetRCarga(float value)
         {
-            _rCarga = value;
-            _sim?.SetInput(inputRCarga, _rCarga);
+            sim?.SetReal(inputRCarga, value);
         }
 
-        // ── Called by ReducerInput ────────────────────────────────────
         public void SetSwitches(bool carga, bool descarga)
         {
-            _swCarga = carga;
-            _swDesc  = descarga;
-            _sim?.SetInput(inputSwCarga, _swCarga);
-            _sim?.SetInput(inputSwDesc,  _swDesc);
+            sim?.SetBoolean(inputSwCarga, carga);
+            sim?.SetBoolean(inputSwDesc,  descarga);
+        }
+
+        public void SetVFonte(float value)
+        {
+            sim?.SetReal("V_fonte", value);
         }
     }
 }
