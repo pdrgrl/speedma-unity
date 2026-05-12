@@ -511,7 +511,7 @@ namespace Speedma.Editor
         private async Task HealthCheckAsync()
         {
             string json = await GetAsync($"{_backendUrl}/sim/health");
-            Debug.Log($"[FMU Tester] Health: {json}");
+            UnityEngine.Debug.Log($"[FMU Tester] Health: {json}");
         }
 
         private async Task StartSessionAsync(string fmuName)
