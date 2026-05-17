@@ -15,11 +15,11 @@ namespace Speedma.Debug
 {
     public class FmuDebugController : MonoBehaviour
     {
-        private const float HudWidth = 430f;
-        private const float HudHeight = 330f;
-        private const float HudPadding = 18f;
-        private const float HudLineHeight = 30f;
-        private const float HudLabelWidth = 394f;
+        private const float HudWidth = 390f;
+        private const float HudHeight = 290f;
+        private const float HudPadding = 16f;
+        private const float HudLineHeight = 26f;
+        private const float HudLabelWidth = 350f;
 
         [Header("References")]
         [SerializeField]
@@ -51,11 +51,11 @@ namespace Speedma.Debug
 
             GUI.Box(new Rect(10, 10, HudWidth, HudHeight), string.Empty, _boxStyle);
 
-            float x = 24f;
-            float y = 22f;
+            float x = 22f;
+            float y = 20f;
 
             Label(x, y, "Chamusca Digital Twin");
-            y += HudLineHeight + 4f;
+            y += HudLineHeight + 2f;
 
             LabelColored(
                 x,
@@ -70,7 +70,7 @@ namespace Speedma.Debug
                 $"[L]  sw_luz    : {OnOff(sceneLink != null && sceneLink.SwLuz)}",
                 sceneLink != null && sceneLink.SwLuz
             );
-            y += HudLineHeight + 4f;
+            y += HudLineHeight + 2f;
 
             float ampD = sceneLink != null ? sceneLink.AmpDinamo : 0f;
             float ampB = sceneLink != null ? sceneLink.AmpBateria : 0f;
@@ -87,7 +87,7 @@ namespace Speedma.Debug
             Label(x, y, $"r_reostato   : {rheo,8:F2} Ω");
             y += HudLineHeight;
             LabelColored(x, y, $"lamp_on      : {OnOff(lamp > 0.5f)}", lamp > 0.5f);
-            y += HudLineHeight + 6f;
+            y += HudLineHeight + 4f;
             Label(x, y, "[`] toggle HUD");
         }
 
@@ -111,7 +111,7 @@ namespace Speedma.Debug
             _labelStyle = new GUIStyle(GUI.skin.label)
             {
                 normal = { textColor = Color.white },
-                fontSize = 18,
+                fontSize = 16,
             };
             _onStyle = new GUIStyle(_labelStyle)
             {
