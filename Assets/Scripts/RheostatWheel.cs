@@ -37,6 +37,10 @@ public class RheostatWheel : MonoBehaviour
     [Header("UI Feedback (optional)")]
     public TextMeshProUGUI grabHintText;
 
+    [Header("Interaction Range")]
+    [Tooltip("Maximum distance (world units) at which the wheel can be grabbed.")]
+    public float maxInteractDistance = 2.0f;
+
     // ── State ──────────────────────────────────────────────────────────────
     private bool _grabbed = false;
     private float _currentAngle;
@@ -64,10 +68,11 @@ public class RheostatWheel : MonoBehaviour
         if (!_grabbed)
         {
             // ── Wait for a click on the wheel ─────────────────────────────
+
             if (clicked && Camera.main != null)
             {
                 Ray ray = Camera.main.ScreenPointToRay(mousePos);
-                if (Physics.Raycast(ray, out RaycastHit hit))
+                if (Physics.Raycast(ray, out RaycastHit hit) && hit.distance <= maxInteractDistance)
                 {
                     bool overWheel = hit.transform == wheel || hit.transform.IsChildOf(wheel);
                     if (overWheel)
