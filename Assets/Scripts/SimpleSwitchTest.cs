@@ -1,63 +1,56 @@
+// Assets/Scripts/SimpleSwitchTest.cs
+using Speedma;
 using UnityEngine;
 using UnityEngine.UI;
-using Speedma;
 
 /// <summary>
-/// Tests a simple boolean switch via SpeedmaSimManager.
-/// SpeedmaSimManager drives its own step loop — this script only
-/// writes inputs and reads outputs each frame.
+/// Toggles sw_luz in the ChamuscaDigitalTwin FMU via FmuSceneLink.
+/// Animates the switch handle between rotationOff and rotationOn.
+/// No longer owns a SpeedmaSimManager — FmuSceneLink owns the session.
 /// </summary>
 public class SimpleSwitchTest : MonoBehaviour
 {
-    [Header("Simulation backend")]
-    public SpeedmaSimManager sim;
+    [Header("Simulation Backend")]
+    public FmuSceneLink fmuLink;
 
-    [Header("Input")]
-    public bool   switchOn = false;
+    [Header("UI")]
     public Button activateButton;
 
-    [Header("Output (read from simulation)")]
-    public float outputVoltage = 0f;
-    public Light lightComponent;
-    public float voltageThreshold = 0.5f;
-
     [Header("Switch Visuals")]
-    [Tooltip("Drag Sphere.024_Baked here")]
+    [Tooltip("Drag the switch handle Transform here (e.g. Sphere.024_Baked)")]
     public Transform switchHandle;
-    public Vector3 rotationOff = new Vector3(0f, 0f,  0f);
-    public Vector3 rotationOn  = new Vector3(0f, 0f, 45f);
-    public float   rotationSpeed = 5f;
+    public Vector3 rotationOff = new Vector3(0f, 0f, 0f);
+    public Vector3 rotationOn = new Vector3(0f, 0f, 45f);
+    public float rotationSpeed = 5f;
 
-    private Quaternion targetRotation;
+    private bool _switchOn = false;
+    private Quaternion _targetRotation;
 
-    void Start()
+    private void Start()
     {
         if (activateButton != null)
             activateButton.onClick.AddListener(ToggleSwitch);
 
-        targetRotation = Quaternion.Euler(rotationOff);
+        _targetRotation = Quaternion.Euler(rotationOff);
         if (switchHandle != null)
-            switchHandle.localRotation = targetRotation;
+            switchHandle.localRotation = _targetRotation;
     }
 
     public void ToggleSwitch()
     {
-        switchOn = !switchOn;
-        targetRotation = Quaternion.Euler(switchOn ? rotationOn : rotationOff);
+        _switchOn = !_switchOn;
+        _targetRotation = Quaternion.Euler(_switchOn ? rotationOn : rotationOff);
+        fmuLink?.SetSwLuz(_switchOn);
     }
 
-    void Update()
+    private void Update()
     {
-        if (switchHandle != null)
-            switchHandle.localRotation = Quaternion.Lerp(
-                switchHandle.localRotation, targetRotation, Time.deltaTime * rotationSpeed);
-
-        if (sim == null || !sim.IsSessionActive) return;
-
-        sim.SetInput("switchOn", switchOn);
-        outputVoltage = sim.GetOutput("outputVoltage");
-
-        if (lightComponent != null)
-            lightComponent.enabled = outputVoltage > voltageThreshold;
+        if (switchHandle == null)
+            return;
+        switchHandle.localRotation = Quaternion.Lerp(
+            switchHandle.localRotation,
+            _targetRotation,
+            Time.deltaTime * rotationSpeed
+        );
     }
 }
