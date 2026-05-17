@@ -23,8 +23,8 @@ public class ChamuscaInteractionManager : MonoBehaviour
         // 1. Hover logic
         if (Physics.Raycast(ray, out hit) && hit.distance <= maxInteractDistance)
         {
-            ChamuscaInteractable interactable = hit.collider.GetComponent<ChamuscaInteractable>();
-
+            ChamuscaInteractable interactable =
+                hit.collider.GetComponentInParent<ChamuscaInteractable>();
             if (interactable != currentHovered)
             {
                 if (currentHovered != null)
