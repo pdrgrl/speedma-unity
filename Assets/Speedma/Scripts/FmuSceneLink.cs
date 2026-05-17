@@ -1,17 +1,4 @@
 // Assets/Speedma/Scripts/FmuSceneLink.cs
-// ============================================================
-// Bridges SpeedmaSimManager to the 3D scene instruments.
-// Modelo: ChamuscaDigitalTwin (Dínamo ASEA + Bateria Tudor)
-//
-// Outputs lidos do FMU:
-//   amp_dinamo_out  → DynamoAmp
-//   amp_bateria_out → BatteryAmp
-//   v_bat_out       → (futuro VoltController)
-//
-// Inputs enviados ao FMU:
-//   sw_dinamo       → liga/desliga dínamo
-// ============================================================
-
 using UnityEngine;
 
 namespace Speedma
@@ -19,38 +6,78 @@ namespace Speedma
     public class FmuSceneLink : MonoBehaviour
     {
         [Header("Simulation Backend")]
-        [SerializeField] private SpeedmaSimManager sim;
+        [SerializeField]
+        private SpeedmaSimManager sim;
 
         [Header("Instruments")]
-        [SerializeField] private AmpController dynamoAmp;
-        [SerializeField] private AmpController batteryAmp;
+        [SerializeField]
+        private AmpController dynamoAmp;
+
+        [SerializeField]
+        private AmpController batteryAmp;
 
         [Header("FMU Output Names")]
-        [SerializeField] private string outputAmpDinamo  = "amp_dinamo_out";
-        [SerializeField] private string outputAmpBateria = "amp_bateria_out";
-        [SerializeField] private string outputVBat       = "v_bat_out";
+        [SerializeField]
+        private string outputAmpDinamo = "amp_dinamo_out";
+
+        [SerializeField]
+        private string outputAmpBateria = "amp_bateria_out";
+
+        [SerializeField]
+        private string outputVBat = "v_bat_out";
 
         [Header("FMU Input Names")]
-        [SerializeField] private string inputSwDinamo = "sw_dinamo";
+        [SerializeField]
+        private string inputSwDinamo = "sw_dinamo";
 
-        // Public read for debug HUD
-        public float AmpDinamo  { get; private set; }
+        [SerializeField]
+        private string inputRheostat = "r_reostato";
+
+        [Header("Rheostat")]
+        [Tooltip("Resistance in ohms. Written by RheostatWheel at runtime.")]
+        [SerializeField]
+        private float rheostatValue = 2.0f;
+
+        [SerializeField]
+        private float rheostatMin = 0.0f;
+
+        [SerializeField]
+        private float rheostatMax = 10.0f;
+
+        public float AmpDinamo { get; private set; }
         public float AmpBateria { get; private set; }
-        public float VBat       { get; private set; }
+        public float VBat { get; private set; }
+
+        /// <summary>Called every frame by RheostatWheel to drive r_reostato.</summary>
+        public float RheostatValue
+        {
+            get => rheostatValue;
+            set => rheostatValue = Mathf.Clamp(value, rheostatMin, rheostatMax);
+        }
+
+        public float RheostatMin => rheostatMin;
+        public float RheostatMax => rheostatMax;
 
         private void Update()
         {
-            if (sim == null || !sim.IsSessionActive) return;
+            if (sim == null || !sim.IsSessionActive)
+                return;
 
-            AmpDinamo  = sim.GetOutput(outputAmpDinamo);
+            // ── Read outputs ──────────────────────────────────────────
+            AmpDinamo = sim.GetOutput(outputAmpDinamo);
             AmpBateria = sim.GetOutput(outputAmpBateria);
-            VBat       = sim.GetOutput(outputVBat);
+            VBat = sim.GetOutput(outputVBat);
 
-            if (dynamoAmp  != null) dynamoAmp.SetValue(Mathf.Max(0f, AmpDinamo));
-            if (batteryAmp != null) batteryAmp.SetValue(Mathf.Max(0f, AmpBateria));
+            if (dynamoAmp != null)
+                dynamoAmp.SetValue(Mathf.Max(0f, AmpDinamo));
+            if (batteryAmp != null)
+                batteryAmp.SetValue(Mathf.Max(0f, AmpBateria));
+
+            // ── Write inputs ──────────────────────────────────────────
+            sim.SetInput(inputRheostat, rheostatValue);
+            UnityEngine.Debug.Log($"[Rheostat] sending r_reostato = {rheostatValue:F2}");
         }
 
-        // ── Called by FmuDebugController ──────────────────────────────────
         public void SetSwDinamo(bool on) => sim?.SetInput(inputSwDinamo, on);
     }
 }

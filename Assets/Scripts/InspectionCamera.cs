@@ -15,15 +15,20 @@ public class InspectionCamera : MonoBehaviour
     public LayerMask wallCollisionLayer;
     public float cameraCollisionRadius = 0.2f;
 
+    /// <summary>
+    /// When true, all orbit/zoom input is suppressed.
+    /// Set by RheostatWheel (or any other interactable) while grabbed.
+    /// </summary>
+    public bool IsLocked { get; set; } = false;
+
     private float currentX = 0.0f;
     private float currentY = 20.0f;
     private Vector3 currentTargetPos;
     private float currentDistance;
 
-    // Drag detection
     private Vector3 mouseDownPos;
     private bool isDragging = false;
-    private const float dragThreshold = 5f; // pixels
+    private const float dragThreshold = 5f;
 
     void Start()
     {
@@ -36,10 +41,7 @@ public class InspectionCamera : MonoBehaviour
         currentDistance = targetDistance;
     }
 
-    void Update()
-    {
-        HandleInput();
-    }
+    void Update() => HandleInput();
 
     void LateUpdate()
     {
@@ -82,7 +84,10 @@ public class InspectionCamera : MonoBehaviour
 
     private void HandleInput()
     {
-        // Track mouse down position to detect drag vs click
+        // ── All orbit/zoom input blocked while something is grabbed ────
+        if (IsLocked)
+            return;
+
         if (Input.GetMouseButtonDown(0))
         {
             mouseDownPos = Input.mousePosition;
@@ -108,7 +113,6 @@ public class InspectionCamera : MonoBehaviour
             }
         }
 
-        // Scroll to zoom
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         if (Mathf.Abs(scroll) > 0.01f)
         {
@@ -121,7 +125,6 @@ public class InspectionCamera : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                // FIX 1: GetComponentInParent instead of GetComponent
                 InteractableHotspot hotspot =
                     hit.collider.GetComponentInParent<InteractableHotspot>();
                 if (hotspot != null)
