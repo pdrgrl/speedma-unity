@@ -3,37 +3,7 @@ guid: 7a5060ebf3b165440acb4a53da84d007
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: GoldFinal
-    second: {fileID: 2100000, guid: b8dc1817c04260744a1e4afcbfc2687d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Granite.002
-    second: {fileID: 2100000, guid: bb10d8f0ebd59cc4193cc810bb971b6c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: GraniteFinal
-    second: {fileID: 2100000, guid: e6738d6a6078f194a91b543d37eaf8ea, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: MetalFinal
-    second: {fileID: 2100000, guid: 5235e3ae905bfdd47a458bf2b3099c10, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: WoodFinal
-    second: {fileID: 2100000, guid: d77d88d80958262419c23800e250faaa, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: goldConnector
-    second: {fileID: 2100000, guid: e32b59c6dab330e4d935e399c59cf46c, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
