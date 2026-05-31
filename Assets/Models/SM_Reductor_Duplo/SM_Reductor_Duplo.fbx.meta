@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e0fe56add45cf9740a6148a14fc40a55
+guid: 2b7bcc822b1f75441a1a6db422ca25fd
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -7,188 +7,133 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: "B\xE9zierCircle.002_Baked"
-    second: {fileID: 2100000, guid: 7b7ef30da3b5e284f9df75af709e1a11, type: 2}
+      name: Material
+    second: {fileID: 2100000, guid: af9eef7439816984f99ad49f3f7c5592, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: "B\xE9zierCircle_Baked"
-    second: {fileID: 2100000, guid: d34d1cda1b6d68c4aaea2b750fa90d36, type: 2}
+      name: Material.001
+    second: {fileID: 2100000, guid: aeacd320408593f4a93abcdc813546c1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Circle.001_Baked
-    second: {fileID: 2100000, guid: 631e29c77c7f48a43b279712b825670d, type: 2}
+      name: Material.004
+    second: {fileID: 2100000, guid: e5f0e822ae44e7f4c8684e8ae358ac87, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Circle.002_Baked
-    second: {fileID: 2100000, guid: 8553c628ef93ebc4fa65454f52586ea5, type: 2}
+      name: Material.005
+    second: {fileID: 2100000, guid: 0dee04acdd193a5488a4cd1621207ab8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Circle.003_Baked
-    second: {fileID: 2100000, guid: 73ba87022ad5b1643b64049ba7515f82, type: 2}
+      name: Material.007
+    second: {fileID: 2100000, guid: 42effb422f5699b46a3b5ea2ef91b102, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Circle.004_Baked
-    second: {fileID: 2100000, guid: bb56d4219fcbc774c952e2f90f99e72f, type: 2}
+      name: Material.008
+    second: {fileID: 2100000, guid: d08169edbfc974e4b94e4e32f7eee8a1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Circle.006_Baked
-    second: {fileID: 2100000, guid: f6a7693d0e8a6f2409ea82e96c52371f, type: 2}
+      name: Material.009
+    second: {fileID: 2100000, guid: 5fdab5f2862b7ae46ada97d82d12b51d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Circle.007_Baked
-    second: {fileID: 2100000, guid: 53c2cbdda4fbfc8408513baa8a6cb46d, type: 2}
+      name: Material.011
+    second: {fileID: 2100000, guid: 97b4b44c43d9a8e49a28aeba3f6a909d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Circle.009_Baked
-    second: {fileID: 2100000, guid: 16891e4fa00cec84db86ac3e58258a78, type: 2}
+      name: Material.012
+    second: {fileID: 2100000, guid: 83665e4d3b3468e45809b3195defcda9, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Circle.010_Baked
-    second: {fileID: 2100000, guid: 82617a0178c30bf47b4db65463b8f929, type: 2}
+      name: Material.013
+    second: {fileID: 2100000, guid: 798e7293b387ac14ebcdd1e75229d239, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Circle.011_Baked
-    second: {fileID: 2100000, guid: 830d5428756a29d4ba652d9d959b63fe, type: 2}
+      name: Material.014
+    second: {fileID: 2100000, guid: c6c0b52de6a0cdc41bb03fb9ccbcb52b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Circle.012_Baked
-    second: {fileID: 2100000, guid: 701325cd99058a54ebbf41014003c0a4, type: 2}
+      name: Material.015
+    second: {fileID: 2100000, guid: f1419ae3f0640a64c8bd80c05ebfd3e0, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Circle_Baked
-    second: {fileID: 2100000, guid: 7e33e267edb6b59498b5eddd8b4caa9d, type: 2}
+      name: Material.017
+    second: {fileID: 2100000, guid: f8d2dc90950e6fe4aa047b94929381a6, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: CopperRing.001_Baked
-    second: {fileID: 2100000, guid: cf8e50a8f467151409b047c21b3d7768, type: 2}
+      name: Material.018
+    second: {fileID: 2100000, guid: c00a37d0537784a4a944edfbc9c02f2e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: CopperRing.003_Baked
-    second: {fileID: 2100000, guid: 32e0941973651fe478c14bd92e1c16ac, type: 2}
+      name: Material.019
+    second: {fileID: 2100000, guid: 770bb1e610d6427469377862a6afee28, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: CopperRing.004_Baked
-    second: {fileID: 2100000, guid: 0addf266cf92c934393f7583d9ec8dab, type: 2}
+      name: Material.025
+    second: {fileID: 2100000, guid: 7d9288d74fdcf114fbd47773034b01dd, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: CopperRing.005_Baked
-    second: {fileID: 2100000, guid: 09769423a409595498a58f612a51f4cc, type: 2}
+      name: Material.027
+    second: {fileID: 2100000, guid: 744023ab9b17ecb47b6a1640362b231c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: CopperRing_Baked
-    second: {fileID: 2100000, guid: fb3266f6cdec9d74eb8014fa347b8f49, type: 2}
+      name: Scratched metal cycles.001
+    second: {fileID: 2100000, guid: eaf6ac84842632f4eb0978686bde664b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Cube_Baked
-    second: {fileID: 2100000, guid: 557ad0886c666fd49b46bc0bd122b853, type: 2}
+      name: Scratched metal cycles.002
+    second: {fileID: 2100000, guid: cf026c6428881c1459f25c5cb6a75ffe, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Cylinder.001_Baked
-    second: {fileID: 2100000, guid: 48f6518f2d2398948aaa7223ed0fea2b, type: 2}
+      name: Scratched metal cycles.003
+    second: {fileID: 2100000, guid: 405c8c4a9a2db244aa5d6b582a056793, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Cylinder.002_Baked
-    second: {fileID: 2100000, guid: c12e26f4628a9044186a25dc852bd750, type: 2}
+      name: Scratched metal cycles.004
+    second: {fileID: 2100000, guid: de4403e6a019d964ca7d2f97529d4b56, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Cylinder.005_Baked
-    second: {fileID: 2100000, guid: 38483be8b0899c54facadfbbf822de7a, type: 2}
+      name: metalChrome
+    second: {fileID: 2100000, guid: ebac12ce94f33a947acee861355bf59b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Cylinder.006_Baked
-    second: {fileID: 2100000, guid: 0ba5afb86c9760e40b21b69f427420ec, type: 2}
+      name: metalChrome.001
+    second: {fileID: 2100000, guid: a6c3c375d9c3775458b6cf403e634b99, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Cylinder.007_Baked
-    second: {fileID: 2100000, guid: 6ddabd790ffa1a34eaaff3f127aeccbb, type: 2}
+      name: metalChrome.002
+    second: {fileID: 2100000, guid: 55977e6434ea6d24a8fa4ef59dfe8646, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Cylinder.008_Baked
-    second: {fileID: 2100000, guid: e41a5030eb4bdd447a5f3f0e3df6e77d, type: 2}
+      name: metalChrome.003
+    second: {fileID: 2100000, guid: de1c7813972b90a4a8bf0f45db61b657, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Cylinder.009_Baked
-    second: {fileID: 2100000, guid: 0a8c1e2d45539844c8ef8f8275aeb127, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Cylinder.010_Baked
-    second: {fileID: 2100000, guid: 85898a0407054614a9ad0947f6787fd5, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Cylinder.011_Baked
-    second: {fileID: 2100000, guid: c436b9f3e7d181e428633a8155200df0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Cylinder_Baked
-    second: {fileID: 2100000, guid: 96795c0ccf8862946bd7fea756591ac0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Ring.002_Baked
-    second: {fileID: 2100000, guid: f884c7edf365be94a80044ea0a58f306, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Sphere.001_Baked
-    second: {fileID: 2100000, guid: d1afc2d7918e7a84988f25c00d442d7d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Sphere.002_Baked
-    second: {fileID: 2100000, guid: 38478927931020b4eba696d5e6a8cf09, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Sphere_Baked
-    second: {fileID: 2100000, guid: 34f9b36c1dddf774ba8415f266f67191, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: _gltfNode_14.001_Baked
-    second: {fileID: 2100000, guid: 2894c80d36ed6da45aaa2b1329ef512d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: _gltfNode_14.002_Baked
-    second: {fileID: 2100000, guid: be15fcd1c83cc8247a5f0289e4c5ca55, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: _gltfNode_14.003_Baked
-    second: {fileID: 2100000, guid: 7d0553ddf9824874db25ffdcf9d2e883, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: _gltfNode_14_Baked
-    second: {fileID: 2100000, guid: b0171fff5fe1a134abdcbe5e2d08b3c9, type: 2}
+      name: metalChrome.004
+    second: {fileID: 2100000, guid: d1e995364a1b6c846ae994cdf34a7c94, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
