@@ -6,8 +6,10 @@ public class InteractableHotspot : MonoBehaviour
     [Header("Camera Focus Settings")]
     [Tooltip("How far the camera should be when looking at this object.")]
     public float focusDistance = 1.5f;
-    
-    [Tooltip("Optional: Where the camera should exactly look. If empty, uses this object's center.")]
+
+    [Tooltip(
+        "Optional: Where the camera should exactly look. If empty, uses this object's center."
+    )]
     public Transform customLookTarget;
 
     [Header("Interaction")]
@@ -24,7 +26,7 @@ public class InteractableHotspot : MonoBehaviour
 
     public void Interact()
     {
-        // This triggers any logic you link in the Unity Inspector 
+        // This triggers any logic you link in the Unity Inspector
         // (like opening a drawer or flipping a switch)
         onInteract.Invoke();
     }

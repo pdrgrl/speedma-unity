@@ -15,7 +15,7 @@ namespace Speedma.Debug
 {
     public class FmuDebugController : MonoBehaviour
     {
-        private const float HudWidth = 390f;
+        private const float HudWidth = 300f;
         private const float HudHeight = 290f;
         private const float HudPadding = 16f;
         private const float HudLineHeight = 26f;
@@ -78,13 +78,13 @@ namespace Speedma.Debug
             float lamp = sceneLink != null ? sceneLink.LampOn : 0f;
             float rheo = sceneLink != null ? sceneLink.RheostatValue : 0f;
 
-            Label(x, y, $"amp_dinamo   : {ampD,8:F4} A");
+            Label(x, y, $"amp_dinamo   : {ampD, 8:F4} A");
             y += HudLineHeight;
-            Label(x, y, $"amp_bateria  : {ampB,8:F4} A");
+            Label(x, y, $"amp_bateria  : {ampB, 8:F4} A");
             y += HudLineHeight;
-            Label(x, y, $"v_bat        : {vBat,8:F3} V");
+            Label(x, y, $"v_bat        : {vBat, 8:F3} V");
             y += HudLineHeight;
-            Label(x, y, $"r_reostato   : {rheo,8:F2} Ω");
+            Label(x, y, $"r_reostato   : {rheo, 8:F2} Ω");
             y += HudLineHeight;
             LabelColored(x, y, $"lamp_on      : {OnOff(lamp > 0.5f)}", lamp > 0.5f);
             y += HudLineHeight + 4f;
@@ -97,7 +97,11 @@ namespace Speedma.Debug
             GUI.Label(new Rect(x, y, HudLabelWidth, HudLineHeight), text, _labelStyle);
 
         private void LabelColored(float x, float y, string text, bool on) =>
-            GUI.Label(new Rect(x, y, HudLabelWidth, HudLineHeight), text, on ? _onStyle : _offStyle);
+            GUI.Label(
+                new Rect(x, y, HudLabelWidth, HudLineHeight),
+                text,
+                on ? _onStyle : _offStyle
+            );
 
         private void EnsureStyles()
         {

@@ -8,13 +8,40 @@ public class ChamuscaInteractable : MonoBehaviour
     [Tooltip("The human-readable name displayed in the UI")]
     public string displayName;
 
+    [Header("Hover Target (choose one)")]
+    [Tooltip(
+        "If set, this GameObject's first Renderer (including children) will be used for hover visuals."
+    )]
+    public GameObject hoverTargetObject;
+
+    [Tooltip(
+        "If set, this specific Renderer will be used for hover visuals. Overrides Hover Target Object."
+    )]
+    public Renderer hoverTargetRenderer;
+
+    [Tooltip("Color used when hovered.")]
+    public Color hoverColor = Color.yellow;
+
     private Color originalColor;
     private Renderer rend;
     private bool isHovered = false;
 
     void Start()
     {
-        rend = GetComponentInChildren<Renderer>();
+        // Priority: explicit renderer -> object (find child renderer) -> this object's child renderer
+        if (hoverTargetRenderer != null)
+        {
+            rend = hoverTargetRenderer;
+        }
+        else if (hoverTargetObject != null)
+        {
+            rend = hoverTargetObject.GetComponentInChildren<Renderer>();
+        }
+        else
+        {
+            rend = GetComponentInChildren<Renderer>();
+        }
+
         if (rend != null)
             originalColor = rend.material.color;
     }
@@ -29,12 +56,10 @@ public class ChamuscaInteractable : MonoBehaviour
         {
             if (isHovered)
             {
-                // Change to a visible hover color
-                rend.material.color = Color.yellow;
+                rend.material.color = hoverColor;
             }
             else
             {
-                // Revert to original
                 rend.material.color = originalColor;
             }
         }

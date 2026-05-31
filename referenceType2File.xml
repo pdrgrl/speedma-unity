@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfTypeDate xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TypeDate>
+    <guid>9be4bf403596bf642b1e30350336cf27</guid>
+    <fileName>Assets/Editor/ChamuscaUISetup.cs</fileName>
+    <timeStamp>2026-02-24T16:51:26+00:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>8960404f35b38a146bed3773e1ef1bf0</guid>
+    <fileName>Assets/Editor/FmuTesterWindow.cs</fileName>
+    <timeStamp>2026-05-12T20:49:05.0760485+01:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>a3e3fb6b537f8bb4eadb3424d8094de1</guid>
+    <fileName>Assets/Editor/RCSimTester.cs</fileName>
+    <timeStamp>2026-05-12T18:10:38.1596644+01:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>4306c10ab66ea426e8402683736a030c</guid>
+    <fileName>Assets/FMI/FMI2.cs</fileName>
+    <timeStamp>2026-05-04T22:10:42.1764572+01:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>230ae089dd87dc0478b8764182759ebb</guid>
+    <fileName>Assets/FMI/ModelDescription.cs</fileName>
+    <timeStamp>2018-06-19T11:39:43+01:00</timeStamp>
+    <typeFullName>
+      <string>ModelDescription</string>
+      <string>Implementation</string>
+      <string>VariableType</string>
+      <string>ScalarVariable</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>885e882d101f3a140995813944a129f5</guid>
+    <fileName>Assets/Scripts/ChamuscaAPIClient.cs</fileName>
+    <timeStamp>2026-05-17T17:25:02.3522416+01:00</timeStamp>
+    <typeFullName>
+      <string>RAGRequest</string>
+      <string>RAGResponse</string>
+      <string>ChamuscaAPIClient</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>d96b6f07b1afa984d8efd07bbc76128d</guid>
+    <fileName>Assets/Scripts/ChamuscaInteractable.cs</fileName>
+    <timeStamp>2026-05-17T17:41:24.3951204+01:00</timeStamp>
+    <typeFullName>
+      <string>ChamuscaInteractable</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>f5eef259e7a5da846816765c6fc58251</guid>
+    <fileName>Assets/Scripts/ChamuscaInteractionManager.cs</fileName>
+    <timeStamp>2026-05-17T18:04:17.8918658+01:00</timeStamp>
+    <typeFullName>
+      <string>ChamuscaInteractionManager</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>72d79a17b914f4b49bb8ff46b3dbb116</guid>
+    <fileName>Assets/Scripts/ChamuscaUIManager.cs</fileName>
+    <timeStamp>2026-05-17T17:31:52.5381928+01:00</timeStamp>
+    <typeFullName>
+      <string>ChamuscaUIManager</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>9c6d2c4409c2e20469e77b8f9e1d3836</guid>
+    <fileName>Assets/Scripts/InspectionCamera.cs</fileName>
+    <timeStamp>2026-05-17T18:04:01.2692805+01:00</timeStamp>
+    <typeFullName>
+      <string>InspectionCamera</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>593beb6f1357af84bbb842e307683a5c</guid>
+    <fileName>Assets/Scripts/InteractableHotspot.cs</fileName>
+    <timeStamp>2026-05-07T21:50:01.3645161+01:00</timeStamp>
+    <typeFullName>
+      <string>InteractableHotspot</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>76a99aeacc5084d4083cca388cfe8b4f</guid>
+    <fileName>Assets/Scripts/RheostatWheel.cs</fileName>
+    <timeStamp>2026-05-17T16:55:03.4549245+01:00</timeStamp>
+    <typeFullName>
+      <string>RheostatWheel</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>9ada05d73239f6e4b8b6496d7e4014e4</guid>
+    <fileName>Assets/Scripts/SimpleSwitchTest.cs</fileName>
+    <timeStamp>2026-05-17T17:13:06.4499105+01:00</timeStamp>
+    <typeFullName>
+      <string>SimpleSwitchTest</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8</guid>
+    <fileName>Assets/Scripts/SimulationStatusUI.cs</fileName>
+    <timeStamp>2026-05-12T21:25:03.2827323+01:00</timeStamp>
+    <typeFullName>
+      <string>SimulationStatusUI</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>00a2c4522d4e1b54b8895c6a37dc759f</guid>
+    <fileName>Assets/Scripts/TestVariableResistor.cs</fileName>
+    <timeStamp>2026-05-12T21:25:03.289769+01:00</timeStamp>
+    <typeFullName>
+      <string>TestVariableResistor</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>4fc9593a7e14ba64f90811c054604be5</guid>
+    <fileName>Assets/Scripts/TimeShiftController.cs</fileName>
+    <timeStamp>2026-04-17T23:02:25.8242373+01:00</timeStamp>
+    <typeFullName>
+      <string>TimeShiftController</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>e2ceb06c354d9c34d9c8d6d4306370cd</guid>
+    <fileName>Assets/Scripts/WebGLKeyboardFix.cs</fileName>
+    <timeStamp>2026-05-05T00:12:49.7462635+01:00</timeStamp>
+    <typeFullName>
+      <string>WebGLKeyboardFix</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>1d7fd8d21fa97e94eb487659fbaba904</guid>
+    <fileName>Assets/Editor/UnitySweeper/AssetCollector.cs</fileName>
+    <timeStamp>2024-06-01T14:39:43+01:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>0ff86c1d151a9434abf5e173a0e5b037</guid>
+    <fileName>Assets/Editor/UnitySweeper/AssetReferenceCollection.cs</fileName>
+    <timeStamp>2024-06-01T14:39:43+01:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>258fa44f3d032c04db81a7e1274719f2</guid>
+    <fileName>Assets/Editor/UnitySweeper/ClassReferenceCollection.cs</fileName>
+    <timeStamp>2024-06-01T14:39:43+01:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>78dee642f98e38b4f91afb95b307e11d</guid>
+    <fileName>Assets/Editor/UnitySweeper/CollectionData.cs</fileName>
+    <timeStamp>2024-06-01T14:39:43+01:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>7b4ae2c7e04ac7445804c13c4bd3c921</guid>
+    <fileName>Assets/Editor/UnitySweeper/FindUnusedAssetsWindow.cs</fileName>
+    <timeStamp>2024-06-01T14:39:43+01:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>395724a3761d56b42902f4b36bf8757c</guid>
+    <fileName>Assets/Editor/UnitySweeper/ShaderReferenceCollection.cs</fileName>
+    <timeStamp>2024-06-01T14:39:43+01:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>5281c4b05ba6ee040bab7c0e8044cd1d</guid>
+    <fileName>Assets/FMI/Editor/FMUImporter.cs</fileName>
+    <timeStamp>2018-06-19T11:46:57+01:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>b01fe0477d601084baf6074f41ca8d8a</guid>
+    <fileName>Assets/FMI/Editor/HotspotColliderSetup.cs</fileName>
+    <timeStamp>2026-05-07T21:52:46.8395452+01:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>2e0abff8896bb46d9bf02e80529ea682</guid>
+    <fileName>Assets/FMI/Editor/PackageBuilder.cs</fileName>
+    <timeStamp>2018-06-19T11:31:48+01:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>dd123ffe9f1fc9a4a8973cea4843b164</guid>
+    <fileName>Assets/Speedma/Scripts/AmpController.cs</fileName>
+    <timeStamp>2026-05-12T23:21:04.7666692+01:00</timeStamp>
+    <typeFullName>
+      <string>Speedma.AmpController</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>81ebaa48e0a00294c957d98b659f6dea</guid>
+    <fileName>Assets/Speedma/Scripts/FmuSceneLink.cs</fileName>
+    <timeStamp>2026-05-17T16:42:58.7994344+01:00</timeStamp>
+    <typeFullName>
+      <string>Speedma.FmuSceneLink</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>20388fa4789e4884db3dcf44615d3280</guid>
+    <fileName>Assets/Speedma/Scripts/SpeedmaSimManager.cs</fileName>
+    <timeStamp>2026-05-17T18:15:28.9637715+01:00</timeStamp>
+    <typeFullName>
+      <string>Speedma.SpeedmaSimManager</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>b8d25d86f57990f44a8ef8f16f5d5b48</guid>
+    <fileName>Assets/Speedma/Scripts/Debug/FmuDebugController.cs</fileName>
+    <timeStamp>2026-05-17T18:27:11.2014574+01:00</timeStamp>
+    <typeFullName>
+      <string>Speedma.Debug.FmuDebugController</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+</ArrayOfTypeDate>
