@@ -188,3 +188,89 @@ Abaixo encontras o plano detalhado de implementação para os três cenários de
 
   Nota sobre as FMUs: Certifica-te de que os nomes das variáveis no OpenModelica (ex: R_load, field_resistance, n_cells) coincidem com as chaves que a Unity
   envia no script ChamuscaAPIClient.cs.
+
+---
+<b>AINDA MAIS DETALHES DE IMPLEMENTAÇÃO:</b>
+
+![alt text](20260213_152612.jpg)
+
+Esta imagem é um tesouro técnico e permite-nos detalhar os cenários com uma precisão absoluta, usando os nomes originais e a lógica de cablagem exata
+  desenhada em 1920.
+
+  Aqui está a atualização do plano de simulação, agora com os detalhes extraídos diretamente do esquema do "Reductor duplo" e do "Quadro de distribuição".
+
+  ---
+
+  Especificação Técnica de Simulação: Aparato Chamusca 1920
+
+  Este detalhamento técnico deve servir de base para a criação dos scripts na Unity e para a lógica do servidor de simulação.
+
+  1. O Painel de Controlo (Mármore)
+  Baseado na imagem, o utilizador terá de interagir com os seguintes elementos no painel:
+
+   * Instrumentos de Medição (Topo):
+       * A (Do dínamo): Amperímetro que mede a corrente gerada pelo motor Crossley/ASEA.
+       * V (Central): Voltímetro geral da linha.
+       * A (Da bateria): Amperímetro que mede o fluxo de carga/descarga das baterias Tudor.
+   * Seccionamento e Proteção (Meio):
+       * Fuzíveis: Proteções para "Casa", "Bateria" e "Dependências".
+       * Dijunctor: Disjuntor principal da Bateria (proteção contra sobrecarga).
+   * Comutação de Iluminação:
+       * Interruptores de faca para "Iluminação da casa" e "Iluminação depend." (Dependências/Anexos).
+       * Interruptores menores para "Luz no quadro" e "Luz na bateria".
+   * Controlo de Carga:
+       * Interruptores de faca para "Dínamo LUZ" e "Bateria LUZ".
+       * Comutador central de "Carga bateria".
+
+  ---
+
+  2. Detalhamento dos Cenários
+
+  Cenário A: Descarga e Regulação (Modo Noturno)
+   * Workflow: O motor está parado. A energia vem da "Bateria de acumuladores".
+   * Interação Crítica: O utilizador deve usar o "Reductor duplo" no lado da "Descarga".
+   * Lógica Física: À medida que as 60 células perdem carga, a voltagem cai. O esquema mostra que o Redutor está ligado às células 41 a 60. O utilizador
+     deve rodar o manípulo para "meter" mais células no circuito e manter o Voltímetro nos 110V-120V.
+   * Visual na Unity: O Amperímetro "Da bateria" mostra um valor negativo (corrente a sair). Se o utilizador não rodar o redutor, o Voltímetro central desce
+     e as luzes da casa perdem brilho.
+
+  Cenário B: Carga via Motor Crossley (c. 1920)
+   * Workflow: O Motor Crossley está a rodar o Dínamo.
+   * Interação Crítica:
+       1. Ajustar o "Rheostato" (à esquerda do quadro) para controlar a excitação do dínamo.
+       2. Monitorizar o amperímetro "Do dínamo".
+       3. Usar o "Reductor duplo" no lado da "Carga" para selecionar a voltagem ideal de entrada nas baterias.
+   * Lógica Física: O objetivo é garantir que a voltagem do Dínamo seja ligeiramente superior à da Bateria para que ocorra a carga.
+   * Risco: Se o "Dijunctor" saltar, o sistema corta a ligação para evitar danos nas células Tudor.
+
+  Cenário C: Carga via Rede Pública e Motor ASEA (c. 1929)
+   * Workflow: O motor elétrico ASEA está ligado à rede AC e roda o Dínamo DC.
+   * Interação Crítica: Ligar o interruptor de faca do motor trifásico (que não está neste esquema mas aparece nas fotos do museu como um painel
+     secundário).
+   * Regulação: Uma vez o motor em RPM nominal, o utilizador volta ao quadro principal para gerir a "Carga bateria" e o "Reductor duplo".
+   * Vantagem: A rotação é constante, pelo que a agulha do amperímetro "Do dínamo" é muito mais estável do que no Cenário B.
+
+  ---
+
+  3. Mapeamento de Ficheiros e Variáveis para a Unity
+
+  ┌─────────────────┬───────────────────────────────┬────────────────────────────────────────────┐
+  │ Nome no Esquema │ Variável no Script (#my_code) │ Função Visual na Unity                     │
+  ├─────────────────┼───────────────────────────────┼────────────────────────────────────────────┤
+  │ Rheostato       │ float rheostatPos             │ Rotação do manípulo de excitação.          │
+  │ Reductor duplo  │ int cellTapIndex              │ Rotação do seletor circular (20 posições). │
+  │ A Do dínamo     │ float dynamoAmps              │ Rotação do ponteiro (0-50A).               │
+  │ A Da bateria    │ float batteryAmps             │ Rotação do ponteiro (-30A a +30A).         │
+  │ V               │ float lineVolts               │ Rotação do ponteiro (0-200V).              │
+  │ Iluminação casa │ bool houseLightSwitch         │ Toggle do interruptor de faca esquerdo.    │
+  └─────────────────┴───────────────────────────────┴────────────────────────────────────────────┘
+  ---
+
+  4. Notas para o Servidor FMU (OpenModelica)
+  O teu modelo no OpenModelica deve contemplar:
+   1. Modelo da Bateria: 60 células com curva de descarga real.
+   2. Modelo do Redutor: Uma resistência variável ou um comutador de fontes que adiciona 2.2V (voltagem nominal de uma célula) por cada passo do seletor.
+   3. Lógica de Carga/Descarga: O redutor tem dois braços (Carga e Descarga) para permitir que se carregue a bateria a uma voltagem enquanto se fornece
+      outra à casa (isto é visível nas linhas duplas que saem do redutor para os contactos das células).
+
+  Este esquema é o "mapa" que o júri mais vai valorizar se o vires replicado funcionalmente na Unity!
