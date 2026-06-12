@@ -274,3 +274,92 @@ Esta imagem é um tesouro técnico e permite-nos detalhar os cenários com uma p
       outra à casa (isto é visível nas linhas duplas que saem do redutor para os contactos das células).
 
   Este esquema é o "mapa" que o júri mais vai valorizar se o vires replicado funcionalmente na Unity!
+
+  ---
+<b>MAPEAMENTO EXAUSTIVO</b>
+---
+ Aqui está o mapeamento exaustivo dos componentes para a tua simulação na Unity, usando a terminologia exata da imagem:
+
+  ---
+
+  Inventário Detalhado do Painel de Distribuição (Chamusca 1920)
+
+  Este detalhamento deve ser usado para nomear os teus GameObjects na Unity e definir a lógica de "circuit breaking" e "switching".
+
+  1. Instrumentos de Medição (Analog Meters)
+   * A (Do dínamo): Amperímetro de corrente gerada (Esq.).
+   * V: Voltímetro central (Tensão da rede interna).
+   * A (Da bateria): Amperímetro de carga/descarga (Dir.).
+   * Lâmpada de Quadro: Localizada no topo, para iluminação de serviço do próprio painel.
+
+  2. Sistema de Proteção (Fuzíveis e Disjuntores)
+  O aparato tem três níveis de proteção:
+
+  A. Fuzíveis de Barramento Principal (Topo Direito do painel central)
+  Três blocos quadrados que protegem as linhas mestras:
+   1. Descarga da bateria: Protege a saída das células Tudor para o consumo.
+   2. Carga da bateria: Protege a entrada de corrente vinda do dínamo.
+   3. Dínamo: Protege a fonte de geração.
+
+  B. Fuzíveis de Distribuição (Fila do Meio - Círculos)
+  Protegem as derivações para os diferentes edifícios e salas:
+   * Casa (2 fuzíveis): Proteção do circuito principal da habitação.
+   * Casa das machinas (1 fuzível): Proteção da própria sala onde estás.
+   * Bateria (2 fuzíveis): Proteção direta no barramento das baterias.
+   * Casa da bateria (1 fuzível): Proteção da iluminação da sala anexa das baterias.
+   * Dependências (2 fuzíveis): Proteção para anexos agrícolas ou casas de empregados.
+
+  C. Fuzíveis de Potência do Dínamo (Base do Painel)
+   * Vertical Esq. (+ Dinamo): Fusível do polo positivo do gerador.
+   * Vertical Dir. (- Dinamo): Fusível do polo negativo do gerador.
+
+  D. Disjuntor Automático
+   * Ba - DIJUNCTOR: Um disjuntor eletromagnético central. Se a corrente de carga for excessiva, ele "salta" mecanicamente.
+
+  ---
+
+  3. Comutadores e Alavancas (Interação)
+
+  A. Alavancas Simples (Single Levers - Base)
+  Servem para ligar/desligar fontes e destinos específicos:
+   1. Dínamo LUZ: Liga a eletricidade do dínamo diretamente ao barramento de iluminação.
+   2. Carga bateria: Fecha o circuito para que o dínamo envie energia para o Redutor Duplo (lado da Carga).
+   3. Bateria LUZ: Liga as baterias ao barramento de iluminação.
+   4. Handle sem nome (à direita): Provavelmente um reserva ou para o motor elétrico ASEA.
+
+  B. Alavancas Duplas (Double Levers - Centro)
+  Estas alavancas cortam ambos os polos (+ e -) simultaneamente:
+   1. Iluminação da casa: O interruptor principal que decide se a casa tem luz.
+   2. Iluminação depend.cias: O mesmo para os anexos.
+
+  C. Nipple Switches (Interruptores de Botão)
+   1. Luz no quadro: Liga a lâmpada que está no topo do mármore.
+   2. Luz na bateria: Liga a lâmpada na sala das baterias (permitindo ao utilizador ir lá verificar os níveis de eletrólito sem levar uma lanterna).
+
+  ---
+
+  4. O Coração da Regulação: O Rheostato
+   * Localizado fora do painel principal (à esquerda).
+   * Função na Simulação: Ao rodar o Rheostato, o utilizador altera a resistência do campo do dínamo. Na Unity, isto deve fazer o ponteiro do voltímetro subir ou descer.
+   * Lógica: + Resistência no Rheostato = - Voltagem no Dínamo.
+
+  ---
+
+  5. Como isto altera a tua Simulação na Unity
+
+  Com este detalhe, a tua simulação deixa de ser "ligar/desligar" e passa a ser Procedimental:
+
+   1. Para Carregar Baterias (Cenário B):
+       * Ligar motor Crossley.
+       * Ligar alavanca Dínamo LUZ (opcional).
+       * Ligar alavanca Carga bateria.
+       * Ajustar Rheostato até o Amperímetro "Do dínamo" subir.
+       * Monitorizar o Dijunctor para ver se não desarma.
+
+   2. Para Alimentar a Casa (Cenário A):
+       * Ligar alavanca Bateria LUZ.
+       * Ligar alavanca dupla Iluminação da casa.
+       * Verificar se o Fuzível Casa está operacional (podes simular fuzíveis queimados como um evento de manutenção!).
+
+   3. Feedback Visual de Erro:
+       * Se o utilizador ligar Dínamo LUZ e Bateria LUZ ao mesmo tempo sem as voltagens estarem igualadas, podes simular um curto-circuito visual ou o disparo de todos os fuzíveis.
