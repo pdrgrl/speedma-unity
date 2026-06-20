@@ -8,6 +8,8 @@ namespace Chamusca.Simulation
         public Transform needle;
         public float minAngle = 0f;
         public float maxAngle = 180f;
+        public Vector3 rotationAxis = new Vector3(0f, 1f, 0f);
+
         public float minValue = 0f;
         public float maxValue = 200f;
 
@@ -29,11 +31,12 @@ namespace Chamusca.Simulation
             // Smooth the needle movement
             _currentDisplayedValue = Mathf.Lerp(_currentDisplayedValue, _targetValue, Time.deltaTime * smoothSpeed);
 
-            // Map value to angle
+            // Map value to rotation angle
             float t = Mathf.InverseLerp(minValue, maxValue, _currentDisplayedValue);
             float angle = Mathf.Lerp(minAngle, maxAngle, t);
 
-            needle.localRotation = Quaternion.Euler(0, 0, angle);
+            Vector3 axis = rotationAxis.sqrMagnitude > 0f ? rotationAxis.normalized : Vector3.up;
+            needle.localRotation = Quaternion.AngleAxis(angle, axis);
         }
     }
 }

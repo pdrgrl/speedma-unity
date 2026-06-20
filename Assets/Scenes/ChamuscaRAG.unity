@@ -1004,16 +1004,11 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 768505055}
-  - {fileID: 1293499588}
-  - {fileID: 1461819171}
   - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 90364528}
   - {fileID: 2078399564}
-  - {fileID: 634892042}
-  - {fileID: 1190783796}
-  - {fileID: 483782579}
   - {fileID: 1985681599}
   - {fileID: 1934691293}
   m_Father: {fileID: 1827762972}
@@ -3402,37 +3397,6 @@ MonoBehaviour:
   smoothSpeed: 8
   useSquareLaw: 0
   previewAmps: 0
---- !u!1 &483782578
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 483782579}
-  m_Layer: 0
-  m_Name: ----------------------------
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &483782579
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 483782578}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 89981850}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &494164517 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3103909602174825176, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
@@ -4138,75 +4102,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -1796539701077772215, guid: 9e6f1d6d7cd12a747a594c1adaada296, type: 3}
---- !u!1 &634892039
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 634892042}
-  - component: {fileID: 634892041}
-  - component: {fileID: 634892040}
-  m_Layer: 0
-  m_Name: Chamusca_Managers
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &634892040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 634892039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72d79a17b914f4b49bb8ff46b3dbb116, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChamuscaUIManager
-  apiClient: {fileID: 634892041}
-  inputField: {fileID: 954456627}
-  sendButton: {fileID: 941465338}
-  answerText: {fileID: 1826425326}
-  followUpButtons:
-  - {fileID: 987268274}
-  - {fileID: 1861482186}
-  - {fileID: 1669663842}
-  focusLabelText: {fileID: 93583783}
-  currentFocusId: 
-  currentFocusDisplayName: 
---- !u!114 &634892041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 634892039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 885e882d101f3a140995813944a129f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChamuscaAPIClient
-  backendUrl: http://127.0.0.1:8000/query
---- !u!4 &634892042
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 634892039}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 89981850}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &639397245 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4368945633792932098, guid: 0b1242f3bb802a047839f8c19ca0c774, type: 3}
@@ -7555,52 +7450,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
   m_PrefabInstance: {fileID: 1184797851}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1190783794
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1190783796}
-  - component: {fileID: 1190783795}
-  m_Layer: 0
-  m_Name: InteractionManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1190783795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1190783794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5eef259e7a5da846816765c6fc58251, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractionManager
-  uiManager: {fileID: 634892040}
-  maxInteractDistance: 3
---- !u!4 &1190783796
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1190783794}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 89981850}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1192355603 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3133498875991405556, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
@@ -8751,37 +8600,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -8477080777224055256, guid: 61668f9a329e984439cd11653aedd59b, type: 3}
---- !u!1 &1293499587
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1293499588}
-  m_Layer: 0
-  m_Name: ----------------------------
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1293499588
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1293499587}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 89981850}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1294125722
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9366,37 +9184,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 3909233067320746374, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
---- !u!1 &1461819170
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1461819171}
-  m_Layer: 0
-  m_Name: Misc-----------------------
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1461819171
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461819170}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 89981850}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1461840981 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -259972160606440404, guid: 0b1242f3bb802a047839f8c19ca0c774, type: 3}
@@ -10968,7 +10755,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725907112}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.82639456, w: 0.5630915}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7880108, w: 0.6156615}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10981,7 +10768,7 @@ Transform:
   - {fileID: 4502875904631683053}
   - {fileID: 406184185149129818}
   m_Father: {fileID: 6273877672254048382}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -111.46}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -104}
 --- !u!1 &1749159963 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 156695315405687401, guid: ac11e5b15d7ed6046bcf1a00ad86dcaa, type: 3}
@@ -13152,8 +12939,11 @@ GameObject:
   - component: {fileID: 1934691296}
   - component: {fileID: 1934691295}
   - component: {fileID: 1934691294}
+  - component: {fileID: 1934691298}
+  - component: {fileID: 1934691300}
+  - component: {fileID: 1934691299}
   m_Layer: 0
-  m_Name: SimManager
+  m_Name: MANAGER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13187,7 +12977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Speedma.SpeedmaSimManager
   backendUrl: http://localhost:8000
-  fmuName: ChamuscaDigitalTwin.fmu
+  fmuName: CenarioA.fmu
   simDt: 0.001
 --- !u!114 &1934691295
 MonoBehaviour:
@@ -13201,7 +12991,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8d25d86f57990f44a8ef8f16f5d5b48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Speedma.Debug.FmuDebugController
-  sceneLink: {fileID: 1934691296}
+  sim: {fileID: 1934691294}
+  scenarioManager: {fileID: 1827762971}
+  chamuscaController: {fileID: 1827762973}
 --- !u!114 &1934691296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13209,7 +13001,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1934691291}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81ebaa48e0a00294c957d98b659f6dea, type: 3}
   m_Name: 
@@ -13228,6 +13020,56 @@ MonoBehaviour:
   rheostatValue: 2
   rheostatMin: 0
   rheostatMax: 10
+--- !u!114 &1934691298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934691291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5eef259e7a5da846816765c6fc58251, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractionManager
+  uiManager: {fileID: 1934691299}
+  maxInteractDistance: 3
+--- !u!114 &1934691299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934691291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d79a17b914f4b49bb8ff46b3dbb116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChamuscaUIManager
+  apiClient: {fileID: 1934691300}
+  inputField: {fileID: 954456627}
+  sendButton: {fileID: 941465338}
+  answerText: {fileID: 1826425326}
+  followUpButtons:
+  - {fileID: 987268274}
+  - {fileID: 1861482186}
+  - {fileID: 1669663842}
+  focusLabelText: {fileID: 93583783}
+  currentFocusId: 
+  currentFocusDisplayName: 
+--- !u!114 &1934691300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934691291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 885e882d101f3a140995813944a129f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChamuscaAPIClient
+  backendUrl: http://127.0.0.1:8000/query
 --- !u!1 &1940530384 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6148585061576865867, guid: 9e6f1d6d7cd12a747a594c1adaada296, type: 3}
@@ -13466,6 +13308,26 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -5460073385026213122, guid: ac11e5b15d7ed6046bcf1a00ad86dcaa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5460073385026213122, guid: ac11e5b15d7ed6046bcf1a00ad86dcaa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5460073385026213122, guid: ac11e5b15d7ed6046bcf1a00ad86dcaa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5460073385026213122, guid: ac11e5b15d7ed6046bcf1a00ad86dcaa, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5460073385026213122, guid: ac11e5b15d7ed6046bcf1a00ad86dcaa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ac11e5b15d7ed6046bcf1a00ad86dcaa, type: 3}
       propertyPath: m_Name
       value: _SM_Meter_Siemens_Halske_VOLT
@@ -13534,8 +13396,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Chamusca.Simulation.VoltmeterPointer
   needle: {fileID: 1552655554}
-  minAngle: 0
-  maxAngle: 180
+  minAngle: -7
+  maxAngle: -85
+  rotationAxis: {x: 0, y: 1, z: 0}
   minValue: 0
   maxValue: 200
   smoothSpeed: 5
@@ -32103,8 +31966,9 @@ MonoBehaviour:
   minCell: 40
   maxCell: 60
   initialCell: 40
-  angleAtMinCell: 0
-  angleAtMaxCell: 334
+  baseAngleOffset: 0
+  angleAtMinCell: -104
+  angleAtMaxCell: 104
   pixelsPerStep: 18
   invertDrag: 0
   rotationSpeed: 12

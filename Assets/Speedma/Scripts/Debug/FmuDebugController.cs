@@ -1,15 +1,11 @@
 // Assets/Speedma/Scripts/Debug/FmuDebugController.cs
 // ============================================================
-// Keyboard-driven FMU input controller.
-// Modelo: ChamuscaDigitalTwin v3
-//
-// Controls:
-//   D   → toggle sw_dinamo
-//   L   → toggle sw_luz
-//   `   → toggle HUD
+// Runtime FMU debug HUD.
+// Shows the current scenario, session state, and the active FMU outputs.
 // ============================================================
 
 using UnityEngine;
+using Chamusca.Simulation;
 
 namespace Speedma.Debug
 {
@@ -23,7 +19,13 @@ namespace Speedma.Debug
 
         [Header("References")]
         [SerializeField]
-        private FmuSceneLink sceneLink;
+        private SpeedmaSimManager sim;
+
+        [SerializeField]
+        private ScenarioManager scenarioManager;
+
+        [SerializeField]
+        private ChamuscaSimController chamuscaController;
 
         private bool _showHud = true;
 
@@ -35,10 +37,6 @@ namespace Speedma.Debug
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.D))
-                sceneLink?.ToggleSwDinamo();
-            if (Input.GetKeyDown(KeyCode.L))
-                sceneLink?.ToggleSwLuz();
             if (Input.GetKeyDown(KeyCode.BackQuote))
                 _showHud = !_showHud;
         }
@@ -57,36 +55,46 @@ namespace Speedma.Debug
             Label(x, y, "Chamusca Digital Twin");
             y += HudLineHeight + 2f;
 
-            LabelColored(
-                x,
-                y,
-                $"[D]  sw_dinamo : {OnOff(sceneLink != null && sceneLink.SwDinamo)}",
-                sceneLink != null && sceneLink.SwDinamo
-            );
-            y += HudLineHeight;
-            LabelColored(
-                x,
-                y,
-                $"[L]  sw_luz    : {OnOff(sceneLink != null && sceneLink.SwLuz)}",
-                sceneLink != null && sceneLink.SwLuz
-            );
+            string scenarioName = scenarioManager != null
+                ? scenarioManager.currentScenario.ToString()
+                : "Unknown";
+            Label(x, y, $"Scenario     : {scenarioName}");
             y += HudLineHeight + 2f;
 
-            float ampD = sceneLink != null ? sceneLink.AmpDinamo : 0f;
-            float ampB = sceneLink != null ? sceneLink.AmpBateria : 0f;
-            float vBat = sceneLink != null ? sceneLink.VBat : 0f;
-            float lamp = sceneLink != null ? sceneLink.LampOn : 0f;
-            float rheo = sceneLink != null ? sceneLink.RheostatValue : 0f;
+            bool active = sim != null && sim.IsSessionActive;
+            LabelColored(x, y, $"Session      : {(active ? "ACTIVE" : "INACTIVE")}", active);
+            y += HudLineHeight;
 
-            Label(x, y, $"amp_dinamo   : {ampD, 8:F4} A");
+            Label(x, y, $"Sim time     : {(sim != null ? sim.SimTime.ToString("F3") : "0.000")} s");
             y += HudLineHeight;
-            Label(x, y, $"amp_bateria  : {ampB, 8:F4} A");
+
+            float vLine = sim != null ? sim.GetOutput("v_line") : 0f;
+            float iBat = sim != null ? sim.GetOutput("i_bat") : 0f;
+            float soc = sim != null ? sim.GetOutput("soc") : 0f;
+            float houseCurrent = sim != null ? sim.GetOutput("houseCurrent") : 0f;
+            float houseLightIntensity = sim != null ? sim.GetOutput("houseLightIntensity") : 0f;
+            float fuseState = sim != null ? sim.GetOutput("fuseState") : 0f;
+            float breakerState = sim != null ? sim.GetOutput("breakerState") : 0f;
+            float batteryVoltage = sim != null ? sim.GetOutput("batteryVoltage") : 0f;
+            float effectiveCells = sim != null ? sim.GetOutput("effectiveCells") : 0f;
+
+            Label(x, y, $"v_line       : {vLine, 8:F3} V");
             y += HudLineHeight;
-            Label(x, y, $"v_bat        : {vBat, 8:F3} V");
+            Label(x, y, $"batteryVolt  : {batteryVoltage, 8:F3} V");
             y += HudLineHeight;
-            Label(x, y, $"r_reostato   : {rheo, 8:F2} Ω");
+            Label(x, y, $"houseCurrent : {houseCurrent, 8:F3} A");
             y += HudLineHeight;
-            LabelColored(x, y, $"lamp_on      : {OnOff(lamp > 0.5f)}", lamp > 0.5f);
+            Label(x, y, $"i_bat        : {iBat, 8:F3} A");
+            y += HudLineHeight;
+            Label(x, y, $"soc          : {soc, 8:F5}");
+            y += HudLineHeight;
+            Label(x, y, $"houseLight   : {houseLightIntensity, 8:F3}");
+            y += HudLineHeight;
+            LabelColored(x, y, $"fuseState    : {OnOff(fuseState < 0.5f)}", fuseState < 0.5f);
+            y += HudLineHeight;
+            LabelColored(x, y, $"breakerState : {OnOff(breakerState < 0.5f)}", breakerState < 0.5f);
+            y += HudLineHeight;
+            Label(x, y, $"tap/cell     : {effectiveCells, 8:F0}");
             y += HudLineHeight + 4f;
             Label(x, y, "[`] toggle HUD");
         }
