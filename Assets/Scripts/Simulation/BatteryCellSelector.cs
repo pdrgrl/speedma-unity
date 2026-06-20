@@ -1,70 +1,46 @@
 using UnityEngine;
-using Speedma;
 
 namespace Chamusca.Simulation
 {
+    /// <summary>
+    /// Discrete tap selector for the Scenario A battery discharge side.
+    ///
+    /// Physical mapping:
+    /// - currentCell is the tap/cell index selected on the redutor duplo discharge disk.
+    /// - This component stores the logical state only.
+    /// - ReductorDuploWheel handles interaction and visuals.
+    /// - ChamuscaSimController reads currentCell and sends it to the FMU as reductor_pos.
+    /// </summary>
     public class BatteryCellSelector : MonoBehaviour
     {
         [Header("Reductor Setup")]
-        [Tooltip("The range of cells on the selector (usually 40 to 60 or 1 to 20 steps).")]
+        [Tooltip("Minimum cell/tap index for the discharge selector.")]
         public int minCell = 40;
+
+        [Tooltip("Maximum cell/tap index for the discharge selector.")]
         public int maxCell = 60;
+
+        [Tooltip("Initial selected tap/cell index.")]
         public int currentCell = 40;
-
-        [Header("Visuals")]
-        public Transform handle;
-        public Vector3 rotationPerStep = new Vector3(0, 15f, 0); // Degrees per cell step
-        public Vector3 baseRotation = Vector3.zero;
-
-        [Header("Linking")]
-        public FmuSceneLink fmuLink;
-        public string fmuInputName = "reductor_pos";
 
         private void Start()
         {
-            UpdateVisuals();
+            currentCell = Mathf.Clamp(currentCell, minCell, maxCell);
         }
 
         public void Increment()
         {
             currentCell = Mathf.Clamp(currentCell + 1, minCell, maxCell);
-            UpdateVisuals();
-            UpdateFMU();
         }
 
         public void Decrement()
         {
             currentCell = Mathf.Clamp(currentCell - 1, minCell, maxCell);
-            UpdateVisuals();
-            UpdateFMU();
         }
 
         public void SetStep(int step)
         {
             currentCell = Mathf.Clamp(step, minCell, maxCell);
-            UpdateVisuals();
-            UpdateFMU();
-        }
-
-        private void UpdateVisuals()
-        {
-            if (handle != null)
-            {
-                int steps = currentCell - minCell;
-                handle.localRotation = Quaternion.Euler(baseRotation + (rotationPerStep * steps));
-            }
-        }
-
-        private void UpdateFMU()
-        {
-            // Note: FmuSceneLink might need to be extended or we use SimManager directly
-            // For now, let's assume we can set generic inputs
-            if (fmuLink != null)
-            {
-                // Accessing private SimManager via FmuSceneLink if we can, 
-                // or just having a direct reference to SimManager.
-                // Re-using the pattern from FmuSceneLink.
-            }
         }
     }
 }
