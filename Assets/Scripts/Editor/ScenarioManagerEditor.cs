@@ -48,10 +48,10 @@ namespace Chamusca.EditorExtensions
         private void CreateHierarchy(ScenarioManager manager)
         {
             // Helper to create empty groups if they don't exist
-            manager.objectsA.Add(CreateGroup("Scenario_A_BatteryOnly", manager.transform));
-            manager.objectsB.Add(CreateGroup("Scenario_B_CrossleyEngine", manager.transform));
-            manager.objectsC.Add(CreateGroup("Scenario_C_ACIntegration", manager.transform));
             manager.sharedObjects.Add(CreateGroup("Shared_Infrastructure", manager.transform));
+            manager.baseObjects.Add(CreateGroup("Scenario_A_BatteryOnly", manager.transform));
+            manager.scenarioBObjects.Add(CreateGroup("Scenario_B_CrossleyEngine", manager.transform));
+            manager.scenarioCObjects.Add(CreateGroup("Scenario_C_ACIntegration", manager.transform));
             
             manager.ApplyScenario();
             Debug.Log("[ScenarioManager] Initial Hierarchy created. Drag your models into the new folders.");
