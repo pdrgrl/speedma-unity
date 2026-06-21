@@ -47,6 +47,8 @@ namespace Chamusca.Simulation
         public bool sw_carga_bat = false;
         public bool sw_bat_luz = false;
         public bool sw_casa_luz = false;
+        [SerializeField]
+        private bool resetProtectionRequested = false;
 
         private void Update()
         {
@@ -104,9 +106,10 @@ namespace Chamusca.Simulation
             switch (scenarioManager.currentScenario)
             {
                 case SimulationScenario.ScenarioA:
-                    simManager.SetInput(varResetProtection, false);
+                    simManager.SetInput(varResetProtection, resetProtectionRequested);
                     simManager.SetInput("sw_carga_bat", false);
                     simManager.SetInput("sw_dinamo_luz", false);
+                    resetProtectionRequested = false;
                     break;
 
                 case SimulationScenario.ScenarioB:
@@ -127,5 +130,6 @@ namespace Chamusca.Simulation
         public void ToggleHouseLights() => sw_casa_luz = !sw_casa_luz;
         public void ToggleBatteryCharge() => sw_carga_bat = !sw_carga_bat;
         public void ToggleDynamoLight() => sw_dinamo_luz = !sw_dinamo_luz;
+        public void RequestProtectionReset() => resetProtectionRequested = true;
     }
 }
