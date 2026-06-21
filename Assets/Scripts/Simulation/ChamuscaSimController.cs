@@ -55,6 +55,7 @@ namespace Chamusca.Simulation
         {
             // Common inputs
             simManager.SetInput("sw_casa_luz", sw_casa_luz);
+            Debug.Log($"[ChamuscaSimController] reductor_pos -> {redutor.currentCell}");
             if (redutor != null) simManager.SetInput("reductor_pos", redutor.currentCell);
 
             // Scenario specific logic

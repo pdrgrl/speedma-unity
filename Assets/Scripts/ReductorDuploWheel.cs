@@ -73,7 +73,15 @@ public class ReductorDuploWheel : MonoBehaviour
 
     private void Awake()
     {
-        _currentCell = Mathf.Clamp(initialCell, minCell, maxCell);
+        if (selector != null)
+        {
+            _currentCell = Mathf.Clamp(selector.currentCell, minCell, maxCell);
+            selector.currentCell = _currentCell;
+        }
+        else
+        {
+            _currentCell = Mathf.Clamp(initialCell, minCell, maxCell);
+        }
     }
 
     private void Start()
@@ -85,10 +93,10 @@ public class ReductorDuploWheel : MonoBehaviour
         Debug.Log($"Cell {selector.currentCell} -> angle {CellToAngle(selector.currentCell)}");
     }
 
-    private void Update()
-    {
-        if (wheel == null)
-            return;
+        private void Update()
+        {
+            if (wheel == null)
+                return;
 
         if (Mouse.current == null)
             return;
@@ -103,7 +111,10 @@ public class ReductorDuploWheel : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(mousePos);
                 if (Physics.Raycast(ray, out RaycastHit hit) && hit.distance <= maxInteractDistance)
                 {
-                    bool overWheel = hit.transform == wheel || hit.transform.IsChildOf(wheel);
+                    bool overWheel =
+                        hit.transform == wheel
+                        || hit.transform.IsChildOf(wheel)
+                        || wheel.IsChildOf(hit.transform);
                     if (overWheel)
                         Grab(mousePos.x);
                 }
@@ -144,8 +155,7 @@ public class ReductorDuploWheel : MonoBehaviour
 
     public void SetCell(int cell)
     {
-        _currentCell = Mathf.Clamp(cell, minCell, maxCell);
-        SyncSelectorToVisual();
+        ApplyCell(cell);
     }
 
     public int GetCell()
@@ -155,20 +165,29 @@ public class ReductorDuploWheel : MonoBehaviour
 
     private void Step(int delta)
     {
-        _currentCell = Mathf.Clamp(_currentCell + delta, minCell, maxCell);
-        SyncSelectorToVisual();
+        ApplyCell(_currentCell + delta);
+        Debug.Log($"[ReductorDuploWheel] Step {delta} -> cell {_currentCell}");
     }
 
     private void SyncSelectorToVisual()
     {
         if (selector != null)
-            selector.currentCell = _currentCell;
+        {
+            selector.SetStep(_currentCell);
+            Debug.Log($"[ReductorDuploWheel] Sync selector.currentCell = {_currentCell}");
+        }
 
         if (fmuLink != null)
         {
             // Kept for parity with the rheostat pattern; the actual FMU input is read by the
             // simulation controller via selector.currentCell.
         }
+    }
+
+    private void ApplyCell(int cell)
+    {
+        _currentCell = Mathf.Clamp(cell, minCell, maxCell);
+        SyncSelectorToVisual();
     }
 
     private void Grab(float mouseX)
@@ -181,6 +200,7 @@ public class ReductorDuploWheel : MonoBehaviour
             orbitCamera.IsLocked = true;
 
         SetHintVisible(true);
+        Debug.Log("[ReductorDuploWheel] Grabbed");
     }
 
     private void Release()
@@ -191,6 +211,7 @@ public class ReductorDuploWheel : MonoBehaviour
             orbitCamera.IsLocked = false;
 
         SetHintVisible(false);
+        Debug.Log("[ReductorDuploWheel] Released");
     }
 
     private float CellToAngle(int cell)
