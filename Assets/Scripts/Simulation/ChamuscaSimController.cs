@@ -17,14 +17,30 @@ namespace Chamusca.Simulation
         public VoltmeterPointer lineVoltmeter;
         public AmpController dynamoAmmeter;
         public AmpController batteryAmmeter;
-        public HouseLightController lightController;
+        public HouseLightController houseLightController;
+        public HouseLightController dependencyLightController;
+        public HouseLightController panelLightController;
+        public HouseLightController batteryRoomLightController;
         public BatteryCellSelector redutor;
+        public FmuToggleSwitch houseLightSwitch;
+        public FmuToggleSwitch dependencyLightSwitch;
+        public FmuToggleSwitch panelLightSwitch;
+        public FmuToggleSwitch batteryRoomLightSwitch;
 
         [Header("FMU Variable Names")]
         public string varLineVoltage = "v_line";
         public string varDynamoCurrent = "i_din";
         public string varBatteryCurrent = "i_bat";
         public string varBatterySOC = "soc";
+        public string varHouseLightIntensity = "houseLightIntensity";
+        public string varDependencyLightIntensity = "depLightIntensity";
+        public string varPanelLightIntensity = "panelLightIntensity";
+        public string varBatteryRoomLightIntensity = "batteryRoomLightIntensity";
+        public string varHouseLoad = "sw_casa_luz";
+        public string varDependencyLoad = "sw_dep_luz";
+        public string varPanelLight = "sw_quadro_luz";
+        public string varBatteryRoomLight = "sw_bat_luz";
+        public string varResetProtection = "resetProtection";
 
         [Header("Simulation State")]
         public bool sw_dinamo_luz = false;
@@ -44,25 +60,51 @@ namespace Chamusca.Simulation
             float i_din = simManager.GetOutput(varDynamoCurrent);
             float i_bat = simManager.GetOutput(varBatteryCurrent);
             float soc = simManager.GetOutput(varBatterySOC);
+            float houseIntensity = simManager.GetOutput(varHouseLightIntensity);
+            float depIntensity = simManager.GetOutput(varDependencyLightIntensity);
+            float panelIntensity = simManager.GetOutput(varPanelLightIntensity);
+            float batteryRoomIntensity = simManager.GetOutput(varBatteryRoomLightIntensity);
 
             if (lineVoltmeter != null) lineVoltmeter.SetValue(v);
             if (dynamoAmmeter != null) dynamoAmmeter.SetValue(i_din);
             if (batteryAmmeter != null) batteryAmmeter.SetValue(i_bat);
-            if (lightController != null) lightController.UpdateFromVoltage(v);
+            if (houseLightController != null) houseLightController.UpdateFromIntensity(houseIntensity);
+            if (dependencyLightController != null)
+                dependencyLightController.UpdateFromIntensity(depIntensity);
+            if (panelLightController != null) panelLightController.UpdateFromIntensity(panelIntensity);
+            if (batteryRoomLightController != null)
+                batteryRoomLightController.UpdateFromIntensity(batteryRoomIntensity);
         }
 
         private void UpdateInputs()
         {
-            // Common inputs
-            simManager.SetInput("sw_casa_luz", sw_casa_luz);
-            Debug.Log($"[ChamuscaSimController] reductor_pos -> {redutor.currentCell}");
-            if (redutor != null) simManager.SetInput("reductor_pos", redutor.currentCell);
+            bool houseOn = sw_casa_luz;
+            bool batteryLightOn = sw_bat_luz;
+            bool dependencyOn = false;
+            bool panelLightOn = false;
+
+            if (houseLightSwitch != null)
+                houseOn = houseLightSwitch.switchOn;
+            if (batteryRoomLightSwitch != null)
+                batteryLightOn = batteryRoomLightSwitch.switchOn;
+            if (dependencyLightSwitch != null)
+                dependencyOn = dependencyLightSwitch.switchOn;
+            if (panelLightSwitch != null)
+                panelLightOn = panelLightSwitch.switchOn;
+
+            simManager.SetInput(varHouseLoad, houseOn);
+            simManager.SetInput(varDependencyLoad, dependencyOn);
+            simManager.SetInput(varPanelLight, panelLightOn);
+            simManager.SetInput(varBatteryRoomLight, batteryLightOn);
+
+            if (redutor != null)
+                simManager.SetInput("reductor_pos", redutor.currentCell);
 
             // Scenario specific logic
             switch (scenarioManager.currentScenario)
             {
                 case SimulationScenario.ScenarioA:
-                    simManager.SetInput("sw_bat_luz", sw_bat_luz);
+                    simManager.SetInput(varResetProtection, false);
                     simManager.SetInput("sw_carga_bat", false);
                     simManager.SetInput("sw_dinamo_luz", false);
                     break;

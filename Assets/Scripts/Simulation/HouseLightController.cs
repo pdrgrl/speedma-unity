@@ -15,23 +15,34 @@ namespace Chamusca.Simulation
         [Header("Feedback")]
         public Color normalColor = Color.white;
         public Color lowVoltageColor = new Color(1f, 0.5f, 0.2f); // Dim orange
+        public bool useVoltageCurve = true;
+
+        private float _currentIntensity = 0f;
+        private Color _currentColor = Color.white;
 
         public void UpdateFromVoltage(float voltage)
         {
             float intensity = Mathf.Clamp01(voltage / nominalVoltage) * maxIntensity;
-            
-            // Add a bit of "glow" logic: lower voltage = warmer color
             float colorT = Mathf.InverseLerp(flickerThreshold, nominalVoltage, voltage);
-            Color currentColor = Color.Lerp(lowVoltageColor, normalColor, colorT);
+            Apply(intensity, Color.Lerp(lowVoltageColor, normalColor, colorT), voltage > 10f);
+        }
 
+        public void UpdateFromIntensity(float intensity, bool enabled = true)
+        {
+            _currentIntensity = Mathf.Clamp01(intensity) * maxIntensity;
+            _currentColor = Color.Lerp(lowVoltageColor, normalColor, Mathf.Clamp01(intensity));
+            Apply(_currentIntensity, _currentColor, enabled && _currentIntensity > 0.001f);
+        }
+
+        private void Apply(float intensity, Color color, bool enabled)
+        {
             foreach (var l in targetLights)
             {
-                if (l == null) continue;
+                if (l == null)
+                    continue;
                 l.intensity = intensity;
-                l.color = currentColor;
-                
-                // If voltage is too low, disable light (blackout)
-                l.enabled = voltage > 10f;
+                l.color = color;
+                l.enabled = enabled;
             }
         }
     }

@@ -8,7 +8,7 @@
 //   10 A -> Y = -72.828
 //   12 A -> Y = -87.359
 //
-// Set MinAngle / MaxAngle / MinAmp / MaxAmp in Inspector.
+// Calibrate with a curve or the default measured points below.
 // Assign NeedleTransform to the needle child GameObject.
 // ============================================================
 
@@ -30,10 +30,20 @@ namespace Speedma
         private float maxAmp = 12f;
 
         [SerializeField]
-        private float minAngle = -4.951f; // Y rotation at minAmp
+        private float minAngle = -5.064f; // Y rotation at 0 A
 
         [SerializeField]
-        private float maxAngle = -87.359f; // Y rotation at maxAmp
+        private float maxAngle = -85.556f; // Y rotation at 12 A
+
+        [SerializeField]
+        private AnimationCurve ampsToAngle = new AnimationCurve(
+            new Keyframe(0f, -5.064f),
+            new Keyframe(4f, -20.72f),
+            new Keyframe(6f, -40.02f),
+            new Keyframe(8f, -56f),
+            new Keyframe(10f, -71.617f),
+            new Keyframe(12f, -85.556f)
+        );
 
         [Header("Smoothing")]
         [SerializeField]
@@ -69,7 +79,15 @@ namespace Speedma
 
         public void SetValue(float amps)
         {
-            float normalized = Mathf.Clamp01(amps / maxAmp);
+            float clamped = Mathf.Clamp(amps, minAmp, maxAmp);
+
+            if (ampsToAngle != null && ampsToAngle.length > 0)
+            {
+                _targetAngle = ampsToAngle.Evaluate(clamped);
+                return;
+            }
+
+            float normalized = Mathf.Clamp01(clamped / maxAmp);
             float t = useSquareLaw ? normalized * normalized : normalized;
             _targetAngle = Mathf.LerpAngle(minAngle, maxAngle, t);
         }
