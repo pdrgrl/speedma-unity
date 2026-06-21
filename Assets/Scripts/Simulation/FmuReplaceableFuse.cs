@@ -4,14 +4,6 @@ using Speedma;
 
 namespace Chamusca.Simulation
 {
-    /// <summary>
-    /// Click-to-replace fuse control.
-    ///
-    /// Physical mapping:
-    /// - The fuse is shown as installed or removed depending on the FMU state.
-    /// - When the fuse is blown, clicking the fuse replaces it and requests a protection reset.
-    /// - The visual can move along a local axis to simulate insertion/removal.
-    /// </summary>
     public class FmuReplaceableFuse : MonoBehaviour
     {
         [Header("Backend")]
@@ -25,27 +17,26 @@ namespace Chamusca.Simulation
         public float maxInteractDistance = 2.0f;
         public Transform fuseBody;
 
-        [Tooltip("Local position when the fuse is installed.")]
+        [Header("Materials")]
+        [Tooltip("The MeshRenderer of the main fuse body only.")]
+        public MeshRenderer fuseRenderer;
+        [Tooltip("Material used when the fuse is working normally.")]
+        public Material intactMaterial;
+        [Tooltip("Material used when the fuse is blown.")]
+        public Material blownMaterial;
+
+        [Header("Positions & Rotations")]
         public Vector3 installedLocalPosition;
-
-        [Tooltip("Local position when the fuse is blown/removed.")]
         public Vector3 blownLocalPosition;
-
-        [Tooltip("Local rotation when the fuse is installed.")]
         public Vector3 installedLocalRotation;
-
-        [Tooltip("Local rotation when the fuse is blown/removed.")]
         public Vector3 blownLocalRotation;
-
-        [Tooltip("How fast the fuse visual moves/rotates.")]
         public float animationSpeed = 10f;
 
         [Header("State")]
-        [SerializeField]
-        private bool installed = true;
+        [SerializeField] private bool installed = true;
+        [SerializeField] private bool blown = false;
 
-        [SerializeField]
-        private bool blown = false;
+        private bool lastBlownState;
 
         private void Start()
         {
@@ -53,7 +44,16 @@ namespace Chamusca.Simulation
             {
                 fuseBody.localPosition = installedLocalPosition;
                 fuseBody.localRotation = Quaternion.Euler(installedLocalRotation);
+                
+                // Se não foi arrastado no Inspector, pega APENAS o renderer do próprio fuseBody
+                if (fuseRenderer == null)
+                {
+                    fuseRenderer = fuseBody.GetComponent<MeshRenderer>();
+                }
             }
+
+            lastBlownState = blown;
+            UpdateVisualState(blown);
         }
 
         private void Update()
@@ -62,6 +62,13 @@ namespace Chamusca.Simulation
             {
                 blown = simManager.GetOutput(fuseStateOutput) > 0.5f;
                 installed = !blown;
+            }
+
+            // Monitoriza a mudança de estado frame a frame
+            if (blown != lastBlownState)
+            {
+                lastBlownState = blown;
+                UpdateVisualState(blown);
             }
 
             if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame && Camera.main != null)
@@ -77,31 +84,38 @@ namespace Chamusca.Simulation
                 }
             }
 
-            if (fuseBody == null)
-                return;
+            if (fuseBody == null) return;
 
             Vector3 targetPos = installed ? installedLocalPosition : blownLocalPosition;
             Vector3 targetRot = installed ? installedLocalRotation : blownLocalRotation;
 
-            fuseBody.localPosition = Vector3.Lerp(
-                fuseBody.localPosition,
-                targetPos,
-                Time.deltaTime * animationSpeed
-            );
-            fuseBody.localRotation = Quaternion.Lerp(
-                fuseBody.localRotation,
-                Quaternion.Euler(targetRot),
-                Time.deltaTime * animationSpeed
-            );
+            fuseBody.localPosition = Vector3.Lerp(fuseBody.localPosition, targetPos, Time.deltaTime * animationSpeed);
+            fuseBody.localRotation = Quaternion.Lerp(fuseBody.localRotation, Quaternion.Euler(targetRot), Time.deltaTime * animationSpeed);
+        }
+
+        private void UpdateVisualState(bool isBlown)
+        {
+            if (fuseRenderer == null) return;
+
+            Material targetMaterial = isBlown ? blownMaterial : intactMaterial;
+            if (targetMaterial != null)
+            {
+                // Altera apenas o material do componente principal
+                fuseRenderer.material = targetMaterial;
+            }
         }
 
         public void TryReplaceFuse()
         {
-            if (!blown)
-                return;
+            if (!blown) return;
 
-            installed = true;
-            blown = false;
+            if (simManager == null || !simManager.IsSessionActive)
+            {
+                blown = false;
+                installed = true;
+                lastBlownState = false;
+                UpdateVisualState(false);
+            }
 
             if (controller != null)
                 controller.RequestProtectionReset();

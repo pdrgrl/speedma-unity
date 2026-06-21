@@ -4986,7 +4986,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
       propertyPath: m_Name
-      value: _SM_Fuzivel
+      value: fuseHouseState
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
       propertyPath: m_IsActive
@@ -4999,6 +4999,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
       insertIndex: -1
       addedObject: {fileID: 773852922}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 773852923}
     - targetCorrespondingSourceObject: {fileID: -3133498875991405556, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
       insertIndex: -1
       addedObject: {fileID: 572943641}
@@ -5413,6 +5416,33 @@ MonoBehaviour:
   onInteract:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &773852923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773852920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01bc5ecc55d0400459f64b70cdcf7026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Chamusca.Simulation.FmuReplaceableFuse
+  simManager: {fileID: 1934691294}
+  controller: {fileID: 1827762973}
+  fuseStateOutput: fuseDischargeState
+  maxInteractDistance: 2
+  fuseBody: {fileID: 1543671318}
+  fuseRenderer: {fileID: 1543671319}
+  intactMaterial: {fileID: 2100000, guid: 5cc0d84b5041ff94baf8963fd14f2ed9, type: 2}
+  blownMaterial: {fileID: 2100000, guid: 1bd65b0702ca29a4b87b29abaac8af5c, type: 2}
+  installedLocalPosition: {x: 0, y: 0, z: -0.0123}
+  blownLocalPosition: {x: 0.003, y: 0, z: 0.003}
+  installedLocalRotation: {x: 0, y: 0, z: 0}
+  blownLocalRotation: {x: 5, y: 45, z: 0}
+  animationSpeed: 10
+  installed: 1
+  blown: 0
 --- !u!1001 &778089400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11303,6 +11333,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 5167679635057518829, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
+--- !u!4 &1543671318 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4419246622248461499, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
+  m_PrefabInstance: {fileID: 685556228}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1543671319 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -108714573566937380, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
+  m_PrefabInstance: {fileID: 685556228}
+  m_PrefabAsset: {fileID: 0}
 --- !u!64 &1544802334
 MeshCollider:
   m_ObjectHideFlags: 0
