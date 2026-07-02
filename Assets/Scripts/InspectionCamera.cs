@@ -234,12 +234,12 @@ public class InspectionCamera : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(screenPos);
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            InteractableHotspot hotspot = hit.collider.GetComponentInParent<InteractableHotspot>();
-            if (hotspot != null)
+            ChamuscaInteractable interactable = hit.collider.GetComponentInParent<ChamuscaInteractable>();
+            if (interactable != null)
             {
-                targetPosition = hotspot.GetFocusPosition();
-                targetDistance = hotspot.focusDistance;
-                hotspot.Interact();
+                targetPosition = interactable.GetFocusPosition();
+                targetDistance = interactable.focusDistance;
+                interactable.Interact();
                 return true;
             }
         }
