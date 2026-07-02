@@ -157,7 +157,7 @@ public class ChamuscaUISetup : EditorWindow
         RectTransform teleRT = telemetryGO.AddComponent<RectTransform>();
         teleRT.anchorMin = new Vector2(0f, 0f);
         teleRT.anchorMax = new Vector2(1f, 1f);
-        teleRT.offsetMin = new Vector2(10f, 10f);
+        teleRT.offsetMin = new Vector2(10f, 40f); // Lifted bottom slightly to fit scenario buttons
         teleRT.offsetMax = new Vector2(-10f, -30f);
 
         TextMeshProUGUI teleText = telemetryGO.AddComponent<TextMeshProUGUI>();
@@ -167,13 +167,62 @@ public class ChamuscaUISetup : EditorWindow
         teleText.color = new Color(0.9f, 0.9f, 0.9f);
         teleText.alignment = TextAlignmentOptions.TopLeft;
 
+        // Create Scenario Selection Bar at the bottom of the HUD panel
+        GameObject scenarioBarGO = new GameObject("ScenarioSelectionBar");
+        scenarioBarGO.transform.SetParent(debugHudGO.transform, false);
+        RectTransform barRT = scenarioBarGO.AddComponent<RectTransform>();
+        barRT.anchorMin = new Vector2(0f, 0f);
+        barRT.anchorMax = new Vector2(1f, 0f);
+        barRT.pivot = new Vector2(0.5f, 0f);
+        barRT.anchoredPosition = new Vector2(0f, 10f);
+        barRT.sizeDelta = new Vector2(-20f, 22f); // Height of 22px
+
+        HorizontalLayoutGroup layoutGroup = scenarioBarGO.AddComponent<HorizontalLayoutGroup>();
+        layoutGroup.spacing = 8f;
+        layoutGroup.childControlWidth = true;
+        layoutGroup.childControlHeight = true;
+        layoutGroup.childForceExpandWidth = true;
+        layoutGroup.childForceExpandHeight = true;
+
+        Button btnA = CreateHUDButton(scenarioBarGO.transform, "BtnA", "SCENARIO A");
+        Button btnB = CreateHUDButton(scenarioBarGO.transform, "BtnB", "SCENARIO B");
+        Button btnC = CreateHUDButton(scenarioBarGO.transform, "BtnC", "SCENARIO C");
+
         // Add a modern Canvas-based Debug HUD controller to run telemetry updates
         Speedma.Debug.FmuDebugController hudController = managerGO.GetComponent<Speedma.Debug.FmuDebugController>();
         if (hudController == null) hudController = managerGO.AddComponent<Speedma.Debug.FmuDebugController>();
-        hudController.SetCanvasUIReferences(debugHudGO, teleText, debugButton);
+        hudController.SetCanvasUIReferences(debugHudGO, teleText, debugButton, btnA, btnB, btnC);
 
         Selection.activeGameObject = canvasGO;
         Debug.Log("Chamusca Minimal RAG UI created successfully!");
+    }
+
+    private static Button CreateHUDButton(Transform parent, string name, string label)
+    {
+        GameObject btnGO = new GameObject(name);
+        btnGO.transform.SetParent(parent, false);
+        
+        Image img = btnGO.AddComponent<Image>();
+        img.color = new Color(0.12f, 0.12f, 0.12f, 0.85f);
+        
+        Button btn = btnGO.AddComponent<Button>();
+        
+        GameObject textGO = new GameObject("Text");
+        textGO.transform.SetParent(btnGO.transform, false);
+        RectTransform textRT = textGO.AddComponent<RectTransform>();
+        textRT.anchorMin = Vector2.zero;
+        textRT.anchorMax = Vector2.one;
+        textRT.offsetMin = Vector2.zero;
+        textRT.offsetMax = Vector2.zero;
+        
+        TextMeshProUGUI txt = textGO.AddComponent<TextMeshProUGUI>();
+        txt.text = label;
+        txt.fontSize = 8;
+        txt.fontStyle = FontStyles.Bold;
+        txt.color = new Color(0.8f, 0.8f, 0.8f);
+        txt.alignment = TextAlignmentOptions.Center;
+
+        return btn;
     }
 }
 #endif

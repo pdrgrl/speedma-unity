@@ -35,6 +35,12 @@ namespace Speedma.Debug
         private TMPro.TextMeshProUGUI telemetryText;
         [SerializeField]
         private UnityEngine.UI.Button toggleButton;
+        [SerializeField]
+        private UnityEngine.UI.Button btnScenarioA;
+        [SerializeField]
+        private UnityEngine.UI.Button btnScenarioB;
+        [SerializeField]
+        private UnityEngine.UI.Button btnScenarioC;
 
         private bool _showHud = false; // Hidden by default now
 
@@ -44,6 +50,7 @@ namespace Speedma.Debug
             {
                 toggleButton.onClick.AddListener(ToggleHud);
             }
+            LinkScenarioButtons();
             UpdateHudVisibility();
         }
 
@@ -61,18 +68,49 @@ namespace Speedma.Debug
             }
         }
 
-        public void SetCanvasUIReferences(GameObject panel, TMPro.TextMeshProUGUI text, UnityEngine.UI.Button button)
-        {
+        public void SetCanvasUIReferences(
+            GameObject panel, 
+            TMPro.TextMeshProUGUI text, 
+            UnityEngine.UI.Button button,
+            UnityEngine.UI.Button btnA,
+            UnityEngine.UI.Button btnB,
+            UnityEngine.UI.Button btnC
+        ) {
             hudPanel = panel;
             telemetryText = text;
             toggleButton = button;
+            btnScenarioA = btnA;
+            btnScenarioB = btnB;
+            btnScenarioC = btnC;
             
             if (toggleButton != null)
             {
                 toggleButton.onClick.RemoveAllListeners();
                 toggleButton.onClick.AddListener(ToggleHud);
             }
+            LinkScenarioButtons();
             UpdateHudVisibility();
+        }
+
+        private void LinkScenarioButtons()
+        {
+            if (scenarioManager == null) return;
+
+            if (btnScenarioA != null)
+            {
+                btnScenarioA.onClick.RemoveAllListeners();
+                btnScenarioA.onClick.AddListener(() => scenarioManager.SetScenario(SimulationScenario.ScenarioA));
+            }
+            if (btnScenarioB != null)
+            {
+                btnScenarioB.onClick.RemoveAllListeners();
+                btnScenarioB.onClick.AddListener(() => scenarioManager.SetScenario(SimulationScenario.ScenarioB));
+            }
+            if (btnScenarioC != null)
+            {
+                btnScenarioC.onClick.RemoveAllListeners();
+                btnScenarioC.onClick.AddListener(() => scenarioManager.SetScenario(SimulationScenario.ScenarioC));
+            }
         }
 
         private void ToggleHud()
