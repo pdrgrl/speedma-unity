@@ -30,8 +30,11 @@ public class InspectionCamera : MonoBehaviour
     public bool IsLocked { get; set; } = false;
 
     private float startX = 0.0f;
+    private float startY = 0.0f;
     private float currentX = 0.0f;
     private float currentY = 20.0f;
+    private Vector3 startPosition;
+    private float startDistance;
     private Vector3 currentTargetPos;
     private float currentDistance;
 
@@ -42,12 +45,16 @@ public class InspectionCamera : MonoBehaviour
     void Start()
     {
         Vector3 angles = transform.eulerAngles;
-        // Normalize starting y angle (yaw)
+        // Normalize starting y angle (yaw) and x angle (pitch)
         startX = angles.y;
+        startY = angles.x;
         currentX = startX;
-        currentY = angles.x;
+        currentY = startY;
 
+        startDistance = targetDistance;
         targetPosition = transform.position + transform.forward * targetDistance;
+        startPosition = targetPosition;
+        
         currentTargetPos = targetPosition;
         currentDistance = targetDistance;
     }
@@ -243,6 +250,14 @@ public class InspectionCamera : MonoBehaviour
     {
         targetDistance -= amount;
         targetDistance = Mathf.Clamp(targetDistance, minDistance, maxDistance);
+        
+        // If we zoomed all the way out, reset focus target and rotation back to the starting "spawn" point
+        if (targetDistance >= maxDistance - 0.01f)
+        {
+            targetPosition = startPosition;
+            currentX = startX;
+            currentY = startY;
+        }
     }
 
     private void ClampAngles()
