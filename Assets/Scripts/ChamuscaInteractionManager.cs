@@ -29,9 +29,19 @@ public class ChamuscaInteractionManager : MonoBehaviour
             {
                 if (currentHovered != null)
                     currentHovered.SetHover(false);
+                
                 currentHovered = interactable;
+                
                 if (currentHovered != null)
+                {
                     currentHovered.SetHover(true);
+                    
+                    // Show hovered name on UI focus label
+                    if (uiManager != null && uiManager.focusLabelText != null)
+                    {
+                        uiManager.focusLabelText.text = currentHovered.GetHoverText();
+                    }
+                }
             }
         }
         else
@@ -40,6 +50,14 @@ public class ChamuscaInteractionManager : MonoBehaviour
             {
                 currentHovered.SetHover(false);
                 currentHovered = null;
+                
+                // Restore focus label back to selected component name or empty
+                if (uiManager != null && uiManager.focusLabelText != null)
+                {
+                    uiManager.focusLabelText.text = string.IsNullOrEmpty(uiManager.currentFocusId) 
+                        ? "" 
+                        : "Focus: " + uiManager.currentFocusDisplayName;
+                }
             }
         }
 

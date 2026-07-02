@@ -22,6 +22,10 @@ public class ChamuscaInteractable : MonoBehaviour
     [Tooltip("Color used when hovered.")]
     public Color hoverColor = Color.yellow;
 
+    [Header("Hover Label overrides")]
+    [Tooltip("Optional: Custom display name for hover. Falls back to displayName if empty.")]
+    public string customHoverName = "";
+
     private Color originalColor;
     private Renderer rend;
     private bool isHovered = false;
@@ -63,5 +67,10 @@ public class ChamuscaInteractable : MonoBehaviour
                 rend.material.color = originalColor;
             }
         }
+    }
+
+    public string GetHoverText()
+    {
+        return !string.IsNullOrEmpty(customHoverName) ? customHoverName : displayName;
     }
 }

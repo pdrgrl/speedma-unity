@@ -22,7 +22,10 @@ public class InteractableHotspot : MonoBehaviour
     public float indicatorScaleMultiplier = 0.01f; // Constant physical scale multiplier
     public Vector3 indicatorOffset = Vector3.zero;
     [Tooltip("Distance to offset the dot towards the camera to prevent clipping behind the mesh.")]
-    public float forwardOffsetAmount = 0.1f;
+    public float forwardOffsetAmount = 0.05f;
+
+    // Static toggle to show/hide all hotspot indicators globally
+    public static bool GlobalIndicatorsEnabled = true;
 
     private GameObject indicatorObj;
 
@@ -89,26 +92,44 @@ public class InteractableHotspot : MonoBehaviour
 
     void LateUpdate()
     {
-        if (indicatorObj != null && Camera.main != null)
+        // Toggle indicators globally with 'H' key (Hide/Show)
+        if (UnityEngine.InputSystem.Keyboard.current != null && UnityEngine.InputSystem.Keyboard.current.hKey.wasPressedThisFrame)
+        {
+            GlobalIndicatorsEnabled = !GlobalIndicatorsEnabled;
+        }
+
+        bool shouldBeVisible = showIndicator && GlobalIndicatorsEnabled;
+
+        if (indicatorObj != null)
+        {
+            if (indicatorObj.activeSelf != shouldBeVisible)
+            {
+                indicatorObj.SetActive(shouldBeVisible);
+            }
+        }
+
+        if (Camera.main != null)
         {
             Transform camTransform = Camera.main.transform;
 
-            // Make the sprite look directly at the main camera
-            indicatorObj.transform.rotation = camTransform.rotation;
+            // 1. Handle Indicator Billboard & Offset
+            if (indicatorObj != null && shouldBeVisible)
+            {
+                // Make the sprite look directly at the main camera
+                indicatorObj.transform.rotation = camTransform.rotation;
 
-            // Calculate local scale that compensates for parent's global scale
-            // to achieve a uniform absolute world scale (0.01 units).
-            Vector3 parentScale = transform.lossyScale;
-            indicatorObj.transform.localScale = new Vector3(
-                indicatorScaleMultiplier / (parentScale.x > 0.0001f ? parentScale.x : 1f),
-                indicatorScaleMultiplier / (parentScale.y > 0.0001f ? parentScale.y : 1f),
-                indicatorScaleMultiplier / (parentScale.z > 0.0001f ? parentScale.z : 1f)
-            );
+                // Calculate local scale that compensates for parent's global scale
+                Vector3 parentScale = transform.lossyScale;
+                indicatorObj.transform.localScale = new Vector3(
+                    indicatorScaleMultiplier / (parentScale.x > 0.0001f ? parentScale.x : 1f),
+                    indicatorScaleMultiplier / (parentScale.y > 0.0001f ? parentScale.y : 1f),
+                    indicatorScaleMultiplier / (parentScale.z > 0.0001f ? parentScale.z : 1f)
+                );
 
-            // Dynamically shift the indicator slightly closer to the camera along the view vector
-            // to ensure it renders in front of the parent/child 3D meshes without clipping
-            Vector3 dirToCam = (camTransform.position - (GetFocusPosition() + indicatorOffset)).normalized;
-            indicatorObj.transform.position = GetFocusPosition() + indicatorOffset + dirToCam * forwardOffsetAmount;
+                // Dynamically shift the indicator slightly closer to the camera along the view vector
+                Vector3 dirToCam = (camTransform.position - (GetFocusPosition() + indicatorOffset)).normalized;
+                indicatorObj.transform.position = GetFocusPosition() + indicatorOffset + dirToCam * forwardOffsetAmount;
+            }
         }
     }
 

@@ -259,9 +259,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!4 &12111803 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 52a1e7f480e2dba4a87367ddef959703, type: 3}
@@ -602,9 +602,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!114 &52129047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -617,11 +617,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: marble_control_board
-  displayName: Double Reductor
-  hoverTargetObject: {fileID: 0}
-  hoverTargetRenderer: {fileID: 0}
-  hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  componentId: rheostat
+  displayName: Rheostat
+  hoverTargetObject: {fileID: 52129045}
+  hoverTargetRenderer: {fileID: 522139549}
+  hoverColor: {r: 1, g: 1, b: 1, a: 0.011764706}
+  customHoverName: Rheostat
 --- !u!4 &52129048 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7a5060ebf3b165440acb4a53da84d007, type: 3}
@@ -794,9 +795,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!4 &75720898 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1232870521211286967, guid: 52a1e7f480e2dba4a87367ddef959703, type: 3}
@@ -1475,27 +1476,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
   m_PrefabInstance: {fileID: 1812065579}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &136362464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 136362462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 593beb6f1357af84bbb842e307683a5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InteractableHotspot
-  focusDistance: 1.5
-  customLookTarget: {fileID: 0}
-  onInteract:
-    m_PersistentCalls:
-      m_Calls: []
-  showIndicator: 1
-  indicatorScaleMultiplier: 0.05
-  indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
 --- !u!1 &164256394 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5847750727859826489, guid: eb8c551eff93a2245bab1740477ac7b7, type: 3}
@@ -1703,9 +1683,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!1 &220965190
 GameObject:
   m_ObjectHideFlags: 0
@@ -2571,9 +2551,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!1 &298344445
 GameObject:
   m_ObjectHideFlags: 0
@@ -3185,9 +3165,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!1 &376476563 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 61668f9a329e984439cd11653aedd59b, type: 3}
@@ -3211,9 +3191,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!1 &379584478 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8161171759636716135, guid: ac11e5b15d7ed6046bcf1a00ad86dcaa, type: 3}
@@ -3777,9 +3757,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!114 &466294467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4194,6 +4174,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5287425419667122880, guid: 7a5060ebf3b165440acb4a53da84d007, type: 3}
+--- !u!23 &522139549 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8521902485874960664, guid: 7a5060ebf3b165440acb4a53da84d007, type: 3}
+  m_PrefabInstance: {fileID: 52129044}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &527465343 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1619570929530068467, guid: 9e8e25527306d1a4682e10bc3f2618e3, type: 3}
@@ -5570,9 +5555,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!114 &773852923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6137,9 +6122,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!1 &793481957 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1720146598988835688, guid: eb8c551eff93a2245bab1740477ac7b7, type: 3}
@@ -6645,9 +6630,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!1 &873157028 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2799666135049711969, guid: 87c71f2ab8948904d96dba31383cdb9a, type: 3}
@@ -7302,9 +7287,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!114 &953541469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9405,9 +9390,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!1 &1214742343
 GameObject:
   m_ObjectHideFlags: 0
@@ -9854,9 +9839,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!1 &1253584735 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -620807349440909277, guid: eb8c551eff93a2245bab1740477ac7b7, type: 3}
@@ -11413,9 +11398,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!1 &1536758393 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1487234071760608363, guid: 52a1e7f480e2dba4a87367ddef959703, type: 3}
@@ -11471,9 +11456,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!114 &1537761839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11491,6 +11476,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  customHoverName: 11111
 --- !u!1 &1543671313 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 323428696013351348, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
@@ -11802,9 +11788,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!1 &1547561117 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3284592190654045678, guid: 9e8e25527306d1a4682e10bc3f2618e3, type: 3}
@@ -13212,9 +13198,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!1 &1765091524 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7288920343926587754, guid: 7a5060ebf3b165440acb4a53da84d007, type: 3}
@@ -13547,9 +13533,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!1 &1786455029 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
@@ -13573,9 +13559,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!64 &1788071058
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13918,7 +13904,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 136362464}
+      addedObject: {fileID: 1812065581}
     - targetCorrespondingSourceObject: {fileID: -3133498875991405556, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1452849975}
@@ -13934,6 +13920,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
   m_PrefabInstance: {fileID: 1812065579}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1812065581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136362462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 593beb6f1357af84bbb842e307683a5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableHotspot
+  focusDistance: 1.5
+  customLookTarget: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  showIndicator: 1
+  indicatorScaleMultiplier: 0.01
+  indicatorOffset: {x: 0, y: 0, z: 0}
+  forwardOffsetAmount: 0.1
 --- !u!1 &1812904560 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 987016725081629678, guid: eb8c551eff93a2245bab1740477ac7b7, type: 3}
@@ -14333,9 +14340,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!1 &1840635738 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8391222552659086748, guid: 9e8e25527306d1a4682e10bc3f2618e3, type: 3}
@@ -14413,9 +14420,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!1 &1843037213 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5172531185124748165, guid: 7a5060ebf3b165440acb4a53da84d007, type: 3}
@@ -14983,9 +14990,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!114 &1892148032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15003,6 +15010,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  customHoverName: 
 --- !u!4 &1892148033 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: eb8c551eff93a2245bab1740477ac7b7, type: 3}
@@ -15432,7 +15440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractionManager
   uiManager: {fileID: 1934691299}
-  maxInteractDistance: 3
+  maxInteractDistance: 5
 --- !u!114 &1934691299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15568,9 +15576,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!1 &1964602097
 GameObject:
   m_ObjectHideFlags: 0
@@ -16153,9 +16161,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!114 &1995971444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16786,9 +16794,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!1 &2098174329 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
@@ -16812,9 +16820,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!1 &2101175052 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 323428696013351348, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
@@ -16990,9 +16998,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!1 &2109954189 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 987016725081629678, guid: 7a5060ebf3b165440acb4a53da84d007, type: 3}
@@ -20811,6 +20819,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  customHoverName: 
 --- !u!82 &919132148023294288
 AudioSource:
   m_ObjectHideFlags: 0
@@ -22720,6 +22729,30 @@ PrefabInstance:
     - target: {fileID: 4818596050256013034, guid: 5189995e092898f47a70d5336ac17efd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941254591488698611, guid: 5189995e092898f47a70d5336ac17efd, type: 3}
+      propertyPath: customLabel
+      value: Tudor Batteries
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941254591488698611, guid: 5189995e092898f47a70d5336ac17efd, type: 3}
+      propertyPath: labelOffset.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941254591488698611, guid: 5189995e092898f47a70d5336ac17efd, type: 3}
+      propertyPath: labelOffset.z
+      value: -0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941254591488698611, guid: 5189995e092898f47a70d5336ac17efd, type: 3}
+      propertyPath: forwardOffsetAmount
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941254591488698611, guid: 5189995e092898f47a70d5336ac17efd, type: 3}
+      propertyPath: labelTriggerDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941254591488698611, guid: 5189995e092898f47a70d5336ac17efd, type: 3}
+      propertyPath: indicatorScaleMultiplier
+      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -37086,9 +37119,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   showIndicator: 1
-  indicatorScaleMultiplier: 0.05
+  indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
-  forwardOffsetAmount: 0.05
+  forwardOffsetAmount: 0.1
 --- !u!23 &6429294624255766947
 MeshRenderer:
   m_ObjectHideFlags: 0
