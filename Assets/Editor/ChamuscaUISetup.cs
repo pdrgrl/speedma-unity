@@ -13,11 +13,13 @@ public class ChamuscaUISetup : EditorWindow
         GameObject canvasGO = new GameObject("Chamusca_Canvas");
         Canvas canvas = canvasGO.AddComponent<Canvas>();
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-        canvasGO.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        canvasGO.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler
+            .ScaleMode
+            .ScaleWithScreenSize;
         canvasGO.AddComponent<GraphicRaycaster>();
 
         // 2. Create Event System
-        if (FindObjectOfType<UnityEngine.EventSystems.EventSystem>() == null)
+        if (Object.FindFirstObjectByType<UnityEngine.EventSystems.EventSystem>() == null)
         {
             GameObject es = new GameObject("EventSystem");
             es.AddComponent<UnityEngine.EventSystems.EventSystem>();
@@ -36,7 +38,8 @@ public class ChamuscaUISetup : EditorWindow
         RectTransform panelRT = panel.AddComponent<RectTransform>();
         panelRT.anchorMin = new Vector2(0.1f, 0.1f);
         panelRT.anchorMax = new Vector2(0.9f, 0.9f);
-        panelRT.offsetMin = Vector2.zero; panelRT.offsetMax = Vector2.zero;
+        panelRT.offsetMin = Vector2.zero;
+        panelRT.offsetMax = Vector2.zero;
         Image panelImg = panel.AddComponent<Image>();
         panelImg.color = new Color(0.15f, 0.15f, 0.15f, 0.9f);
 
@@ -44,8 +47,10 @@ public class ChamuscaUISetup : EditorWindow
         GameObject answerGO = new GameObject("AnswerText");
         answerGO.transform.SetParent(panel.transform, false);
         RectTransform answerRT = answerGO.AddComponent<RectTransform>();
-        answerRT.anchorMin = new Vector2(0.05f, 0.3f); answerRT.anchorMax = new Vector2(0.95f, 0.95f);
-        answerRT.offsetMin = Vector2.zero; answerRT.offsetMax = Vector2.zero;
+        answerRT.anchorMin = new Vector2(0.05f, 0.3f);
+        answerRT.anchorMax = new Vector2(0.95f, 0.95f);
+        answerRT.offsetMin = Vector2.zero;
+        answerRT.offsetMax = Vector2.zero;
         TextMeshProUGUI answerText = answerGO.AddComponent<TextMeshProUGUI>();
         answerText.text = "Hello! I am the Chamusca 1920 Docent. Ask me anything...";
         answerText.fontSize = 22;
@@ -57,8 +62,10 @@ public class ChamuscaUISetup : EditorWindow
         GameObject inputGO = new GameObject("InputField");
         inputGO.transform.SetParent(panel.transform, false);
         RectTransform inputRT = inputGO.AddComponent<RectTransform>();
-        inputRT.anchorMin = new Vector2(0.05f, 0.15f); inputRT.anchorMax = new Vector2(0.8f, 0.25f);
-        inputRT.offsetMin = Vector2.zero; inputRT.offsetMax = Vector2.zero;
+        inputRT.anchorMin = new Vector2(0.05f, 0.15f);
+        inputRT.anchorMax = new Vector2(0.8f, 0.25f);
+        inputRT.offsetMin = Vector2.zero;
+        inputRT.offsetMax = Vector2.zero;
         Image inputImg = inputGO.AddComponent<Image>();
         inputImg.color = Color.white;
 
@@ -66,16 +73,20 @@ public class ChamuscaUISetup : EditorWindow
         GameObject textAreaGO = new GameObject("Text Area");
         textAreaGO.transform.SetParent(inputGO.transform, false);
         RectTransform textAreaRT = textAreaGO.AddComponent<RectTransform>();
-        textAreaRT.anchorMin = Vector2.zero; textAreaRT.anchorMax = Vector2.one;
-        textAreaRT.offsetMin = new Vector2(10, 10); textAreaRT.offsetMax = new Vector2(-10, -10);
+        textAreaRT.anchorMin = Vector2.zero;
+        textAreaRT.anchorMax = Vector2.one;
+        textAreaRT.offsetMin = new Vector2(10, 10);
+        textAreaRT.offsetMax = new Vector2(-10, -10);
         textAreaGO.AddComponent<RectMask2D>();
 
         // Input Field Text Object
         GameObject textGO = new GameObject("Text");
         textGO.transform.SetParent(textAreaGO.transform, false);
         RectTransform textRT = textGO.AddComponent<RectTransform>();
-        textRT.anchorMin = Vector2.zero; textRT.anchorMax = Vector2.one;
-        textRT.offsetMin = Vector2.zero; textRT.offsetMax = Vector2.zero;
+        textRT.anchorMin = Vector2.zero;
+        textRT.anchorMax = Vector2.one;
+        textRT.offsetMin = Vector2.zero;
+        textRT.offsetMax = Vector2.zero;
         TextMeshProUGUI textTMP = textGO.AddComponent<TextMeshProUGUI>();
         textTMP.color = Color.black;
         textTMP.fontSize = 20;
@@ -89,8 +100,10 @@ public class ChamuscaUISetup : EditorWindow
         GameObject sendBtnGO = new GameObject("SendButton");
         sendBtnGO.transform.SetParent(panel.transform, false);
         RectTransform sendBtnRT = sendBtnGO.AddComponent<RectTransform>();
-        sendBtnRT.anchorMin = new Vector2(0.82f, 0.15f); sendBtnRT.anchorMax = new Vector2(0.95f, 0.25f);
-        sendBtnRT.offsetMin = Vector2.zero; sendBtnRT.offsetMax = Vector2.zero;
+        sendBtnRT.anchorMin = new Vector2(0.82f, 0.15f);
+        sendBtnRT.anchorMax = new Vector2(0.95f, 0.25f);
+        sendBtnRT.offsetMin = Vector2.zero;
+        sendBtnRT.offsetMax = Vector2.zero;
         Image sendBtnImg = sendBtnGO.AddComponent<Image>();
         sendBtnImg.color = new Color(0.2f, 0.6f, 0.2f);
         Button sendButton = sendBtnGO.AddComponent<Button>();
@@ -98,8 +111,10 @@ public class ChamuscaUISetup : EditorWindow
         GameObject sendTxtGO = new GameObject("Text");
         sendTxtGO.transform.SetParent(sendBtnGO.transform, false);
         RectTransform sendTxtRT = sendTxtGO.AddComponent<RectTransform>();
-        sendTxtRT.anchorMin = Vector2.zero; sendTxtRT.anchorMax = Vector2.one;
-        sendTxtRT.offsetMin = Vector2.zero; sendTxtRT.offsetMax = Vector2.zero;
+        sendTxtRT.anchorMin = Vector2.zero;
+        sendTxtRT.anchorMax = Vector2.one;
+        sendTxtRT.offsetMin = Vector2.zero;
+        sendTxtRT.offsetMax = Vector2.zero;
         TextMeshProUGUI sendTxtTMP = sendTxtGO.AddComponent<TextMeshProUGUI>();
         sendTxtTMP.text = "Send";
         sendTxtTMP.color = Color.white;
@@ -110,11 +125,14 @@ public class ChamuscaUISetup : EditorWindow
         GameObject followUpGO = new GameObject("FollowUps");
         followUpGO.transform.SetParent(panel.transform, false);
         RectTransform followUpRT = followUpGO.AddComponent<RectTransform>();
-        followUpRT.anchorMin = new Vector2(0.05f, 0.02f); followUpRT.anchorMax = new Vector2(0.95f, 0.12f);
-        followUpRT.offsetMin = Vector2.zero; followUpRT.offsetMax = Vector2.zero;
+        followUpRT.anchorMin = new Vector2(0.05f, 0.02f);
+        followUpRT.anchorMax = new Vector2(0.95f, 0.12f);
+        followUpRT.offsetMin = Vector2.zero;
+        followUpRT.offsetMax = Vector2.zero;
         HorizontalLayoutGroup hlg = followUpGO.AddComponent<HorizontalLayoutGroup>();
         hlg.spacing = 15;
-        hlg.childControlWidth = true; hlg.childControlHeight = true;
+        hlg.childControlWidth = true;
+        hlg.childControlHeight = true;
 
         // Instantiate 3 Follow-up buttons
         uiManager.followUpButtons = new Button[3];
@@ -129,8 +147,10 @@ public class ChamuscaUISetup : EditorWindow
             GameObject fuTxtGO = new GameObject("Text");
             fuTxtGO.transform.SetParent(fuBtnGO.transform, false);
             RectTransform fuTxtRT = fuTxtGO.AddComponent<RectTransform>();
-            fuTxtRT.anchorMin = Vector2.zero; fuTxtRT.anchorMax = Vector2.one;
-            fuTxtRT.offsetMin = new Vector2(5, 5); fuTxtRT.offsetMax = new Vector2(-5, -5);
+            fuTxtRT.anchorMin = Vector2.zero;
+            fuTxtRT.anchorMax = Vector2.one;
+            fuTxtRT.offsetMin = new Vector2(5, 5);
+            fuTxtRT.offsetMax = new Vector2(-5, -5);
             TextMeshProUGUI fuTxtTMP = fuTxtGO.AddComponent<TextMeshProUGUI>();
             fuTxtTMP.text = "Suggestion " + (i + 1);
             fuTxtTMP.color = Color.white;
