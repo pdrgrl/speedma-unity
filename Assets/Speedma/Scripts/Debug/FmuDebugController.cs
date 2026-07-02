@@ -28,46 +28,72 @@ namespace Speedma.Debug
         [SerializeField]
         private ChamuscaSimController chamuscaController;
 
-        private bool _showHud = true;
+        [Header("Canvas HUD References")]
+        [SerializeField]
+        private GameObject hudPanel;
+        [SerializeField]
+        private TMPro.TextMeshProUGUI telemetryText;
+        [SerializeField]
+        private UnityEngine.UI.Button toggleButton;
 
-        private GUIStyle _boxStyle,
-            _labelStyle,
-            _onStyle,
-            _offStyle;
-        private bool _stylesReady;
+        private bool _showHud = false; // Hidden by default now
+
+        private void Start()
+        {
+            if (toggleButton != null)
+            {
+                toggleButton.onClick.AddListener(ToggleHud);
+            }
+            UpdateHudVisibility();
+        }
 
         private void Update()
         {
+            // Allow toggling with backquote keyboard shortcut too
             if (Keyboard.current != null && Keyboard.current.backquoteKey.wasPressedThisFrame)
-                _showHud = !_showHud;
+            {
+                ToggleHud();
+            }
+
+            if (_showHud && telemetryText != null)
+            {
+                UpdateTelemetryText();
+            }
         }
 
-        private void OnGUI()
+        public void SetCanvasUIReferences(GameObject panel, TMPro.TextMeshProUGUI text, UnityEngine.UI.Button button)
         {
-            if (!_showHud)
-                return;
-            EnsureStyles();
+            hudPanel = panel;
+            telemetryText = text;
+            toggleButton = button;
+            
+            if (toggleButton != null)
+            {
+                toggleButton.onClick.RemoveAllListeners();
+                toggleButton.onClick.AddListener(ToggleHud);
+            }
+            UpdateHudVisibility();
+        }
 
-            GUI.Box(new Rect(10, 10, HudWidth, HudHeight), string.Empty, _boxStyle);
+        private void ToggleHud()
+        {
+            _showHud = !_showHud;
+            UpdateHudVisibility();
+        }
 
-            float x = 22f;
-            float y = 20f;
+        private void UpdateHudVisibility()
+        {
+            if (hudPanel != null)
+            {
+                hudPanel.SetActive(_showHud);
+            }
+        }
 
-            Label(x, y, "Chamusca Digital Twin");
-            y += HudLineHeight + 2f;
-
-            string scenarioName = scenarioManager != null
-                ? scenarioManager.currentScenario.ToString()
-                : "Unknown";
-            Label(x, y, $"Scenario     : {scenarioName}");
-            y += HudLineHeight + 2f;
-
+        private void UpdateTelemetryText()
+        {
+            string scenarioName = scenarioManager != null ? scenarioManager.currentScenario.ToString() : "Unknown";
             bool active = sim != null && sim.IsSessionActive;
-            LabelColored(x, y, $"Session      : {(active ? "ACTIVE" : "INACTIVE")}", active);
-            y += HudLineHeight;
-
-            Label(x, y, $"Sim time     : {(sim != null ? sim.SimTime.ToString("F3") : "0.000")} s");
-            y += HudLineHeight;
+            float simTime = sim != null ? sim.SimTime : 0f;
 
             float vLine = sim != null ? sim.GetOutput("v_line") : 0f;
             float iBat = sim != null ? sim.GetOutput("i_bat") : 0f;
@@ -79,72 +105,22 @@ namespace Speedma.Debug
             float batteryVoltage = sim != null ? sim.GetOutput("batteryVoltage") : 0f;
             float effectiveCells = sim != null ? sim.GetOutput("effectiveCells") : 0f;
 
-            Label(x, y, $"v_line       : {vLine, 8:F3} V");
-            y += HudLineHeight;
-            Label(x, y, $"batteryVolt  : {batteryVoltage, 8:F3} V");
-            y += HudLineHeight;
-            Label(x, y, $"houseCurrent : {houseCurrent, 8:F3} A");
-            y += HudLineHeight;
-            Label(x, y, $"i_bat        : {iBat, 8:F3} A");
-            y += HudLineHeight;
-            Label(x, y, $"soc          : {soc, 8:F5}");
-            y += HudLineHeight;
-            Label(x, y, $"houseLight   : {houseLightIntensity, 8:F3}");
-            y += HudLineHeight;
-            LabelColored(x, y, $"fuseState    : {OnOff(fuseState < 0.5f)}", fuseState < 0.5f);
-            y += HudLineHeight;
-            LabelColored(x, y, $"breakerState : {OnOff(breakerState < 0.5f)}", breakerState < 0.5f);
-            y += HudLineHeight;
-            Label(x, y, $"tap/cell     : {effectiveCells, 8:F0}");
-            y += HudLineHeight + 4f;
-            Label(x, y, "[`] toggle HUD");
-        }
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            sb.AppendLine($"<b>Scenario</b>: {scenarioName}");
+            sb.AppendLine($"<b>Session</b>: {(active ? "<color=#33F34D>ACTIVE</color>" : "<color=#B5B5B5>INACTIVE</color>")}");
+            sb.AppendLine($"<b>Sim Time</b>: {simTime:F3} s");
+            sb.AppendLine("--------------------------------");
+            sb.AppendLine($"<b>v_line</b>: {vLine:F3} V");
+            sb.AppendLine($"<b>batteryVolt</b>: {batteryVoltage:F3} V");
+            sb.AppendLine($"<b>houseCurrent</b>: {houseCurrent:F3} A");
+            sb.AppendLine($"<b>i_bat</b>: {iBat:F3} A");
+            sb.AppendLine($"<b>soc</b>: {soc:F5}");
+            sb.AppendLine($"<b>houseLight</b>: {houseLightIntensity:F3}");
+            sb.AppendLine($"<b>fuseState</b>: {(fuseState < 0.5f ? "<color=#33F34D>ON</color>" : "<color=#FF4F4F>TRIPPED</color>")}");
+            sb.AppendLine($"<b>breakerState</b>: {(breakerState < 0.5f ? "<color=#33F34D>ON</color>" : "<color=#FF4F4F>OPEN</color>")}");
+            sb.AppendLine($"<b>tap/cell</b>: {effectiveCells:F0}");
 
-        private static string OnOff(bool v) => v ? "ON  ✓" : "OFF ✗";
-
-        private void Label(float x, float y, string text) =>
-            GUI.Label(new Rect(x, y, HudLabelWidth, HudLineHeight), text, _labelStyle);
-
-        private void LabelColored(float x, float y, string text, bool on) =>
-            GUI.Label(
-                new Rect(x, y, HudLabelWidth, HudLineHeight),
-                text,
-                on ? _onStyle : _offStyle
-            );
-
-        private void EnsureStyles()
-        {
-            if (_stylesReady)
-                return;
-            _stylesReady = true;
-            _boxStyle = new GUIStyle(GUI.skin.box)
-            {
-                normal = { background = MakeTex(2, 2, new Color(0f, 0f, 0f, 0.75f)) },
-            };
-            _labelStyle = new GUIStyle(GUI.skin.label)
-            {
-                normal = { textColor = Color.white },
-                fontSize = 16,
-            };
-            _onStyle = new GUIStyle(_labelStyle)
-            {
-                normal = { textColor = new Color(0.2f, 0.95f, 0.3f) },
-            };
-            _offStyle = new GUIStyle(_labelStyle)
-            {
-                normal = { textColor = new Color(0.7f, 0.7f, 0.7f) },
-            };
-        }
-
-        private static Texture2D MakeTex(int w, int h, Color col)
-        {
-            var t = new Texture2D(w, h);
-            var p = new Color[w * h];
-            for (int i = 0; i < p.Length; i++)
-                p[i] = col;
-            t.SetPixels(p);
-            t.Apply();
-            return t;
+            telemetryText.text = sb.ToString();
         }
     }
 }

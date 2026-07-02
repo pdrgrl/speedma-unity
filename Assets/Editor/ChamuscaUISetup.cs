@@ -9,16 +9,21 @@ public class ChamuscaUISetup : EditorWindow
     [MenuItem("Chamusca/Generate RAG UI")]
     public static void GenerateUI()
     {
-        // 1. Create Canvas
+        // 1. Destroy old Canvas if exists to prevent duplicates
+        GameObject oldCanvas = GameObject.Find("Chamusca_Canvas");
+        if (oldCanvas != null)
+        {
+            DestroyImmediate(oldCanvas);
+        }
+
+        // 2. Create Canvas
         GameObject canvasGO = new GameObject("Chamusca_Canvas");
         Canvas canvas = canvasGO.AddComponent<Canvas>();
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-        canvasGO.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler
-            .ScaleMode
-            .ScaleWithScreenSize;
+        canvasGO.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         canvasGO.AddComponent<GraphicRaycaster>();
 
-        // 2. Create Event System
+        // 3. Create Event System if missing
         if (Object.FindFirstObjectByType<UnityEngine.EventSystems.EventSystem>() == null)
         {
             GameObject es = new GameObject("EventSystem");
@@ -26,144 +31,149 @@ public class ChamuscaUISetup : EditorWindow
             es.AddComponent<UnityEngine.EventSystems.StandaloneInputModule>();
         }
 
-        // 3. API Client & UI Manager
-        GameObject managerGO = new GameObject("Chamusca_Managers");
-        ChamuscaAPIClient apiClient = managerGO.AddComponent<ChamuscaAPIClient>();
-        ChamuscaUIManager uiManager = managerGO.AddComponent<ChamuscaUIManager>();
-        uiManager.apiClient = apiClient;
-
-        // 4. Panel Background
-        GameObject panel = new GameObject("BackgroundPanel");
-        panel.transform.SetParent(canvasGO.transform, false);
-        RectTransform panelRT = panel.AddComponent<RectTransform>();
-        panelRT.anchorMin = new Vector2(0.1f, 0.1f);
-        panelRT.anchorMax = new Vector2(0.9f, 0.9f);
-        panelRT.offsetMin = Vector2.zero;
-        panelRT.offsetMax = Vector2.zero;
-        Image panelImg = panel.AddComponent<Image>();
-        panelImg.color = new Color(0.15f, 0.15f, 0.15f, 0.9f);
-
-        // 5. Answer Text Block (TMP)
-        GameObject answerGO = new GameObject("AnswerText");
-        answerGO.transform.SetParent(panel.transform, false);
-        RectTransform answerRT = answerGO.AddComponent<RectTransform>();
-        answerRT.anchorMin = new Vector2(0.05f, 0.3f);
-        answerRT.anchorMax = new Vector2(0.95f, 0.95f);
-        answerRT.offsetMin = Vector2.zero;
-        answerRT.offsetMax = Vector2.zero;
-        TextMeshProUGUI answerText = answerGO.AddComponent<TextMeshProUGUI>();
-        answerText.text = "Hello! I am the Chamusca 1920 Docent. Ask me anything...";
-        answerText.fontSize = 22;
-        answerText.color = Color.white;
-        answerText.alignment = TextAlignmentOptions.TopLeft;
-        uiManager.answerText = answerText;
-
-        // 6. Input Field Background & Field
-        GameObject inputGO = new GameObject("InputField");
-        inputGO.transform.SetParent(panel.transform, false);
-        RectTransform inputRT = inputGO.AddComponent<RectTransform>();
-        inputRT.anchorMin = new Vector2(0.05f, 0.15f);
-        inputRT.anchorMax = new Vector2(0.8f, 0.25f);
-        inputRT.offsetMin = Vector2.zero;
-        inputRT.offsetMax = Vector2.zero;
-        Image inputImg = inputGO.AddComponent<Image>();
-        inputImg.color = Color.white;
-
-        // Input Field Text Area
-        GameObject textAreaGO = new GameObject("Text Area");
-        textAreaGO.transform.SetParent(inputGO.transform, false);
-        RectTransform textAreaRT = textAreaGO.AddComponent<RectTransform>();
-        textAreaRT.anchorMin = Vector2.zero;
-        textAreaRT.anchorMax = Vector2.one;
-        textAreaRT.offsetMin = new Vector2(10, 10);
-        textAreaRT.offsetMax = new Vector2(-10, -10);
-        textAreaGO.AddComponent<RectMask2D>();
-
-        // Input Field Text Object
-        GameObject textGO = new GameObject("Text");
-        textGO.transform.SetParent(textAreaGO.transform, false);
-        RectTransform textRT = textGO.AddComponent<RectTransform>();
-        textRT.anchorMin = Vector2.zero;
-        textRT.anchorMax = Vector2.one;
-        textRT.offsetMin = Vector2.zero;
-        textRT.offsetMax = Vector2.zero;
-        TextMeshProUGUI textTMP = textGO.AddComponent<TextMeshProUGUI>();
-        textTMP.color = Color.black;
-        textTMP.fontSize = 20;
-
-        TMP_InputField inputField = inputGO.AddComponent<TMP_InputField>();
-        inputField.textViewport = textAreaRT;
-        inputField.textComponent = textTMP;
-        uiManager.inputField = inputField;
-
-        // 7. Send Button
-        GameObject sendBtnGO = new GameObject("SendButton");
-        sendBtnGO.transform.SetParent(panel.transform, false);
-        RectTransform sendBtnRT = sendBtnGO.AddComponent<RectTransform>();
-        sendBtnRT.anchorMin = new Vector2(0.82f, 0.15f);
-        sendBtnRT.anchorMax = new Vector2(0.95f, 0.25f);
-        sendBtnRT.offsetMin = Vector2.zero;
-        sendBtnRT.offsetMax = Vector2.zero;
-        Image sendBtnImg = sendBtnGO.AddComponent<Image>();
-        sendBtnImg.color = new Color(0.2f, 0.6f, 0.2f);
-        Button sendButton = sendBtnGO.AddComponent<Button>();
-
-        GameObject sendTxtGO = new GameObject("Text");
-        sendTxtGO.transform.SetParent(sendBtnGO.transform, false);
-        RectTransform sendTxtRT = sendTxtGO.AddComponent<RectTransform>();
-        sendTxtRT.anchorMin = Vector2.zero;
-        sendTxtRT.anchorMax = Vector2.one;
-        sendTxtRT.offsetMin = Vector2.zero;
-        sendTxtRT.offsetMax = Vector2.zero;
-        TextMeshProUGUI sendTxtTMP = sendTxtGO.AddComponent<TextMeshProUGUI>();
-        sendTxtTMP.text = "Send";
-        sendTxtTMP.color = Color.white;
-        sendTxtTMP.alignment = TextAlignmentOptions.Center;
-        uiManager.sendButton = sendButton;
-
-        // 8. Follow-up Buttons Layout
-        GameObject followUpGO = new GameObject("FollowUps");
-        followUpGO.transform.SetParent(panel.transform, false);
-        RectTransform followUpRT = followUpGO.AddComponent<RectTransform>();
-        followUpRT.anchorMin = new Vector2(0.05f, 0.02f);
-        followUpRT.anchorMax = new Vector2(0.95f, 0.12f);
-        followUpRT.offsetMin = Vector2.zero;
-        followUpRT.offsetMax = Vector2.zero;
-        HorizontalLayoutGroup hlg = followUpGO.AddComponent<HorizontalLayoutGroup>();
-        hlg.spacing = 15;
-        hlg.childControlWidth = true;
-        hlg.childControlHeight = true;
-
-        // Instantiate 3 Follow-up buttons
-        uiManager.followUpButtons = new Button[3];
-        for (int i = 0; i < 3; i++)
+        // 4. API Client & UI Manager setup
+        GameObject managerGO = GameObject.Find("Chamusca_Managers");
+        if (managerGO == null)
         {
-            GameObject fuBtnGO = new GameObject("FollowUpBtn_" + i);
-            fuBtnGO.transform.SetParent(followUpGO.transform, false);
-            Image fuBtnImg = fuBtnGO.AddComponent<Image>();
-            fuBtnImg.color = new Color(0.2f, 0.4f, 0.7f);
-            Button fuBtn = fuBtnGO.AddComponent<Button>();
-
-            GameObject fuTxtGO = new GameObject("Text");
-            fuTxtGO.transform.SetParent(fuBtnGO.transform, false);
-            RectTransform fuTxtRT = fuTxtGO.AddComponent<RectTransform>();
-            fuTxtRT.anchorMin = Vector2.zero;
-            fuTxtRT.anchorMax = Vector2.one;
-            fuTxtRT.offsetMin = new Vector2(5, 5);
-            fuTxtRT.offsetMax = new Vector2(-5, -5);
-            TextMeshProUGUI fuTxtTMP = fuTxtGO.AddComponent<TextMeshProUGUI>();
-            fuTxtTMP.text = "Suggestion " + (i + 1);
-            fuTxtTMP.color = Color.white;
-            fuTxtTMP.alignment = TextAlignmentOptions.Center;
-            fuTxtTMP.enableAutoSizing = true;
-            fuTxtTMP.fontSizeMin = 12;
-            fuTxtTMP.fontSizeMax = 20;
-
-            uiManager.followUpButtons[i] = fuBtn;
+            managerGO = new GameObject("Chamusca_Managers");
         }
+        ChamuscaAPIClient apiClient = managerGO.GetComponent<ChamuscaAPIClient>();
+        if (apiClient == null) apiClient = managerGO.AddComponent<ChamuscaAPIClient>();
+        
+        ChamuscaUIManager uiManager = managerGO.GetComponent<ChamuscaUIManager>();
+        if (uiManager == null) uiManager = managerGO.AddComponent<ChamuscaUIManager>();
+
+        // 5. Create Floating Top Header Panel (Premium minimal pill)
+        GameObject headerPanel = new GameObject("HeaderPanel");
+        headerPanel.transform.SetParent(canvasGO.transform, false);
+        RectTransform headerRT = headerPanel.AddComponent<RectTransform>();
+        headerRT.anchorMin = new Vector2(0.5f, 1f);
+        headerRT.anchorMax = new Vector2(0.5f, 1f);
+        headerRT.pivot = new Vector2(0.5f, 1f);
+        headerRT.anchoredPosition = new Vector2(0f, -15f);
+        headerRT.sizeDelta = new Vector2(400f, 32f); // Shorter height, narrower width
+
+        Image headerImg = headerPanel.AddComponent<Image>();
+        headerImg.color = new Color(0.04f, 0.04f, 0.04f, 0.65f); // Deep dark, semi-transparent
+
+        // 6. Header Text components (Status + Focus Label)
+        GameObject statusTextGO = new GameObject("StatusText");
+        statusTextGO.transform.SetParent(headerPanel.transform, false);
+        RectTransform statusRT = statusTextGO.AddComponent<RectTransform>();
+        statusRT.anchorMin = new Vector2(0f, 0f);
+        statusRT.anchorMax = new Vector2(0.22f, 1f);
+        statusRT.offsetMin = new Vector2(12f, 0f);
+        statusRT.offsetMax = new Vector2(0f, 0f);
+        
+        TextMeshProUGUI statusText = statusTextGO.AddComponent<TextMeshProUGUI>();
+        statusText.text = "● Ready";
+        statusText.fontSize = 11; // Professional, smaller font
+        statusText.fontStyle = FontStyles.Bold;
+        statusText.color = new Color(0.35f, 0.95f, 0.5f); // Soft green
+        statusText.alignment = TextAlignmentOptions.MidlineLeft;
+        
+        // Wire up SimulationStatusUI references if present
+        SimulationStatusUI simStatusUI = managerGO.GetComponent<SimulationStatusUI>();
+        if (simStatusUI == null) simStatusUI = managerGO.AddComponent<SimulationStatusUI>();
+        simStatusUI.statusText = statusText;
+
+        GameObject focusLabelGO = new GameObject("FocusLabel");
+        focusLabelGO.transform.SetParent(headerPanel.transform, false);
+        RectTransform focusRT = focusLabelGO.AddComponent<RectTransform>();
+        focusRT.anchorMin = new Vector2(0.22f, 0f);
+        focusRT.anchorMax = new Vector2(1f, 1f);
+        focusRT.offsetMin = new Vector2(10f, 0f);
+        focusRT.offsetMax = new Vector2(-12f, 0f);
+
+        TextMeshProUGUI focusLabel = focusLabelGO.AddComponent<TextMeshProUGUI>();
+        focusLabel.text = "SELECT COMPONENT";
+        focusLabel.fontSize = 11; // Clean small font
+        focusLabel.fontStyle = FontStyles.UpperCase | FontStyles.Normal;
+        focusLabel.color = new Color(0.85f, 0.85f, 0.85f, 0.85f); // Muted gray
+        focusLabel.alignment = TextAlignmentOptions.MidlineLeft;
+        uiManager.focusLabelText = focusLabel;
+
+        // 7. Toggle Debug Panel Button (Bottom Right) - Minimalist transparent square
+        GameObject debugBtnGO = new GameObject("DebugHUD_ToggleBtn");
+        debugBtnGO.transform.SetParent(canvasGO.transform, false);
+        RectTransform debugBtnRT = debugBtnGO.AddComponent<RectTransform>();
+        debugBtnRT.anchorMin = new Vector2(1f, 0f);
+        debugBtnRT.anchorMax = new Vector2(1f, 0f);
+        debugBtnRT.pivot = new Vector2(1f, 0f);
+        debugBtnRT.anchoredPosition = new Vector2(-15f, 15f);
+        debugBtnRT.sizeDelta = new Vector2(30f, 30f); // Small 30px button
+
+        Image debugBtnImg = debugBtnGO.AddComponent<Image>();
+        debugBtnImg.color = new Color(0.04f, 0.04f, 0.04f, 0.7f);
+        Button debugButton = debugBtnGO.AddComponent<Button>();
+
+        GameObject debugBtnTextGO = new GameObject("Text");
+        debugBtnTextGO.transform.SetParent(debugBtnGO.transform, false);
+        RectTransform debugBtnTxtRT = debugBtnTextGO.AddComponent<RectTransform>();
+        debugBtnTxtRT.anchorMin = Vector2.zero;
+        debugBtnTxtRT.anchorMax = Vector2.one;
+        debugBtnTxtRT.offsetMin = Vector2.zero;
+        debugBtnTxtRT.offsetMax = Vector2.zero;
+        TextMeshProUGUI debugBtnTxt = debugBtnTextGO.AddComponent<TextMeshProUGUI>();
+        debugBtnTxt.text = "HUD"; // Text instead of emoji for a scientific look
+        debugBtnTxt.fontSize = 9;
+        debugBtnTxt.fontStyle = FontStyles.Bold;
+        debugBtnTxt.color = new Color(0.7f, 0.7f, 0.7f);
+        debugBtnTxt.alignment = TextAlignmentOptions.Center;
+
+        // 8. Debug HUD Overlay Panel (Anchored to Right Edge) - Sleek sidebar
+        GameObject debugHudGO = new GameObject("DebugHUD_Panel");
+        debugHudGO.transform.SetParent(canvasGO.transform, false);
+        RectTransform hudRT = debugHudGO.AddComponent<RectTransform>();
+        hudRT.anchorMin = new Vector2(1f, 0.5f);
+        hudRT.anchorMax = new Vector2(1f, 0.5f);
+        hudRT.pivot = new Vector2(1f, 0.5f);
+        hudRT.anchoredPosition = new Vector2(-15f, 0f);
+        hudRT.sizeDelta = new Vector2(200f, 260f); // Compacted HUD
+
+        Image hudImg = debugHudGO.AddComponent<Image>();
+        hudImg.color = new Color(0.04f, 0.04f, 0.04f, 0.8f); // Translucent Dark sidebar
+
+        // Title for Debug Panel
+        GameObject titleGO = new GameObject("Title");
+        titleGO.transform.SetParent(debugHudGO.transform, false);
+        RectTransform titleRT = titleGO.AddComponent<RectTransform>();
+        titleRT.anchorMin = new Vector2(0f, 1f);
+        titleRT.anchorMax = new Vector2(1f, 1f);
+        titleRT.pivot = new Vector2(0.5f, 1f);
+        titleRT.anchoredPosition = new Vector2(0f, -10f);
+        titleRT.sizeDelta = new Vector2(-20f, 20f);
+        
+        TextMeshProUGUI titleTxt = titleGO.AddComponent<TextMeshProUGUI>();
+        titleTxt.text = "TELEMETRY";
+        titleTxt.fontSize = 10;
+        titleTxt.fontStyle = FontStyles.Bold | FontStyles.UpperCase;
+        titleTxt.color = new Color(0.5f, 0.5f, 0.5f); // Slate grey title
+        titleTxt.alignment = TextAlignmentOptions.Left;
+
+        // Telemetry details text label (formatted strings)
+        GameObject telemetryGO = new GameObject("TelemetryText");
+        telemetryGO.transform.SetParent(debugHudGO.transform, false);
+        RectTransform teleRT = telemetryGO.AddComponent<RectTransform>();
+        teleRT.anchorMin = new Vector2(0f, 0f);
+        teleRT.anchorMax = new Vector2(1f, 1f);
+        teleRT.offsetMin = new Vector2(10f, 10f);
+        teleRT.offsetMax = new Vector2(-10f, -30f);
+
+        TextMeshProUGUI teleText = telemetryGO.AddComponent<TextMeshProUGUI>();
+        teleText.text = "CONNECTING...";
+        teleText.fontSize = 9; // High density, small, crisp text layout
+        teleText.lineSpacing = 4f;
+        teleText.color = new Color(0.9f, 0.9f, 0.9f);
+        teleText.alignment = TextAlignmentOptions.TopLeft;
+
+        // Add a modern Canvas-based Debug HUD controller to run telemetry updates
+        Speedma.Debug.FmuDebugController hudController = managerGO.GetComponent<Speedma.Debug.FmuDebugController>();
+        if (hudController == null) hudController = managerGO.AddComponent<Speedma.Debug.FmuDebugController>();
+        hudController.SetCanvasUIReferences(debugHudGO, teleText, debugButton);
 
         Selection.activeGameObject = canvasGO;
-        Debug.Log("Chamusca RAG UI Editor Script executed successfully!");
+        Debug.Log("Chamusca Minimal RAG UI created successfully!");
     }
 }
 #endif
