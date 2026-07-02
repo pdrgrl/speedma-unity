@@ -2893,15 +2893,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InspectionCamera
   targetPosition: {x: -0.23, y: 1.25, z: -5}
   targetDistance: 3
-  rotationSpeed: 5
+  rotationSpeed: 0.1
   transitionSpeed: 5
   zoomSpeed: 2
+  zoomStepAmount: 2
   minDistance: 0.5
   maxDistance: 5
   wallCollisionLayer:
     serializedVersion: 2
     m_Bits: 8
   cameraCollisionRadius: 0.1
+  maxHorizontalAngle: 60
+  minVerticalAngle: -20
+  maxVerticalAngle: 60
 --- !u!64 &341204560
 MeshCollider:
   m_ObjectHideFlags: 0
