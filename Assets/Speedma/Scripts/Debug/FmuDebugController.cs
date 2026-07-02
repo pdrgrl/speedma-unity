@@ -5,6 +5,7 @@
 // ============================================================
 
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Chamusca.Simulation;
 
 namespace Speedma.Debug
@@ -37,7 +38,7 @@ namespace Speedma.Debug
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.BackQuote))
+            if (Keyboard.current != null && Keyboard.current.backquoteKey.wasPressedThisFrame)
                 _showHud = !_showHud;
         }
 

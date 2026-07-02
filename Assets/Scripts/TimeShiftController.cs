@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.InputSystem;
 
 public class TimeShiftController : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class TimeShiftController : MonoBehaviour
     void Update()
     {
         // Press 'M' to toggle between 1920s and 2026
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Keyboard.current != null && Keyboard.current.mKey.wasPressedThisFrame)
         {
             isHistorical = !isHistorical;
             SetEnvironment(isHistorical);
