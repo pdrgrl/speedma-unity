@@ -42,6 +42,7 @@ public class InspectionCamera : MonoBehaviour
     private Vector2 mouseDownPos;
     private bool isDragging = false;
     private const float dragThreshold = 5f;
+    private bool _dragStartedOnGui = false;
 
     void Start()
     {
@@ -106,7 +107,30 @@ public class InspectionCamera : MonoBehaviour
         if (IsLocked)
             return;
 
+        // Detect click down over UI/GUI to lock dragging
+        if (Mouse.current != null)
+        {
+            if (Mouse.current.leftButton.wasPressedThisFrame || Mouse.current.rightButton.wasPressedThisFrame)
+            {
+                bool overGui = (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) ||
+                               (Speedma.Debug.FmuDebugController.Instance != null && Speedma.Debug.FmuDebugController.Instance.IsMouseOverGui());
+                _dragStartedOnGui = overGui;
+            }
+
+            if (_dragStartedOnGui)
+            {
+                if (!Mouse.current.leftButton.isPressed && !Mouse.current.rightButton.isPressed)
+                {
+                    _dragStartedOnGui = false;
+                }
+                return; // Prevent camera drag interaction
+            }
+        }
+
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+            return;
+
+        if (Speedma.Debug.FmuDebugController.Instance != null && Speedma.Debug.FmuDebugController.Instance.IsMouseOverGui())
             return;
 
         // --- Touch Support ---

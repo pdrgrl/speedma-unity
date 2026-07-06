@@ -17,8 +17,9 @@ public class ChamuscaInteractionManager : MonoBehaviour
         if (Mouse.current == null || Camera.main == null)
             return;
 
-        // Clear hover states and exit early if clicking or hovering over UI
-        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+        // Clear hover states and exit early if clicking or hovering over UI (Canvas or IMGUI HUD)
+        if ((EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) ||
+            (Speedma.Debug.FmuDebugController.Instance != null && Speedma.Debug.FmuDebugController.Instance.IsMouseOverGui()))
         {
             ClearHover();
             return;
