@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class InspectionCamera : MonoBehaviour
 {
@@ -103,6 +104,9 @@ public class InspectionCamera : MonoBehaviour
     private void HandleInput()
     {
         if (IsLocked)
+            return;
+
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
             return;
 
         // --- Touch Support ---

@@ -36,10 +36,12 @@ public class SimulationStatusUI : MonoBehaviour
                 statusText.text  = readyLabel;
                 statusText.color = readyColour;
                 _wasReady = true;
+                _elapsed = 0f;
             }
             return;
         }
 
+        _wasReady = false;
         _elapsed += Time.deltaTime;
         statusText.text  = _elapsed < _timeout ? connectingLabel   : disconnectedLabel;
         statusText.color = _elapsed < _timeout ? connectingColour  : disconnectedColour;

@@ -43,7 +43,13 @@ namespace Speedma
 
         // ══════════════════════════════════════════════════════════════
 
-        private void Awake() => StartCoroutine(StartSession());
+        private Coroutine _startCoroutine;
+        private Coroutine _loopCoroutine;
+
+        private void Awake()
+        {
+            _startCoroutine = StartCoroutine(StartSession());
+        }
 
         private void OnDestroy()
         {
@@ -59,6 +65,36 @@ namespace Speedma
         public void SetInput(string name, bool value) => _inputs[name] = value;
 
         public void SetInput(string name, int value) => _inputs[name] = value;
+
+        public void RestartSession(string newFmuName)
+        {
+            if (_startCoroutine != null)
+            {
+                StopCoroutine(_startCoroutine);
+                _startCoroutine = null;
+            }
+            if (_loopCoroutine != null)
+            {
+                StopCoroutine(_loopCoroutine);
+                _loopCoroutine = null;
+            }
+            _startCoroutine = StartCoroutine(RestartSessionCoroutine(newFmuName));
+        }
+
+        private IEnumerator RestartSessionCoroutine(string newFmuName)
+        {
+            if (IsSessionActive)
+            {
+                IsSessionActive = false;
+                StatusMessage = "Stopping previous session...";
+                _outputs.Clear();
+                _inputs.Clear();
+                yield return StopSessionCoroutine();
+            }
+
+            fmuName = newFmuName;
+            yield return StartSession();
+        }
 
         // ── Session lifecycle ────────────────────────────────────────
 
@@ -77,7 +113,25 @@ namespace Speedma
             );
 
             if (IsSessionActive)
-                StartCoroutine(StepLoop());
+                _loopCoroutine = StartCoroutine(StepLoop());
+        }
+
+        private IEnumerator StopSessionCoroutine()
+        {
+            if (string.IsNullOrEmpty(SessionId)) yield break;
+            
+            string url = $"{backendUrl}/sim/stop";
+            string body = $"{{\"session_id\":\"{SessionId}\"}}";
+            byte[] bytes = Encoding.UTF8.GetBytes(body);
+            
+            using var req = new UnityWebRequest(url, "POST");
+            req.uploadHandler = new UploadHandlerRaw(bytes);
+            req.downloadHandler = new DownloadHandlerBuffer();
+            req.SetRequestHeader("Content-Type", "application/json");
+            req.timeout = 3;
+            yield return req.SendWebRequest();
+            
+            SessionId = null;
         }
 
         // Mirrors FmuTester: one step at a time, wait for HTTP response.

@@ -50,9 +50,30 @@ namespace Chamusca.Simulation
         [SerializeField]
         private bool resetProtectionRequested = false;
 
+        private SimulationScenario _lastScenario;
+
+        private void Start()
+        {
+            if (scenarioManager != null && simManager != null)
+            {
+                _lastScenario = scenarioManager.currentScenario;
+                string initialFmu = GetFmuNameForScenario(_lastScenario);
+                simManager.RestartSession(initialFmu);
+            }
+        }
+
         private void Update()
         {
             if (simManager == null || !simManager.IsSessionActive) return;
+
+            // Detect scenario changes at runtime
+            if (scenarioManager != null && scenarioManager.currentScenario != _lastScenario)
+            {
+                _lastScenario = scenarioManager.currentScenario;
+                string newFmu = GetFmuNameForScenario(_lastScenario);
+                simManager.RestartSession(newFmu);
+                return; // Wait for the new session to start before running updates
+            }
 
             // 1. Send Inputs based on current scenario
             UpdateInputs();
@@ -114,11 +135,13 @@ namespace Chamusca.Simulation
 
                 case SimulationScenario.ScenarioB:
                     simManager.SetInput("sw_engine", true); // Crossley ON
+                    simManager.SetInput("sw_ac_mains", false); // ASEA Motor OFF
                     simManager.SetInput("sw_dinamo_luz", sw_dinamo_luz);
                     simManager.SetInput("sw_carga_bat", sw_carga_bat);
                     break;
 
                 case SimulationScenario.ScenarioC:
+                    simManager.SetInput("sw_engine", false); // Crossley OFF
                     simManager.SetInput("sw_ac_mains", true); // ASEA Motor ON
                     simManager.SetInput("sw_carga_bat", sw_carga_bat);
                     simManager.SetInput("sw_dinamo_luz", sw_dinamo_luz);
@@ -131,5 +154,19 @@ namespace Chamusca.Simulation
         public void ToggleBatteryCharge() => sw_carga_bat = !sw_carga_bat;
         public void ToggleDynamoLight() => sw_dinamo_luz = !sw_dinamo_luz;
         public void RequestProtectionReset() => resetProtectionRequested = true;
+
+        private string GetFmuNameForScenario(SimulationScenario scenario)
+        {
+            switch (scenario)
+            {
+                case SimulationScenario.ScenarioA:
+                    return "CenarioA.fmu";
+                case SimulationScenario.ScenarioB:
+                case SimulationScenario.ScenarioC:
+                    return "CenarioB.fmu";
+                default:
+                    return "CenarioB.fmu";
+            }
+        }
     }
 }

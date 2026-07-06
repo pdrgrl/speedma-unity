@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 using Speedma;
 
 namespace Chamusca.Simulation
@@ -47,6 +48,9 @@ namespace Chamusca.Simulation
                 && Camera.main != null
             )
             {
+                if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+                    return;
+
                 Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
                 if (
                     Physics.Raycast(ray, out RaycastHit hit)
