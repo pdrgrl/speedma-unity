@@ -3,19 +3,19 @@
   <TypeDate>
     <guid>9be4bf403596bf642b1e30350336cf27</guid>
     <fileName>Assets/Editor/ChamuscaUISetup.cs</fileName>
-    <timeStamp>2026-02-24T16:51:26+00:00</timeStamp>
+    <timeStamp>2026-07-02T23:02:51.484825+01:00</timeStamp>
     <typeFullName />
   </TypeDate>
   <TypeDate>
     <guid>8960404f35b38a146bed3773e1ef1bf0</guid>
     <fileName>Assets/Editor/FmuTesterWindow.cs</fileName>
-    <timeStamp>2026-05-12T20:49:05.0760485+01:00</timeStamp>
+    <timeStamp>2026-07-06T13:09:31.9131305+01:00</timeStamp>
     <typeFullName />
   </TypeDate>
   <TypeDate>
     <guid>a3e3fb6b537f8bb4eadb3424d8094de1</guid>
     <fileName>Assets/Editor/RCSimTester.cs</fileName>
-    <timeStamp>2026-05-12T18:10:38.1596644+01:00</timeStamp>
+    <timeStamp>2026-07-06T13:08:17.9308559+01:00</timeStamp>
     <typeFullName />
   </TypeDate>
   <TypeDate>
@@ -50,7 +50,7 @@
   <TypeDate>
     <guid>d96b6f07b1afa984d8efd07bbc76128d</guid>
     <fileName>Assets/Scripts/ChamuscaInteractable.cs</fileName>
-    <timeStamp>2026-05-17T17:41:24.3951204+01:00</timeStamp>
+    <timeStamp>2026-07-02T22:35:59.8269838+01:00</timeStamp>
     <typeFullName>
       <string>ChamuscaInteractable</string>
     </typeFullName>
@@ -59,7 +59,7 @@
   <TypeDate>
     <guid>f5eef259e7a5da846816765c6fc58251</guid>
     <fileName>Assets/Scripts/ChamuscaInteractionManager.cs</fileName>
-    <timeStamp>2026-05-17T18:04:17.8918658+01:00</timeStamp>
+    <timeStamp>2026-07-06T18:05:48.9652791+01:00</timeStamp>
     <typeFullName>
       <string>ChamuscaInteractionManager</string>
     </typeFullName>
@@ -68,7 +68,7 @@
   <TypeDate>
     <guid>72d79a17b914f4b49bb8ff46b3dbb116</guid>
     <fileName>Assets/Scripts/ChamuscaUIManager.cs</fileName>
-    <timeStamp>2026-05-17T17:31:52.5381928+01:00</timeStamp>
+    <timeStamp>2026-07-02T22:50:07.9754188+01:00</timeStamp>
     <typeFullName>
       <string>ChamuscaUIManager</string>
     </typeFullName>
@@ -77,7 +77,7 @@
   <TypeDate>
     <guid>9c6d2c4409c2e20469e77b8f9e1d3836</guid>
     <fileName>Assets/Scripts/InspectionCamera.cs</fileName>
-    <timeStamp>2026-05-17T18:04:01.2692805+01:00</timeStamp>
+    <timeStamp>2026-07-06T18:05:25.8109215+01:00</timeStamp>
     <typeFullName>
       <string>InspectionCamera</string>
     </typeFullName>
@@ -95,7 +95,7 @@
   <TypeDate>
     <guid>76a99aeacc5084d4083cca388cfe8b4f</guid>
     <fileName>Assets/Scripts/RheostatWheel.cs</fileName>
-    <timeStamp>2026-05-17T16:55:03.4549245+01:00</timeStamp>
+    <timeStamp>2026-07-06T18:34:13.6990697+01:00</timeStamp>
     <typeFullName>
       <string>RheostatWheel</string>
     </typeFullName>
@@ -113,7 +113,7 @@
   <TypeDate>
     <guid>c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8</guid>
     <fileName>Assets/Scripts/SimulationStatusUI.cs</fileName>
-    <timeStamp>2026-05-12T21:25:03.2827323+01:00</timeStamp>
+    <timeStamp>2026-07-06T18:00:04.9891819+01:00</timeStamp>
     <typeFullName>
       <string>SimulationStatusUI</string>
     </typeFullName>
@@ -131,7 +131,7 @@
   <TypeDate>
     <guid>4fc9593a7e14ba64f90811c054604be5</guid>
     <fileName>Assets/Scripts/TimeShiftController.cs</fileName>
-    <timeStamp>2026-04-17T23:02:25.8242373+01:00</timeStamp>
+    <timeStamp>2026-07-02T19:29:58.2760934+01:00</timeStamp>
     <typeFullName>
       <string>TimeShiftController</string>
     </typeFullName>
@@ -203,7 +203,7 @@
   <TypeDate>
     <guid>dd123ffe9f1fc9a4a8973cea4843b164</guid>
     <fileName>Assets/Speedma/Scripts/AmpController.cs</fileName>
-    <timeStamp>2026-05-12T23:21:04.7666692+01:00</timeStamp>
+    <timeStamp>2026-06-21T22:52:14.5643477+01:00</timeStamp>
     <typeFullName>
       <string>Speedma.AmpController</string>
     </typeFullName>
@@ -221,7 +221,7 @@
   <TypeDate>
     <guid>20388fa4789e4884db3dcf44615d3280</guid>
     <fileName>Assets/Speedma/Scripts/SpeedmaSimManager.cs</fileName>
-    <timeStamp>2026-05-17T18:15:28.9637715+01:00</timeStamp>
+    <timeStamp>2026-07-06T17:55:54.1980893+01:00</timeStamp>
     <typeFullName>
       <string>Speedma.SpeedmaSimManager</string>
     </typeFullName>
@@ -230,9 +230,115 @@
   <TypeDate>
     <guid>b8d25d86f57990f44a8ef8f16f5d5b48</guid>
     <fileName>Assets/Speedma/Scripts/Debug/FmuDebugController.cs</fileName>
-    <timeStamp>2026-05-17T18:27:11.2014574+01:00</timeStamp>
+    <timeStamp>2026-07-02T23:03:09.9615853+01:00</timeStamp>
     <typeFullName>
       <string>Speedma.Debug.FmuDebugController</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>ec62c99b2e418c646b880914de192674</guid>
+    <fileName>Assets/Scripts/ConveyorBeltPhysical.cs</fileName>
+    <timeStamp>2026-06-07T23:10:49.5094499+01:00</timeStamp>
+    <typeFullName>
+      <string>ConveyorBeltPhysical</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>c92823977c860d2438b26edabdb38d16</guid>
+    <fileName>Assets/Scripts/ReductorDuploWheel.cs</fileName>
+    <timeStamp>2026-06-21T21:20:45.4062137+01:00</timeStamp>
+    <typeFullName>
+      <string>ReductorDuploWheel</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>66ef57136bfa9a74aaddfa2b5e2da59e</guid>
+    <fileName>Assets/Scripts/ScrollBeltTexture.cs</fileName>
+    <timeStamp>2026-06-07T23:54:58.7171941+01:00</timeStamp>
+    <typeFullName>
+      <string>ScrollBeltTexture</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>2fb1bd577c005be428a6a0bb71002780</guid>
+    <fileName>Assets/Scripts/Editor/ScenarioManagerEditor.cs</fileName>
+    <timeStamp>2026-06-20T20:30:14.770504+01:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>cc77e9eec44c92b4da22d53ebab1070f</guid>
+    <fileName>Assets/Scripts/Simulation/BatteryCellSelector.cs</fileName>
+    <timeStamp>2026-06-20T23:11:01.2355202+01:00</timeStamp>
+    <typeFullName>
+      <string>Chamusca.Simulation.BatteryCellSelector</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>276fc159534ba4a44b5a7dc0f522bb1c</guid>
+    <fileName>Assets/Scripts/Simulation/ChamuscaSimController.cs</fileName>
+    <timeStamp>2026-07-06T18:45:13.874326+01:00</timeStamp>
+    <typeFullName>
+      <string>Chamusca.Simulation.ChamuscaSimController</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>11de6bebd00804944ae089d37c946ae6</guid>
+    <fileName>Assets/Scripts/Simulation/FmuBreakerSwitch.cs</fileName>
+    <timeStamp>2026-07-06T18:02:49.5761194+01:00</timeStamp>
+    <typeFullName>
+      <string>Chamusca.Simulation.FmuBreakerSwitch</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>01bc5ecc55d0400459f64b70cdcf7026</guid>
+    <fileName>Assets/Scripts/Simulation/FmuReplaceableFuse.cs</fileName>
+    <timeStamp>2026-07-06T18:02:57.6820659+01:00</timeStamp>
+    <typeFullName>
+      <string>Chamusca.Simulation.FmuReplaceableFuse</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>953c05d525dafb94e888463a955799d4</guid>
+    <fileName>Assets/Scripts/Simulation/FmuToggleSwitch.cs</fileName>
+    <timeStamp>2026-07-06T18:02:38.4856741+01:00</timeStamp>
+    <typeFullName>
+      <string>Chamusca.Simulation.FmuToggleSwitch</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>9a62fd4752ce4e84c9a508906886f137</guid>
+    <fileName>Assets/Scripts/Simulation/HouseLightController.cs</fileName>
+    <timeStamp>2026-06-21T23:01:28.9356522+01:00</timeStamp>
+    <typeFullName>
+      <string>Chamusca.Simulation.HouseLightController</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>56587ef9f7acefa4098f60b6c37e89fc</guid>
+    <fileName>Assets/Scripts/Simulation/ScenarioManager.cs</fileName>
+    <timeStamp>2026-06-20T20:28:52.7385355+01:00</timeStamp>
+    <typeFullName>
+      <string>Chamusca.Simulation.SimulationScenario</string>
+      <string>Chamusca.Simulation.ScenarioManager</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>590be8c534bcc03409644fa40630158b</guid>
+    <fileName>Assets/Scripts/Simulation/VoltmeterPointer.cs</fileName>
+    <timeStamp>2026-06-21T21:12:27.9000188+01:00</timeStamp>
+    <typeFullName>
+      <string>Chamusca.Simulation.VoltmeterPointer</string>
     </typeFullName>
     <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
   </TypeDate>

@@ -578,12 +578,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76a99aeacc5084d4083cca388cfe8b4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RheostatWheel
-  fmuLink: {fileID: 1934691296}
+  controller: {fileID: 0}
   wheel: {fileID: 1034949219}
   orbitCamera: {fileID: 330585548}
   angleAtMaxResistance: 0
   angleAtMinResistance: 334
-  ohmPerPixel: 0.1
+  sensitivity: 0.005
   invertDrag: 0
   rotationSpeed: 10
   grabHintText: {fileID: 0}
@@ -967,6 +967,7 @@ Transform:
   - {fileID: 957574312}
   - {fileID: 1373687882}
   - {fileID: 1934691293}
+  - {fileID: 1783284604}
   m_Father: {fileID: 1827762972}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &99252966 stripped
@@ -13415,12 +13416,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1783284599}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 89981850}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1784172221 stripped
 GameObject:
@@ -13873,7 +13874,8 @@ MonoBehaviour:
   dependencyLightController: {fileID: 1373687883}
   panelLightController: {fileID: 1972746292}
   batteryRoomLightController: {fileID: 957574313}
-  redutor: {fileID: 6408511326106532278}
+  redutorCarga: {fileID: 0}
+  redutorDescarga: {fileID: 0}
   houseLightSwitch: {fileID: 953541469}
   dependencyLightSwitch: {fileID: 2095296013}
   panelLightSwitch: {fileID: 75720900}
@@ -13891,9 +13893,12 @@ MonoBehaviour:
   varPanelLight: sw_quadro_luz
   varBatteryRoomLight: sw_bat_luz
   varResetProtection: resetProtection
+  rheostat_pos: 0.2
+  engine_rpm: 350
   sw_dinamo_luz: 0
   sw_carga_bat: 0
   sw_bat_luz: 0
+  sw_bat_luz_lever: 0
   sw_casa_luz: 0
   resetProtectionRequested: 0
 --- !u!1 &1836838864 stripped
@@ -17234,11 +17239,11 @@ RectTransform:
   - {fileID: 416495087}
   m_Father: {fileID: 1669212997}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -15, y: -0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -0}
   m_SizeDelta: {x: 200, y: 336.8141}
-  m_Pivot: {x: 1, y: 0.5}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &2110925524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51304,5 +51309,4 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1827762972}
-  - {fileID: 1783284604}
   - {fileID: 1669212997}

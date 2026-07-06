@@ -1,5 +1,5 @@
 // Assets/Scripts/RheostatWheel.cs
-using Speedma;
+using Chamusca.Simulation;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -12,7 +12,7 @@ using UnityEngine.InputSystem;
 public class RheostatWheel : MonoBehaviour
 {
     [Header("References")]
-    public FmuSceneLink fmuLink;
+    public ChamuscaSimController controller;
 
     [Tooltip("The 'wheel' child Transform of SM_Rheostat.")]
     public Transform wheel;
@@ -21,12 +21,12 @@ public class RheostatWheel : MonoBehaviour
     public InspectionCamera orbitCamera;
 
     [Header("Angle Mapping")]
-    public float angleAtMaxResistance = 0f; // Z=0°   → high resistance, low amps
-    public float angleAtMinResistance = 334f; // Z=334° → low resistance, high amps
+    public float angleAtMaxResistance = 0f; // Z=0°   → high resistance, low amps (rheostat_pos = 1.0)
+    public float angleAtMinResistance = 334f; // Z=334° → low resistance, high amps (rheostat_pos = 0.0)
 
     [Header("Drag Interaction")]
-    [Tooltip("Ohms changed per pixel of horizontal mouse movement. Raise for more sensitivity.")]
-    public float ohmPerPixel = 0.1f;
+    [Tooltip("Sensitivity of mouse drag. Change per pixel of horizontal mouse movement.")]
+    public float sensitivity = 0.005f;
 
     [Tooltip("Flip drag direction if needed.")]
     public bool invertDrag = false;
@@ -48,16 +48,16 @@ public class RheostatWheel : MonoBehaviour
 
     private void Start()
     {
-        if (fmuLink == null || wheel == null)
+        if (controller == null || wheel == null)
             return;
-        _currentAngle = ResistanceToAngle(fmuLink.RheostatValue);
+        _currentAngle = PosToAngle(controller.rheostat_pos);
         ApplyAngle(_currentAngle);
         SetHintVisible(false);
     }
 
     private void Update()
     {
-        if (fmuLink == null || wheel == null)
+        if (controller == null || wheel == null)
             return;
         if (Mouse.current == null)
             return;
@@ -68,9 +68,12 @@ public class RheostatWheel : MonoBehaviour
         if (!_grabbed)
         {
             // ── Wait for a click on the wheel ─────────────────────────────
-
             if (clicked && Camera.main != null)
             {
+                // Verify we are not clicking UI
+                if (UnityEngine.EventSystems.EventSystem.current != null && UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+                    return;
+
                 Ray ray = Camera.main.ScreenPointToRay(mousePos);
                 if (Physics.Raycast(ray, out RaycastHit hit) && hit.distance <= maxInteractDistance)
                 {
@@ -82,13 +85,17 @@ public class RheostatWheel : MonoBehaviour
         }
         else
         {
-            // ── Grabbed: horizontal delta → resistance ────────────────────
+            // ── Grabbed: horizontal delta → resistance position ───────────
             float deltaX = mousePos.x - _lastMouseX;
             _lastMouseX = mousePos.x;
 
             if (invertDrag)
                 deltaX = -deltaX;
-            fmuLink.RheostatValue -= deltaX * ohmPerPixel;
+
+            // Notice: drag left (negative deltaX) should turn wheel clockwise (increase angle, decrease resistance position)
+            // drag right (positive deltaX) should turn wheel counter-clockwise (decrease angle, increase resistance position)
+            controller.rheostat_pos += deltaX * sensitivity;
+            controller.rheostat_pos = Mathf.Clamp01(controller.rheostat_pos);
 
             bool escape =
                 Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame;
@@ -97,14 +104,11 @@ public class RheostatWheel : MonoBehaviour
         }
 
         // ── Visual ────────────────────────────────────────────────────────
-        float rawTarget = ResistanceToAngle(fmuLink.RheostatValue);
+        float rawTarget = PosToAngle(controller.rheostat_pos);
         _currentAngle = Mathf.LerpAngle(_currentAngle, rawTarget, Time.deltaTime * rotationSpeed);
 
         // Hard clamp: wheel cannot go outside [0°, 334°]
         _currentAngle = Mathf.Clamp(_currentAngle, 0f, 334f);
-
-        // Keep resistance in sync with the clamped angle
-        fmuLink.RheostatValue = AngleToResistance(_currentAngle);
 
         ApplyAngle(_currentAngle);
     }
@@ -130,18 +134,10 @@ public class RheostatWheel : MonoBehaviour
 
     // ── Conversion helpers ─────────────────────────────────────────────────
 
-    /// Resistance → Z angle
-    private float ResistanceToAngle(float resistance)
+    /// Rheostat position (0.0 to 1.0) → Z angle (334.0 to 0.0)
+    private float PosToAngle(float pos)
     {
-        float t = Mathf.InverseLerp(fmuLink.RheostatMax, fmuLink.RheostatMin, resistance);
-        return Mathf.Lerp(angleAtMaxResistance, angleAtMinResistance, t);
-    }
-
-    /// Z angle → Resistance (inverse of above)
-    private float AngleToResistance(float angle)
-    {
-        float t = Mathf.InverseLerp(angleAtMaxResistance, angleAtMinResistance, angle);
-        return Mathf.Lerp(fmuLink.RheostatMax, fmuLink.RheostatMin, t);
+        return (1f - pos) * 334f;
     }
 
     private void ApplyAngle(float zAngle)

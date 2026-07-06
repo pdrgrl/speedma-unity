@@ -16,9 +16,6 @@ using Speedma;
 public class ReductorDuploWheel : MonoBehaviour
 {
     [Header("References")]
-    [Tooltip("Optional FMU/scene link if you want to mirror the value elsewhere in Unity.")]
-    public FmuSceneLink fmuLink;
-
     [Tooltip("Optional simulation controller. If assigned, currentCell is used directly by ChamuscaSimController.")]
     public BatteryCellSelector selector;
 
@@ -177,11 +174,7 @@ public class ReductorDuploWheel : MonoBehaviour
             Debug.Log($"[ReductorDuploWheel] Sync selector.currentCell = {_currentCell}");
         }
 
-        if (fmuLink != null)
-        {
-            // Kept for parity with the rheostat pattern; the actual FMU input is read by the
-            // simulation controller via selector.currentCell.
-        }
+        // Selector is updated, which is read by ChamuscaSimController.
     }
 
     private void ApplyCell(int cell)
