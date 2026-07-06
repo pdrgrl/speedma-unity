@@ -175,10 +175,10 @@ RectTransform:
   - {fileID: 1717399569}
   m_Father: {fileID: 416495087}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 130.59999, y: -11}
-  m_SizeDelta: {x: 27.6, y: 22}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1240474
 MonoBehaviour:
@@ -578,7 +578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76a99aeacc5084d4083cca388cfe8b4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RheostatWheel
-  controller: {fileID: 0}
+  controller: {fileID: 1827762973}
   wheel: {fileID: 1034949219}
   orbitCamera: {fileID: 330585548}
   angleAtMaxResistance: 0
@@ -586,7 +586,7 @@ MonoBehaviour:
   sensitivity: 0.005
   invertDrag: 0
   rotationSpeed: 10
-  grabHintText: {fileID: 0}
+  grabHintText: {fileID: 412255043}
   maxInteractDistance: 2
 --- !u!1 &60247585 stripped
 GameObject:
@@ -967,7 +967,6 @@ Transform:
   - {fileID: 957574312}
   - {fileID: 1373687882}
   - {fileID: 1934691293}
-  - {fileID: 1783284604}
   m_Father: {fileID: 1827762972}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &99252966 stripped
@@ -2683,10 +2682,10 @@ RectTransform:
   - {fileID: 982038674}
   m_Father: {fileID: 416495087}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 95, y: -11}
-  m_SizeDelta: {x: 27.6, y: 22}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &352520880
 MonoBehaviour:
@@ -6754,10 +6753,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 416495087}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 36.6, y: -11}
-  m_SizeDelta: {x: 73.2, y: 22}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &891973741
 MonoBehaviour:
@@ -12196,7 +12195,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 960, y: 540}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -13319,110 +13318,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8887698652906907478, guid: 61668f9a329e984439cd11653aedd59b, type: 3}
---- !u!1 &1783284599
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1783284604}
-  - component: {fileID: 1783284603}
-  - component: {fileID: 1783284602}
-  - component: {fileID: 1783284601}
-  - component: {fileID: 1783284600}
-  m_Layer: 0
-  m_Name: Chamusca_Managers
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1783284600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1783284599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8d25d86f57990f44a8ef8f16f5d5b48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Speedma.Debug.FmuDebugController
-  sim: {fileID: 1934691294}
-  scenarioManager: {fileID: 1827762971}
-  chamuscaController: {fileID: 1827762973}
-  hudPanel: {fileID: 2110925522}
-  telemetryText: {fileID: 255489347}
-  toggleButton: {fileID: 551812716}
-  btnScenarioA: {fileID: 352520880}
-  btnScenarioB: {fileID: 1240474}
-  btnScenarioC: {fileID: 1953196545}
---- !u!114 &1783284601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1783284599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SimulationStatusUI
-  sim: {fileID: 1934691294}
-  statusText: {fileID: 1954201149}
-  connectingLabel: "\u25CF Connecting\u2026"
-  readyLabel: "\u25CF Ready"
-  disconnectedLabel: "\u25CF Not Ready"
-  connectingColour: {r: 1, g: 0.8, b: 0, a: 1}
-  readyColour: {r: 0.2, g: 0.9, b: 0.2, a: 1}
-  disconnectedColour: {r: 0.9, g: 0.2, b: 0.2, a: 1}
---- !u!114 &1783284602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1783284599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72d79a17b914f4b49bb8ff46b3dbb116, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChamuscaUIManager
-  focusLabelText: {fileID: 412255043}
-  currentFocusId: 
-  currentFocusDisplayName: 
---- !u!114 &1783284603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1783284599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 885e882d101f3a140995813944a129f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChamuscaAPIClient
-  backendUrl: http://127.0.0.1:8000/query
---- !u!4 &1783284604
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1783284599}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 89981850}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1784172221 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -83590031901953047, guid: 61668f9a329e984439cd11653aedd59b, type: 3}
@@ -15074,12 +14969,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1934691293}
-  - component: {fileID: 1934691296}
   - component: {fileID: 1934691295}
   - component: {fileID: 1934691294}
   - component: {fileID: 1934691298}
   - component: {fileID: 1934691300}
   - component: {fileID: 1934691299}
+  - component: {fileID: 1934691301}
   m_Layer: 0
   m_Name: MANAGER
   m_TagString: Untagged
@@ -15138,32 +15033,6 @@ MonoBehaviour:
   btnScenarioA: {fileID: 352520880}
   btnScenarioB: {fileID: 1240474}
   btnScenarioC: {fileID: 1953196545}
---- !u!114 &1934691296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1934691291}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81ebaa48e0a00294c957d98b659f6dea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Speedma.FmuSceneLink
-  sim: {fileID: 1934691294}
-  dynamoAmp: {fileID: 1995971444}
-  batteryAmp: {fileID: 466294467}
-  lampLight: {fileID: 1016932931}
-  outputAmpDinamo: amp_dinamo_out
-  outputAmpBateria: amp_bateria_out
-  outputVBat: v_bat_out
-  outputLampOn: lamp_on_out
-  inputSwDinamo: sw_dinamo
-  inputRheostat: r_reostato
-  inputSwLuz: sw_luz
-  rheostatValue: 2
-  rheostatMin: 0
-  rheostatMax: 10
 --- !u!114 &1934691298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15206,6 +15075,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaAPIClient
   backendUrl: http://127.0.0.1:8000/query
+--- !u!114 &1934691301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934691291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimulationStatusUI
+  sim: {fileID: 1934691294}
+  statusText: {fileID: 1954201149}
+  connectingLabel: "\u25CF Connecting\u2026"
+  readyLabel: "\u25CF Ready"
+  disconnectedLabel: "\u25CF Not Ready"
+  connectingColour: {r: 1, g: 0.8, b: 0, a: 1}
+  readyColour: {r: 0.2, g: 0.9, b: 0.2, a: 1}
+  disconnectedColour: {r: 0.9, g: 0.2, b: 0.2, a: 1}
 --- !u!64 &1940530388
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15289,10 +15178,10 @@ RectTransform:
   - {fileID: 1116669439}
   m_Father: {fileID: 416495087}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 166.2, y: -11}
-  m_SizeDelta: {x: 27.6, y: 22}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1953196545
 MonoBehaviour:
@@ -17221,7 +17110,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2110925523
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17241,7 +17130,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0}
+  m_AnchoredPosition: {x: 20, y: 0}
   m_SizeDelta: {x: 200, y: 336.8141}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &2110925524
@@ -38997,7 +38886,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c92823977c860d2438b26edabdb38d16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReductorDuploWheel
-  fmuLink: {fileID: 1934691296}
   selector: {fileID: 6408511326106532278}
   wheel: {fileID: 1725907113}
   orbitCamera: {fileID: 330585548}
