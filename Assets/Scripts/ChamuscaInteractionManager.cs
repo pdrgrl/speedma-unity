@@ -14,7 +14,41 @@ public class ChamuscaInteractionManager : MonoBehaviour
 
     void Update()
     {
-        if (Mouse.current == null || Camera.main == null)
+        if (Camera.main == null)
+            return;
+
+        bool hasInput = false;
+        Vector2 inputPosition = Vector2.zero;
+        bool isClickOrTap = false;
+
+        // 1. Check Touch first (Mobile/Web viewports)
+        if (Touchscreen.current != null && Touchscreen.current.touches.Count > 0)
+        {
+            var touch = Touchscreen.current.touches[0];
+            if (touch.isInProgress)
+            {
+                inputPosition = touch.position.ReadValue();
+                hasInput = true;
+            }
+            else if (touch.press.wasReleasedThisFrame)
+            {
+                inputPosition = touch.position.ReadValue();
+                hasInput = true;
+                isClickOrTap = true;
+            }
+        }
+        // 2. Fallback to Mouse (Desktop Editor/Standalone)
+        else if (Mouse.current != null)
+        {
+            inputPosition = Mouse.current.position.ReadValue();
+            hasInput = true;
+            if (Mouse.current.leftButton.wasPressedThisFrame)
+            {
+                isClickOrTap = true;
+            }
+        }
+
+        if (!hasInput)
             return;
 
         // Clear hover states and exit early if clicking or hovering over UI
@@ -24,8 +58,7 @@ public class ChamuscaInteractionManager : MonoBehaviour
             return;
         }
 
-        Vector2 mousePosition = Mouse.current.position.ReadValue();
-        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(inputPosition);
         RaycastHit hit;
 
         // 1. Hover logic
@@ -58,7 +91,7 @@ public class ChamuscaInteractionManager : MonoBehaviour
         }
 
         // 2. Click logic
-        if (Mouse.current.leftButton.wasPressedThisFrame)
+        if (isClickOrTap)
         {
             if (currentHovered != null && uiManager != null)
                 uiManager.SetFocus(currentHovered.componentId, currentHovered.displayName);

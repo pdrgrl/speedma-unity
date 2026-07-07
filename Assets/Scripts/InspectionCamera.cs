@@ -42,6 +42,9 @@ public class InspectionCamera : MonoBehaviour
     private Vector2 mouseDownPos;
     private bool isDragging = false;
     private const float dragThreshold = 5f;
+    private int _maxTouchCountThisGesture = 0;
+    private float _prevTouchDistance = 0f;
+    private Vector2 _lastTouchPosition;
 
     void Start()
     {
@@ -109,11 +112,11 @@ public class InspectionCamera : MonoBehaviour
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
             return;
 
-        // --- Touch Support ---
+        // --- Touch Support (Mobile/Web Friendly) ---
         if (Touchscreen.current != null)
         {
             var activeTouches = Touchscreen.current.touches;
-            int touchCount = 0;
+            int currentTouchCount = 0;
             UnityEngine.InputSystem.Controls.TouchControl firstTouch = null;
             UnityEngine.InputSystem.Controls.TouchControl secondTouch = null;
 
@@ -121,17 +124,43 @@ public class InspectionCamera : MonoBehaviour
             {
                 if (touch.isInProgress)
                 {
-                    touchCount++;
+                    currentTouchCount++;
                     if (firstTouch == null) firstTouch = touch;
                     else if (secondTouch == null) secondTouch = touch;
+
+                    _lastTouchPosition = touch.position.ReadValue();
                 }
             }
 
-            if (touchCount == 1 && firstTouch != null)
+            // Track the maximum number of touches detected during this gesture
+            if (currentTouchCount > _maxTouchCountThisGesture)
+            {
+                _maxTouchCountThisGesture = currentTouchCount;
+            }
+
+            if (currentTouchCount == 0)
+            {
+                // All fingers lifted: Evaluate tap interactions
+                if (_maxTouchCountThisGesture == 1 && !isDragging)
+                {
+                    if (!CheckHotspotInteraction(_lastTouchPosition))
+                    {
+                        Zoom(zoomStepAmount); // One finger tap = Zoom In
+                    }
+                }
+                else if (_maxTouchCountThisGesture >= 2)
+                {
+                    Zoom(-zoomStepAmount); // Two finger tap = Zoom Out
+                }
+
+                // Reset gesture state
+                _maxTouchCountThisGesture = 0;
+                isDragging = false;
+            }
+            else if (currentTouchCount == 1 && firstTouch != null)
             {
                 if (firstTouch.press.wasPressedThisFrame)
                 {
-                    // Track position for possible tap detection
                     mouseDownPos = firstTouch.position.ReadValue();
                     isDragging = false;
                 }
@@ -143,44 +172,51 @@ public class InspectionCamera : MonoBehaviour
                         isDragging = true;
                     }
 
-                    if (isDragging)
+                    // Only allow rotation if it isn't part of a multi-finger pinch gesture
+                    if (isDragging && _maxTouchCountThisGesture < 2)
                     {
                         currentX += delta.x * rotationSpeed;
                         currentY -= delta.y * rotationSpeed;
                         ClampAngles();
                     }
                 }
-                else if (firstTouch.press.wasReleasedThisFrame)
+            }
+            else if (currentTouchCount == 2 && firstTouch != null && secondTouch != null)
+            {
+                // Smooth pinch-to-zoom calculation
+                Vector2 pos1 = firstTouch.position.ReadValue();
+                Vector2 pos2 = secondTouch.position.ReadValue();
+                float currentTouchDistance = Vector2.Distance(pos1, pos2);
+
+                if (firstTouch.press.wasPressedThisFrame || secondTouch.press.wasPressedThisFrame)
                 {
-                    if (!isDragging)
+                    _prevTouchDistance = currentTouchDistance;
+                }
+                else
+                {
+                    float deltaDist = currentTouchDistance - _prevTouchDistance;
+                    if (Mathf.Abs(deltaDist) > 0.1f)
                     {
-                        // Check if we tapped a hotspot first before auto-zooming
-                        if (!CheckHotspotInteraction(firstTouch.position.ReadValue()))
-                        {
-                            // One finger tap: Zoom In
-                            Zoom(zoomStepAmount);
-                        }
+                        targetDistance -= deltaDist * 0.005f * zoomSpeed;
+                        targetDistance = Mathf.Clamp(targetDistance, minDistance, maxDistance);
+                        _prevTouchDistance = currentTouchDistance;
                     }
                 }
-                return; // Prioritize touch input, skip mouse handling if active touch present
             }
-            else if (touchCount == 2 && firstTouch != null && secondTouch != null)
+
+            // If a touch gesture is in progress or just finishing, bypass mouse input checks to avoid duplication
+            if (currentTouchCount > 0 || _maxTouchCountThisGesture > 0)
             {
-                if (firstTouch.press.wasReleasedThisFrame || secondTouch.press.wasReleasedThisFrame)
-                {
-                    Zoom(-zoomStepAmount);
-                }
                 return;
             }
         }
 
-        // --- Mouse & Keyboard / New Input System ---
+        // --- Mouse & Keyboard ---
         if (Mouse.current != null)
         {
             Vector2 mousePosition = Mouse.current.position.ReadValue();
             Vector2 delta = Mouse.current.delta.ReadValue();
 
-            // Right-click dragging or Left-click dragging
             if (Mouse.current.rightButton.isPressed)
             {
                 currentX += delta.x * rotationSpeed;
@@ -207,18 +243,24 @@ public class InspectionCamera : MonoBehaviour
                 }
             }
 
-            // Scroll Zoom
+            // Scroll Wheel Zoom
             Vector2 scrollDelta = Mouse.current.scroll.ReadValue();
             if (Mathf.Abs(scrollDelta.y) > 0.01f)
             {
-                targetDistance -= scrollDelta.y * 0.002f * zoomSpeed; // Scale scrollDelta.y down
+                targetDistance -= scrollDelta.y * 0.002f * zoomSpeed;
                 targetDistance = Mathf.Clamp(targetDistance, minDistance, maxDistance);
             }
 
-            // Click Zoom (Left Click = In, Right Click = Out)
-            if (Mouse.current.leftButton.wasReleasedThisFrame && !isDragging)
+            // Tap Zoom
+            bool bothReleasedOrPressed = (Mouse.current.leftButton.wasReleasedThisFrame && Mouse.current.rightButton.isPressed) ||
+                                         (Mouse.current.rightButton.wasReleasedThisFrame && Mouse.current.leftButton.isPressed);
+
+            if (bothReleasedOrPressed)
             {
-                // Check if clicked a hotspot first before performing zoom in
+                Zoom(-zoomStepAmount); // Simulated 2-finger zoom out
+            }
+            else if (Mouse.current.leftButton.wasReleasedThisFrame && !isDragging)
+            {
                 if (!CheckHotspotInteraction(mousePosition))
                 {
                     Zoom(zoomStepAmount);
@@ -226,7 +268,6 @@ public class InspectionCamera : MonoBehaviour
             }
             else if (Mouse.current.rightButton.wasReleasedThisFrame && delta.magnitude < 1.0f)
             {
-                // Right Click Tap (with minimal drag) -> Zoom Out
                 Zoom(-zoomStepAmount);
             }
         }
