@@ -154,31 +154,43 @@ namespace Speedma.Debug
             float cellsDescarga = sim != null ? sim.GetOutput("effectiveCellsDescarga") : 0f;
 
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            sb.AppendLine($"<b>Scenario</b>: {scenarioName}");
-            sb.AppendLine($"<b>Session</b>: {(active ? "<color=#33F34D>ACTIVE</color>" : "<color=#B5B5B5>INACTIVE</color>")}");
+            
+            string modeName = "";
+            switch (scenarioName)
+            {
+                case "ScenarioA": modeName = "Scenario A (1899) - Tudor Battery Discharge"; break;
+                case "ScenarioB": modeName = "Scenario B (1920) - Crossley Engine Generation"; break;
+                case "ScenarioC": modeName = "Scenario C (1929) - ASEA AC Motor Generation"; break;
+                default: modeName = scenarioName; break;
+            }
+
+            sb.AppendLine($"<b>Active Era / Mode</b>: {modeName}");
+            sb.AppendLine($"<b>Session Status</b>: {(active ? "<color=#33F34D>ACTIVE</color>" : "<color=#B5B5B5>INACTIVE</color>")}");
             sb.AppendLine($"<b>Sim Time</b>: {simTime:F3} s");
             sb.AppendLine("--------------------------------");
-            sb.AppendLine($"<b>V Line</b>: {vLine:F2} V");
-            sb.AppendLine($"<b>Bat Voltage (Total)</b>: {batteryVoltage:F2} V");
-            sb.AppendLine($"<b>Bat Volt (Carga)</b>: {batteryVoltageCarga:F2} V");
-            sb.AppendLine($"<b>i_din (Dynamo)</b>: {iDin:F2} A");
-            sb.AppendLine($"<b>i_bat (Battery)</b>: {iBat:F2} A");
-            sb.AppendLine($"<b>i_house (Load)</b>: {iHouse:F2} A");
-            sb.AppendLine($"<b>i_dep (Load)</b>: {iDep:F2} A");
-            sb.AppendLine($"<b>SOC</b>: {soc:P3}");
-            sb.AppendLine($"<b>Cells (Chg/Dis)</b>: {cellsCarga:F0} / {cellsDescarga:F0}");
+            sb.AppendLine($"<b>Bus Distribution Voltage</b>: {vLine:F2} V");
+            sb.AppendLine($"<b>Battery Voltage (Discharge Branch)</b>: {batteryVoltage:F2} V");
+            sb.AppendLine($"<b>Battery Voltage (Charge Branch)</b>: {batteryVoltageCarga:F2} V");
+            sb.AppendLine($"<b>Dynamo Generator Output</b>: {iDin:F2} A");
+
+            string direction = iBat > 0.1f ? " (Charging)" : (iBat < -0.1f ? " (Discharging)" : " (Idle)");
+            sb.AppendLine($"<b>Battery Current</b>: {iBat:F2} A{direction}");
+            sb.AppendLine($"<b>Main House Load</b>: {iHouse:F2} A");
+            sb.AppendLine($"<b>Dependencies Load</b>: {iDep:F2} A");
+            sb.AppendLine($"<b>Battery Storage Charge (SOC)</b>: {soc:P3}");
+            sb.AppendLine($"<b>Active Cells (Charge / Discharge)</b>: {cellsCarga:F0} / {cellsDescarga:F0}");
             sb.AppendLine("--------------------------------");
             
             string breakerColor = breakerState < 0.5f ? "#33F34D" : "#FF4F4F";
             string breakerText = breakerState < 0.5f ? "CLOSED" : "TRIPPED";
-            sb.AppendLine($"<b>Breaker</b>: <color={breakerColor}>{breakerText}</color>");
+            sb.AppendLine($"<b>Automatic Circuit Breaker (B. Dijunctor)</b>: <color={breakerColor}>{breakerText}</color>");
 
             string fDynText = fuseDynamo < 0.5f ? "OK" : "BLOWN";
             string fChgText = fuseCharge < 0.5f ? "OK" : "BLOWN";
             string fDisText = fuseDischarge < 0.5f ? "OK" : "BLOWN";
             string fHseText = fuseHouse < 0.5f ? "OK" : "BLOWN";
             
-            sb.AppendLine($"<b>Fuses (D/C/D/H)</b>: {fDynText} / {fChgText} / {fDisText} / {fHseText}");
+            sb.AppendLine($"<b>Fuses (Dynamo / Charge / Discharge / House)</b>: {fDynText} / {fChgText} / {fDisText} / {fHseText}");
 
             telemetryText.text = sb.ToString();
         }

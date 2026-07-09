@@ -2461,6 +2461,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -6592957211005202357, guid: 61668f9a329e984439cd11653aedd59b, type: 3}
+--- !u!4 &315806129 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4576826799210226696, guid: 61668f9a329e984439cd11653aedd59b, type: 3}
+  m_PrefabInstance: {fileID: 2105875462}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -7921,6 +7926,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 61668f9a329e984439cd11653aedd59b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1211700825}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 61668f9a329e984439cd11653aedd59b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1211700826}
     - targetCorrespondingSourceObject: {fileID: 2503433529462735728, guid: 61668f9a329e984439cd11653aedd59b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 557023014}
@@ -9044,6 +9052,26 @@ MonoBehaviour:
   indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
   forwardOffsetAmount: 0.05
+--- !u!114 &1211700826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211700824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953c05d525dafb94e888463a955799d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Chamusca.Simulation.FmuToggleSwitch
+  simManager: {fileID: 1934691294}
+  inputName: sw_reserva
+  maxInteractDistance: 3
+  switchHandle: {fileID: 1318480587}
+  rotationOff: {x: 0, y: 0, z: 0}
+  rotationOn: {x: -45, y: 0, z: 0}
+  rotationSpeed: 8
+  switchOn: 0
 --- !u!1 &1217356726
 GameObject:
   m_ObjectHideFlags: 0
@@ -9799,6 +9827,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -6592957211005202357, guid: 61668f9a329e984439cd11653aedd59b, type: 3}
+--- !u!4 &1318480587 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4576826799210226696, guid: 61668f9a329e984439cd11653aedd59b, type: 3}
+  m_PrefabInstance: {fileID: 1038304708}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1326435836
 GameObject:
   m_ObjectHideFlags: 0
@@ -10047,6 +10080,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -6592957211005202357, guid: 61668f9a329e984439cd11653aedd59b, type: 3}
+--- !u!4 &1353249258 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4576826799210226696, guid: 61668f9a329e984439cd11653aedd59b, type: 3}
+  m_PrefabInstance: {fileID: 1438784152}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1359539842 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1805940778159003073, guid: 52a1e7f480e2dba4a87367ddef959703, type: 3}
@@ -10336,6 +10374,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 61668f9a329e984439cd11653aedd59b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1438784154}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 61668f9a329e984439cd11653aedd59b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1438784155}
     - targetCorrespondingSourceObject: {fileID: 2503433529462735728, guid: 61668f9a329e984439cd11653aedd59b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1042368949}
@@ -10387,6 +10428,26 @@ MonoBehaviour:
   indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
   forwardOffsetAmount: 0.05
+--- !u!114 &1438784155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282661598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953c05d525dafb94e888463a955799d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Chamusca.Simulation.FmuToggleSwitch
+  simManager: {fileID: 1934691294}
+  inputName: sw_dinamo_luz
+  maxInteractDistance: 3
+  switchHandle: {fileID: 1353249258}
+  rotationOff: {x: 0, y: 0, z: 0}
+  rotationOn: {x: 45, y: 0, z: 0}
+  rotationSpeed: 8
+  switchOn: 0
 --- !u!1 &1452849971 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3133498875991405556, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
@@ -11317,6 +11378,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -6592957211005202357, guid: 61668f9a329e984439cd11653aedd59b, type: 3}
+--- !u!4 &1549283445 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4576826799210226696, guid: 61668f9a329e984439cd11653aedd59b, type: 3}
+  m_PrefabInstance: {fileID: 1760417789}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1552655549 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8778741566295745866, guid: ac11e5b15d7ed6046bcf1a00ad86dcaa, type: 3}
@@ -12990,6 +13056,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 61668f9a329e984439cd11653aedd59b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1760417791}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 61668f9a329e984439cd11653aedd59b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1760417792}
     - targetCorrespondingSourceObject: {fileID: 2503433529462735728, guid: 61668f9a329e984439cd11653aedd59b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1490317325}
@@ -13041,6 +13110,26 @@ MonoBehaviour:
   indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
   forwardOffsetAmount: 0.05
+--- !u!114 &1760417792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668602890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953c05d525dafb94e888463a955799d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Chamusca.Simulation.FmuToggleSwitch
+  simManager: {fileID: 1934691294}
+  inputName: sw_carga_bat
+  maxInteractDistance: 3
+  switchHandle: {fileID: 1549283445}
+  rotationOff: {x: 0, y: 0, z: 0}
+  rotationOn: {x: -45, y: 0, z: 0}
+  rotationSpeed: 8
+  switchOn: 0
 --- !u!64 &1765091528
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13132,7 +13221,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1776236226
 Transform:
   m_ObjectHideFlags: 0
@@ -16966,6 +17055,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 61668f9a329e984439cd11653aedd59b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2105875464}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 61668f9a329e984439cd11653aedd59b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2105875465}
     - targetCorrespondingSourceObject: {fileID: 2503433529462735728, guid: 61668f9a329e984439cd11653aedd59b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1287523235}
@@ -17017,6 +17109,26 @@ MonoBehaviour:
   indicatorScaleMultiplier: 0.01
   indicatorOffset: {x: 0, y: 0, z: 0}
   forwardOffsetAmount: 0.05
+--- !u!114 &2105875465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376476563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953c05d525dafb94e888463a955799d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Chamusca.Simulation.FmuToggleSwitch
+  simManager: {fileID: 1934691294}
+  inputName: sw_bat_luz_lever
+  maxInteractDistance: 3
+  switchHandle: {fileID: 315806129}
+  rotationOff: {x: 0, y: 0, z: 0}
+  rotationOn: {x: -45, y: 0, z: 0}
+  rotationSpeed: 8
+  switchOn: 0
 --- !u!64 &2106942779
 MeshCollider:
   m_ObjectHideFlags: 0
