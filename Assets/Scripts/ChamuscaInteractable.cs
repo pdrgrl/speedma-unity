@@ -50,6 +50,7 @@ public class ChamuscaInteractable : MonoBehaviour
     private bool isHovered = false;
 
     private GameObject indicatorObj;
+    private SpriteRenderer indicatorRenderer;
 
     void Start()
     {
@@ -77,16 +78,16 @@ public class ChamuscaInteractable : MonoBehaviour
             indicatorObj.transform.SetParent(transform);
             indicatorObj.transform.position = GetFocusPosition() + indicatorOffset;
 
-            SpriteRenderer sr = indicatorObj.AddComponent<SpriteRenderer>();
-            sr.color = Color.white;
-            sr.sprite = CreateCircularSprite();
+            indicatorRenderer = indicatorObj.AddComponent<SpriteRenderer>();
+            indicatorRenderer.color = Color.white;
+            indicatorRenderer.sprite = CreateCircularSprite();
             
             Material overlayMaterial = new Material(Shader.Find("Sprites/Default"));
             overlayMaterial.SetInt("_ZWrite", 0);
             overlayMaterial.SetInt("_ZTest", (int)UnityEngine.Rendering.CompareFunction.Always);
             overlayMaterial.renderQueue = 3000;
             
-            sr.material = overlayMaterial;
+            indicatorRenderer.material = overlayMaterial;
         }
     }
 
@@ -180,6 +181,11 @@ public class ChamuscaInteractable : MonoBehaviour
             {
                 rend.material.color = originalColor;
             }
+        }
+
+        if (indicatorRenderer != null)
+        {
+            indicatorRenderer.color = isHovered ? hoverColor : Color.white;
         }
     }
 
