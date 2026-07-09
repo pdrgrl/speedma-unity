@@ -643,6 +643,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 919132149206372421}
   hoverTargetRenderer: {fileID: 8521902485890335756}
   hoverColor: {r: 1, g: 1, b: 1, a: 0.011764706}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -1052,6 +1053,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -1450,6 +1452,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -1569,6 +1572,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -2513,6 +2517,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -2849,6 +2854,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -5001,6 +5007,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -5194,6 +5201,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -7075,6 +7083,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -7391,6 +7400,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -7659,6 +7669,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -8390,6 +8401,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -8498,6 +8510,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 668602890}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -8779,6 +8792,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -8888,6 +8902,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -9151,6 +9166,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -9524,6 +9540,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -9950,6 +9967,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -10053,6 +10071,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -10494,6 +10513,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1297386825}
+  - component: {fileID: 1297386826}
   m_Layer: 0
   m_Name: Wires_Pivot
   m_TagString: Untagged
@@ -10517,6 +10537,34 @@ Transform:
   - {fileID: 609324201}
   m_Father: {fileID: 6273877672254048382}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1297386826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297386824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
+  componentId: 
+  displayName: 
+  customHoverName: 
+  hoverTargetObject: {fileID: 0}
+  hoverTargetRenderer: {fileID: 0}
+  hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 0
+  focusDistance: 1.5
+  customLookTarget: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  showIndicator: 1
+  indicatorScaleMultiplier: 0.01
+  indicatorOffset: {x: 0, y: 0, z: 0}
+  forwardOffsetAmount: 0.05
 --- !u!64 &1297780463
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11057,6 +11105,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -11261,6 +11310,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -12515,6 +12565,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -12688,6 +12739,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -14318,6 +14370,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -14522,6 +14575,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 75720896}
   hoverTargetRenderer: {fileID: 99252970}
   hoverColor: {r: 1, g: 1, b: 1, a: 0.011764706}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -14801,6 +14855,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -15091,6 +15146,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -15118,6 +15174,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -15702,6 +15759,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -15948,6 +16006,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -16209,6 +16268,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -17048,6 +17108,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -17291,6 +17352,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 1, b: 1, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:
@@ -18456,6 +18518,7 @@ MonoBehaviour:
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  changeColorOnHover: 1
   focusDistance: 1.5
   customLookTarget: {fileID: 0}
   onInteract:

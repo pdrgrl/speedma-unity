@@ -23,6 +23,9 @@ public class ChamuscaInteractable : MonoBehaviour
     [Tooltip("Color used when hovered.")]
     public Color hoverColor = Color.yellow;
 
+    [Tooltip("If unchecked, the color of the object and hotspot indicator won't change on hover.")]
+    public bool changeColorOnHover = true;
+
     [Header("Camera Focus Settings")]
     [Tooltip("How far the camera should be when looking at this object.")]
     public float focusDistance = 1.5f;
@@ -82,7 +85,17 @@ public class ChamuscaInteractable : MonoBehaviour
             indicatorRenderer.color = Color.white;
             indicatorRenderer.sprite = CreateCircularSprite();
             
-            Material overlayMaterial = new Material(Shader.Find("Sprites/Default"));
+            Shader additiveShader = Shader.Find("Legacy Shaders/Particles/Additive");
+            if (additiveShader == null)
+            {
+                additiveShader = Shader.Find("Mobile/Particles/Additive");
+            }
+            if (additiveShader == null)
+            {
+                additiveShader = Shader.Find("Sprites/Default");
+            }
+
+            Material overlayMaterial = new Material(additiveShader);
             overlayMaterial.SetInt("_ZWrite", 0);
             overlayMaterial.SetInt("_ZTest", (int)UnityEngine.Rendering.CompareFunction.Always);
             overlayMaterial.renderQueue = 3000;
@@ -171,21 +184,24 @@ public class ChamuscaInteractable : MonoBehaviour
             return;
         isHovered = hover;
 
-        if (rend != null)
+        if (changeColorOnHover)
         {
-            if (isHovered)
+            if (rend != null)
             {
-                rend.material.color = hoverColor;
+                if (isHovered)
+                {
+                    rend.material.color = hoverColor;
+                }
+                else
+                {
+                    rend.material.color = originalColor;
+                }
             }
-            else
-            {
-                rend.material.color = originalColor;
-            }
-        }
 
-        if (indicatorRenderer != null)
-        {
-            indicatorRenderer.color = isHovered ? hoverColor : Color.white;
+            if (indicatorRenderer != null)
+            {
+                indicatorRenderer.color = isHovered ? hoverColor : Color.white;
+            }
         }
     }
 
