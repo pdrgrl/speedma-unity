@@ -26,13 +26,13 @@ public class RheostatWheel : MonoBehaviour
 
     [Header("Drag Interaction")]
     [Tooltip("Sensitivity of mouse drag. Change per pixel of horizontal mouse movement.")]
-    public float sensitivity = 0.005f;
+    public float sensitivity = 0.001f;
 
     [Tooltip("Flip drag direction if needed.")]
     public bool invertDrag = false;
 
     [Tooltip("Visual lerp speed.")]
-    public float rotationSpeed = 10f;
+    public float rotationSpeed = 4.0f;
 
     [Header("UI Feedback (optional)")]
     public TextMeshProUGUI grabHintText;
@@ -105,10 +105,12 @@ public class RheostatWheel : MonoBehaviour
 
         // ── Visual ────────────────────────────────────────────────────────
         float rawTarget = PosToAngle(controller.rheostat_pos);
-        _currentAngle = Mathf.LerpAngle(_currentAngle, rawTarget, Time.deltaTime * rotationSpeed);
+        _currentAngle = Mathf.Lerp(_currentAngle, rawTarget, Time.deltaTime * rotationSpeed);
 
-        // Hard clamp: wheel cannot go outside [0°, 334°]
-        _currentAngle = Mathf.Clamp(_currentAngle, 0f, 334f);
+        // Clamp using the calibrated angles
+        float clampMin = Mathf.Min(angleAtMaxResistance, angleAtMinResistance);
+        float clampMax = Mathf.Max(angleAtMaxResistance, angleAtMinResistance);
+        _currentAngle = Mathf.Clamp(_currentAngle, clampMin, clampMax);
 
         ApplyAngle(_currentAngle);
     }
@@ -134,10 +136,10 @@ public class RheostatWheel : MonoBehaviour
 
     // ── Conversion helpers ─────────────────────────────────────────────────
 
-    /// Rheostat position (0.0 to 1.0) → Z angle (334.0 to 0.0)
+    /// Rheostat position (0.0 to 1.0) → Z angle
     private float PosToAngle(float pos)
     {
-        return (1f - pos) * 334f;
+        return Mathf.Lerp(angleAtMaxResistance, angleAtMinResistance, pos);
     }
 
     private void ApplyAngle(float zAngle)

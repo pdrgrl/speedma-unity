@@ -618,13 +618,13 @@ MonoBehaviour:
   controller: {fileID: 1827762973}
   wheel: {fileID: 1034949219}
   orbitCamera: {fileID: 330585548}
-  angleAtMaxResistance: 0
-  angleAtMinResistance: 334
-  sensitivity: 0.005
+  angleAtMaxResistance: 256
+  angleAtMinResistance: -76
+  sensitivity: 0.001
   invertDrag: 0
-  rotationSpeed: 10
+  rotationSpeed: 4
   grabHintText: {fileID: 412255043}
-  maxInteractDistance: 2
+  maxInteractDistance: 3
 --- !u!114 &53185762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1907,7 +1907,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &240254387
 Transform:
   m_ObjectHideFlags: 0
@@ -2383,7 +2383,7 @@ MeshRenderer:
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &266130111
 MeshFilter:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 8
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -8137,7 +8137,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1034949218}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.61566144, w: 0.78801084}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8148,7 +8148,7 @@ Transform:
   - {fileID: 4125270318220008134}
   - {fileID: 5240018117983930268}
   m_Father: {fileID: 543450653681650431}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -76}
 --- !u!64 &1037254309
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14314,7 +14314,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1776236226
 Transform:
   m_ObjectHideFlags: 0
