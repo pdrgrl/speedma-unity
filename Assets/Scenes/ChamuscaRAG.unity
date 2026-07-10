@@ -9306,9 +9306,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 668c70431184bad42b07e4d209bc45ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VoltmeterSelectorFuse
-  slotOffset: {x: 0, y: -0.06, z: 0}
+  selectorHandle: {fileID: 1974749846}
+  slotOffset: {x: 0, y: -0.0242, z: 0}
   slideSpeed: 8
-  maxInteractDistance: 2.5
+  maxInteractDistance: 3
   selectedSlot: 0
 --- !u!1001 &1184797851
 PrefabInstance:
@@ -15048,19 +15049,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Chamusca.Simulation.ChamuscaSimController
   simManager: {fileID: 1934691294}
   scenarioManager: {fileID: 1827762971}
-  lineVoltmeter: {fileID: 0}
-  dynamoAmmeter: {fileID: 0}
-  batteryAmmeter: {fileID: 0}
+  lineVoltmeter: {fileID: 1780111268}
+  dynamoAmmeter: {fileID: 2119006520}
+  batteryAmmeter: {fileID: 2063461366}
   houseLightController: {fileID: 1985681600}
   dependencyLightController: {fileID: 1373687883}
   panelLightController: {fileID: 1972746292}
   batteryRoomLightController: {fileID: 957574313}
-  redutorCarga: {fileID: 0}
-  redutorDescarga: {fileID: 0}
+  reductorController: {fileID: 1401045810}
+  voltmeterSelector: {fileID: 1175319958}
   houseLightSwitch: {fileID: 0}
   dependencyLightSwitch: {fileID: 0}
   panelLightSwitch: {fileID: 0}
   batteryRoomLightSwitch: {fileID: 0}
+  dynamoLuzSwitch: {fileID: 0}
+  chargeBatSwitch: {fileID: 0}
+  batLuzLeverSwitch: {fileID: 1206253255}
   varLineVoltage: v_line
   varDynamoCurrent: i_din
   varBatteryCurrent: i_bat
@@ -15076,11 +15080,6 @@ MonoBehaviour:
   varResetProtection: resetProtection
   rheostat_pos: 0.2
   engine_rpm: 350
-  sw_dinamo_luz: 0
-  sw_carga_bat: 0
-  sw_bat_luz: 0
-  sw_bat_luz_lever: 0
-  sw_casa_luz: 0
   resetProtectionRequested: 0
 --- !u!64 &1832465204
 MeshCollider:
@@ -16814,7 +16813,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1974749846}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Selector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -39,11 +39,11 @@ public class VoltmeterSelectorFuse : MonoBehaviour
         _targetLocalPos = _startLocalPos;
 
         // Auto-attach BoxCollider if missing
-        Collider col = GetComponent<Collider>();
-        if (col == null)
-        {
-            gameObject.AddComponent<BoxCollider>();
-        }
+        // Collider col = GetComponent<Collider>();
+        // if (col == null)
+        // {
+        //     gameObject.AddComponent<BoxCollider>();
+        // }
     }
 
     private void Update()

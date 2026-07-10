@@ -38,6 +38,9 @@ namespace Chamusca.Simulation
         [Header("State")]
         [SerializeField]
         private bool isOpen = false;
+        private bool _debugOverridden = false;
+
+        public bool IsDebugTripped => _debugOverridden;
 
         private void Start()
         {
@@ -47,8 +50,18 @@ namespace Chamusca.Simulation
 
         private void Update()
         {
-            if (simManager != null && simManager.IsSessionActive)
+            // Debug trigger: Press T to toggle visual trip override
+            if (Keyboard.current != null && Keyboard.current.tKey.wasPressedThisFrame)
+            {
+                _debugOverridden = !_debugOverridden;
+                isOpen = _debugOverridden;
+                Debug.Log($"[Debug Breaker] Toggled breaker visually. Override active: {_debugOverridden}");
+            }
+
+            if (!_debugOverridden && simManager != null && simManager.IsSessionActive)
+            {
                 isOpen = simManager.GetOutput(breakerStateOutput) > 0.5f;
+            }
 
             if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame && Camera.main != null)
             {
@@ -82,6 +95,7 @@ namespace Chamusca.Simulation
             if (!isOpen)
                 return;
 
+            _debugOverridden = false; // Stop debug override on rearm
             if (controller != null)
                 controller.RequestProtectionReset();
         }
