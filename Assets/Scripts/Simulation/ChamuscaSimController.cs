@@ -229,7 +229,7 @@ namespace Chamusca.Simulation
 
                     case SimulationScenario.ScenarioC:
                         simManager.SetInput("sw_engine", false); // Crossley OFF
-                        simManager.SetInput("engine_rpm", 0f);
+                        simManager.SetInput("engine_rpm", 375f); // AC Motor drives generator at constant grid speed
                         simManager.SetInput("sw_ac_mains", true); // ASEA Motor ON
                         simManager.SetInput("sw_carga_bat", swCargaBat);
                         simManager.SetInput("sw_dinamo_luz", swDinamoLuz);

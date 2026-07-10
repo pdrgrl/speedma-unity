@@ -80,11 +80,10 @@ namespace Speedma.Debug
                     UpdateTelemetryText();
                 }
 
-                // Show/hide RPM slider depending on whether we are in Scenario B or C
+                // Show/hide RPM slider depending on whether we are in Scenario B
                 if (rpmSlider != null && scenarioManager != null)
                 {
-                    bool showSlider = scenarioManager.currentScenario == SimulationScenario.ScenarioB ||
-                                      scenarioManager.currentScenario == SimulationScenario.ScenarioC;
+                    bool showSlider = scenarioManager.currentScenario == SimulationScenario.ScenarioB;
                     GameObject container = rpmSlider.transform.parent.gameObject;
                     if (container.activeSelf != showSlider)
                     {
