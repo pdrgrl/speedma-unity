@@ -821,19 +821,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5460073385026213122, guid: 01071c9fa41f2cf49bbae22e5b9418df, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.73399216
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -5460073385026213122, guid: 01071c9fa41f2cf49bbae22e5b9418df, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -5460073385026213122, guid: 01071c9fa41f2cf49bbae22e5b9418df, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.67915803
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5460073385026213122, guid: 01071c9fa41f2cf49bbae22e5b9418df, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -5460073385026213122, guid: 01071c9fa41f2cf49bbae22e5b9418df, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -85.556
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 01071c9fa41f2cf49bbae22e5b9418df, type: 3}
       propertyPath: m_Name
@@ -2425,11 +2429,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1509932905228599265, guid: 01071c9fa41f2cf49bbae22e5b9418df, type: 3}
---- !u!4 &269158069 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -5460073385026213122, guid: 01071c9fa41f2cf49bbae22e5b9418df, type: 3}
-  m_PrefabInstance: {fileID: 76581048}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &270717733
 GameObject:
   m_ObjectHideFlags: 0
@@ -5701,6 +5700,26 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -5460073385026213122, guid: 9e8e25527306d1a4682e10bc3f2618e3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5460073385026213122, guid: 9e8e25527306d1a4682e10bc3f2618e3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5460073385026213122, guid: 9e8e25527306d1a4682e10bc3f2618e3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5460073385026213122, guid: 9e8e25527306d1a4682e10bc3f2618e3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5460073385026213122, guid: 9e8e25527306d1a4682e10bc3f2618e3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9e8e25527306d1a4682e10bc3f2618e3, type: 3}
       propertyPath: m_Name
       value: _SM_Meter_Siemens_Halske_AMP30
@@ -6121,7 +6140,7 @@ GameObject:
   - component: {fileID: 809047942}
   - component: {fileID: 809047943}
   m_Layer: 0
-  m_Name: Cylinder.007_op_Pivot
+  m_Name: BlueKnob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6140,6 +6159,7 @@ Transform:
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1444585082328880572}
   - {fileID: 2170774348537642635}
   m_Father: {fileID: 1504070089}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6162,7 +6182,7 @@ MonoBehaviour:
   hoverTargetRenderer: {fileID: 9108623903122787730}
   hoverColor: {r: 1, g: 1, b: 1, a: 1}
   changeColorOnHover: 1
-  focusDistance: 1.5
+  focusDistance: 3
   customLookTarget: {fileID: 0}
   onInteract:
     m_PersistentCalls:
@@ -6463,7 +6483,7 @@ GameObject:
   m_Component:
   - component: {fileID: 858394744}
   m_Layer: 0
-  m_Name: Wheel
+  m_Name: BrownWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11176,8 +11196,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1401045805}
   - component: {fileID: 1401045808}
-  - component: {fileID: 1401045807}
   - component: {fileID: 1401045806}
+  - component: {fileID: 1401045810}
   m_Layer: 0
   m_Name: RedutorDuplo_Pivot
   m_TagString: Untagged
@@ -11232,32 +11252,6 @@ MonoBehaviour:
   addHotspotCollider: 1
   hotspotColliderRadius: 0.5
   hideDotOnHover: 0
---- !u!114 &1401045807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1401045804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c92823977c860d2438b26edabdb38d16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ReductorDuploWheel
-  selector: {fileID: 0}
-  wheel: {fileID: 1725907113}
-  orbitCamera: {fileID: 330585548}
-  minCell: 1
-  maxCell: 20
-  initialCell: 1
-  baseAngleOffset: 0
-  angleAtMinCell: -104
-  angleAtMaxCell: 104
-  pixelsPerStep: 18
-  invertDrag: 0
-  rotationSpeed: 12
-  grabHintText: {fileID: 0}
-  maxInteractDistance: 2
 --- !u!114 &1401045808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11273,6 +11267,40 @@ MonoBehaviour:
   minCell: 1
   maxCell: 20
   currentCell: 1
+--- !u!114 &1401045810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401045804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 288138ea0b5822e46bfd10b164f2c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ReductorDuploController
+  simManager: {fileID: 1934691294}
+  blueHandle: {fileID: 1725907113}
+  brownHandle: {fileID: 858394744}
+  bluePin: {fileID: 809047942}
+  brownPin: {fileID: 1575830295}
+  pinUnlockedOffset: {x: 0, y: -0.08, z: 0}
+  minCell: 41
+  maxCell: 60
+  initialDischargeCell: 41
+  initialChargeCell: 60
+  angleAtMinCell: -104
+  angleAtMaxCell: 104
+  rotationSpeed: 12
+  pixelsPerStep: 18
+  invertDrag: 0
+  maxInteractDistance: 3
+  grabHintText: {fileID: 412255043}
+  orbitCamera: {fileID: 330585548}
+  blueUnlocked: 0
+  brownUnlocked: 0
+  dischargeCell: 41
+  chargeCell: 60
 --- !u!1 &1409881618 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5546747315237514756, guid: 846104c00433f4a429a62be689c7da63, type: 3}
@@ -11767,22 +11795,21 @@ Transform:
   m_LocalScale: {x: 0.049999997, y: 0.049999997, z: 0.049999997}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 809047942}
+  - {fileID: 858394744}
+  - {fileID: 1575830295}
+  - {fileID: 1725907113}
   - {fileID: 780807416363205057}
   - {fileID: 3341478692168276648}
-  - {fileID: 8159216233036500744}
-  - {fileID: 2314378111310799332}
   - {fileID: 5921319618031057269}
   - {fileID: 9183527656364525745}
   - {fileID: 6249578981513254622}
   - {fileID: 1570139091882877946}
   - {fileID: 8166601114090629619}
-  - {fileID: 1444585082328880572}
   - {fileID: 5411080527999510868}
   - {fileID: 6397846473488285717}
   - {fileID: 7209726292744901112}
   - {fileID: 3255634936379478838}
-  - {fileID: 1725907113}
-  - {fileID: 858394744}
   - {fileID: 3488431121937964996}
   - {fileID: 3678084377180569872}
   - {fileID: 3378059677603952505}
@@ -11791,7 +11818,6 @@ Transform:
   - {fileID: 6543373415424841118}
   - {fileID: 5260661453280083970}
   - {fileID: 1996250021746416684}
-  - {fileID: 809047942}
   m_Father: {fileID: 1401045805}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1504070090
@@ -12393,11 +12419,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1509932905228599265, guid: ac11e5b15d7ed6046bcf1a00ad86dcaa, type: 3}
---- !u!4 &1552655554 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -5460073385026213122, guid: ac11e5b15d7ed6046bcf1a00ad86dcaa, type: 3}
-  m_PrefabInstance: {fileID: 1975133169}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1552875055 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 884462273455494329, guid: 61668f9a329e984439cd11653aedd59b, type: 3}
@@ -12972,6 +12993,71 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8117516211640104898, guid: 5cb3297aba05db6409285d1603bbd0aa, type: 3}
+--- !u!1 &1575830294
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1575830295}
+  - component: {fileID: 1575830296}
+  m_Layer: 0
+  m_Name: BrownKnob
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1575830295
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575830294}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2314378111310799332}
+  - {fileID: 8159216233036500744}
+  m_Father: {fileID: 1504070089}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1575830296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575830294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
+  componentId: 
+  displayName: 
+  customHoverName: 
+  hoverTargetObject: {fileID: 1575830294}
+  hoverTargetRenderer: {fileID: 785171508402417300}
+  hoverColor: {r: 1, g: 1, b: 1, a: 1}
+  changeColorOnHover: 1
+  focusDistance: 3
+  customLookTarget: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  showIndicator: 1
+  indicatorScaleMultiplier: 0.01
+  indicatorOffset: {x: 0, y: 0, z: 0}
+  forwardOffsetAmount: 0.05
+  addHotspotCollider: 1
+  hotspotColliderRadius: 0.6
+  hideDotOnHover: 0
 --- !u!1 &1585429361 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8610040555646057798, guid: 9e8e25527306d1a4682e10bc3f2618e3, type: 3}
@@ -13832,7 +13918,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1725907113}
   m_Layer: 0
-  m_Name: Wheel
+  m_Name: BlueWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14487,14 +14573,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590be8c534bcc03409644fa40630158b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Chamusca.Simulation.VoltmeterPointer
-  needle: {fileID: 1552655554}
+  needle: {fileID: 0}
   rotationAxis: {x: 0, y: 1, z: 0}
   voltageToAngle:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: -7
+      value: -13.877
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 100
+      value: -22.138
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -14503,7 +14598,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 120
-      value: -36.7
+      value: -36.525
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -14511,8 +14606,26 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 200
-      value: -85
+      time: 140
+      value: -56.091
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 160
+      value: -75.273
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 170
+      value: -84.863
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -14523,7 +14636,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   minValue: 0
-  maxValue: 200
+  maxValue: 170
   smoothSpeed: 5
 --- !u!64 &1781846844
 MeshCollider:
@@ -17496,17 +17609,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd123ffe9f1fc9a4a8973cea4843b164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Speedma.AmpController
-  needleTransform: {fileID: 269158069}
+  needleTransform: {fileID: 0}
   minAmp: 0
   maxAmp: 12
-  minAngle: -4.951
-  maxAngle: -87.359
+  minAngle: -5.085
+  maxAngle: -85.457
   ampsToAngle:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: -5.064
+      value: -5.085
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -17515,7 +17628,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 4
-      value: -20.72
+      value: -20.567
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -17524,7 +17637,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 6
-      value: -40.02
+      value: -40.184
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -17533,7 +17646,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 8
-      value: -56
+      value: -56.229
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -17542,7 +17655,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 10
-      value: -71.617
+      value: -71.854
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -17551,7 +17664,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 12
-      value: -85.556
+      value: -85.457
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -18672,9 +18785,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Speedma.AmpController
   needleTransform: {fileID: 0}
   minAmp: 0
-  maxAmp: 12
-  minAngle: -4.951
-  maxAngle: -87.359
+  maxAmp: 35
+  minAngle: -5.064
+  maxAngle: -85.386
   ampsToAngle:
     serializedVersion: 2
     m_Curve:
@@ -18688,35 +18801,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 4
-      value: -20.72
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 6
-      value: -40.02
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 8
-      value: -56
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
       time: 10
-      value: -71.617
+      value: -15.666
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -18724,8 +18810,44 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 12
-      value: -85.556
+      time: 15
+      value: -30.873
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 20
+      value: -46.322
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 25
+      value: -59.368
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 30
+      value: -71.445
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 35
+      value: -85.386
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -25312,11 +25434,11 @@ Transform:
   m_GameObject: {fileID: 1558149366869400078}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.02859193, y: 0.29807162, z: -0.09688832}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1504070089}
+  m_Father: {fileID: 809047942}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1468288242189800343
 MeshFilter:
@@ -30641,7 +30763,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1504070089}
+  m_Father: {fileID: 1575830295}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2332866822541290474
 MeshFilter:
@@ -51718,7 +51840,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
@@ -53721,7 +53843,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1504070089}
+  m_Father: {fileID: 1575830295}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &8159216233036500745
 MeshCollider:
@@ -53740,7 +53862,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
@@ -60087,7 +60209,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
@@ -60755,7 +60877,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
