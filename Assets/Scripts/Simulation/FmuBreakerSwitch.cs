@@ -99,5 +99,11 @@ namespace Chamusca.Simulation
             if (controller != null)
                 controller.RequestProtectionReset();
         }
+
+        public void ResetBreaker()
+        {
+            _debugOverridden = false;
+            isOpen = false;
+        }
     }
 }

@@ -73,4 +73,15 @@ public class VoltmeterSelectorFuse : MonoBehaviour
         _targetLocalPos = _startLocalPos + (slotOffset * selectedSlot);
         Debug.Log($"[VoltmeterSelector] Switched to Slot {selectedSlot} ({(selectedSlot == 0 ? "Descarga" : selectedSlot == 1 ? "Carga" : "Dínamo")})");
     }
+
+    public void SetSlot(int slotIndex)
+    {
+        selectedSlot = Mathf.Clamp(slotIndex, 0, 2);
+        if (selectorHandle == null) selectorHandle = transform;
+        if (_startLocalPos == Vector3.zero)
+        {
+            _startLocalPos = selectorHandle.localPosition;
+        }
+        _targetLocalPos = _startLocalPos + (slotOffset * selectedSlot);
+    }
 }

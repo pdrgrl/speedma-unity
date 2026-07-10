@@ -63,7 +63,8 @@ namespace Chamusca.Simulation
             [SerializeField]
             private bool resetProtectionRequested = false;
 
-            private SimulationScenario _lastScenario;
+            private SimulationScenario _lastScenario = SimulationScenario.ScenarioA;
+            private bool _hasInitializedLastScenario = false;
 
             private void Start()
             {
@@ -84,6 +85,7 @@ namespace Chamusca.Simulation
                 if (scenarioManager != null && scenarioManager.currentScenario != _lastScenario)
                 {
                     _lastScenario = scenarioManager.currentScenario;
+                    ResetAllSwitchesToDefault();
                     string newFmu = GetFmuNameForScenario(_lastScenario);
                     simManager.RestartSession(newFmu);
                     return; // Wait for the new session to start before running updates
@@ -263,6 +265,40 @@ namespace Chamusca.Simulation
             }
 
             public void RequestProtectionReset() => resetProtectionRequested = true;
+
+            public void ResetAllSwitchesToDefault()
+            {
+                Debug.Log($"[SimController] Scenario changed to {_lastScenario}. Resetting all board control switches to OFF/default state.");
+
+                if (houseLightSwitch != null) houseLightSwitch.SetSwitch(false);
+                if (batteryRoomLightSwitch != null) batteryRoomLightSwitch.SetSwitch(false);
+                if (dependencyLightSwitch != null) dependencyLightSwitch.SetSwitch(false);
+                if (panelLightSwitch != null) panelLightSwitch.SetSwitch(false);
+
+                if (dynamoLuzSwitch != null) dynamoLuzSwitch.SetSwitch(false);
+                if (chargeBatSwitch != null) chargeBatSwitch.SetSwitch(false);
+                if (batLuzLeverSwitch != null) batLuzLeverSwitch.SetSwitch(false);
+
+                FmuBreakerSwitch breaker = Object.FindFirstObjectByType<FmuBreakerSwitch>();
+                if (breaker != null)
+                {
+                    breaker.ResetBreaker();
+                }
+
+                if (voltmeterSelector != null)
+                {
+                    voltmeterSelector.SetSlot(0);
+                }
+
+                if (reductorController != null)
+                {
+                    reductorController.dischargeCell = 41;
+                    reductorController.chargeCell = 41;
+                }
+
+                engine_rpm = 350f;
+                rheostat_pos = 0.2f;
+            }
 
             private string GetFmuNameForScenario(SimulationScenario scenario)
             {
