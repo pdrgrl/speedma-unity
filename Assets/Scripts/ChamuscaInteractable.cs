@@ -21,7 +21,7 @@ public class ChamuscaInteractable : MonoBehaviour
     public Renderer hoverTargetRenderer;
 
     [Tooltip("Color used when hovered.")]
-    public Color hoverColor = Color.yellow;
+    public Color hoverColor = new Color(0f, 0.14902f, 0.14902f, 1f); // Hex #002626
 
     [Tooltip("If unchecked, the color of the object and hotspot indicator won't change on hover.")]
     public bool changeColorOnHover = true;
@@ -45,6 +45,14 @@ public class ChamuscaInteractable : MonoBehaviour
     [Tooltip("Distance to offset the dot towards the camera to prevent clipping behind the mesh.")]
     public float forwardOffsetAmount = 0.05f;
 
+    [Tooltip("Add a sphere collider to the hotspot indicator dot so it can be clicked directly without requiring colliders on the mesh.")]
+    public bool addHotspotCollider = true;
+    [Tooltip("Radius of the hotspot sphere collider.")]
+    public float hotspotColliderRadius = 0.6f;
+
+    [Tooltip("If checked, the hotspot indicator dot will be hidden when this object is hovered.")]
+    public bool hideDotOnHover = false;
+
     // Static toggle to show/hide all hotspot indicators globally
     public static bool GlobalIndicatorsEnabled = true;
 
@@ -57,7 +65,36 @@ public class ChamuscaInteractable : MonoBehaviour
 
     void Start()
     {
-        // Priority: explicit renderer -> object (find child renderer) -> this object's child renderer
+        // 1. Auto-generate the white dot indicator first (if enabled)
+        if (showIndicator)
+        {
+            indicatorObj = new GameObject("HotspotIndicatorDot");
+            indicatorObj.transform.SetParent(transform);
+            indicatorObj.transform.position = GetFocusPosition() + indicatorOffset;
+
+            indicatorRenderer = indicatorObj.AddComponent<SpriteRenderer>();
+            indicatorRenderer.color = new Color(3f, 3f, 3f, 1f); // 3x brightness HDR boost
+            indicatorRenderer.sprite = CreateCircularSprite();
+            
+            // Create material and force Additive blending via GPU blend states.
+            // This is URP/HDRP/Built-in pipeline independent!
+            Material overlayMaterial = new Material(Shader.Find("Sprites/Default"));
+            overlayMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
+            overlayMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.One); // Additive
+            overlayMaterial.SetInt("_ZWrite", 0);
+            overlayMaterial.SetInt("_ZTest", (int)UnityEngine.Rendering.CompareFunction.Always);
+            overlayMaterial.renderQueue = 3000;
+            
+            indicatorRenderer.material = overlayMaterial;
+
+            if (addHotspotCollider)
+            {
+                SphereCollider sc = indicatorObj.AddComponent<SphereCollider>();
+                sc.radius = hotspotColliderRadius;
+            }
+        }
+
+        // 2. Priority: explicit renderer -> object (find child renderer) -> generated hotspot indicator -> fallback to first child renderer
         if (hoverTargetRenderer != null)
         {
             rend = hoverTargetRenderer;
@@ -66,6 +103,10 @@ public class ChamuscaInteractable : MonoBehaviour
         {
             rend = hoverTargetObject.GetComponentInChildren<Renderer>();
         }
+        else if (indicatorRenderer != null)
+        {
+            rend = indicatorRenderer;
+        }
         else
         {
             rend = GetComponentInChildren<Renderer>();
@@ -73,35 +114,6 @@ public class ChamuscaInteractable : MonoBehaviour
 
         if (rend != null)
             originalColor = rend.material.color;
-
-        // Auto-generate the white dot indicator if enabled
-        if (showIndicator)
-        {
-            indicatorObj = new GameObject("HotspotIndicatorDot");
-            indicatorObj.transform.SetParent(transform);
-            indicatorObj.transform.position = GetFocusPosition() + indicatorOffset;
-
-            indicatorRenderer = indicatorObj.AddComponent<SpriteRenderer>();
-            indicatorRenderer.color = Color.white;
-            indicatorRenderer.sprite = CreateCircularSprite();
-            
-            Shader additiveShader = Shader.Find("Legacy Shaders/Particles/Additive");
-            if (additiveShader == null)
-            {
-                additiveShader = Shader.Find("Mobile/Particles/Additive");
-            }
-            if (additiveShader == null)
-            {
-                additiveShader = Shader.Find("Sprites/Default");
-            }
-
-            Material overlayMaterial = new Material(additiveShader);
-            overlayMaterial.SetInt("_ZWrite", 0);
-            overlayMaterial.SetInt("_ZTest", (int)UnityEngine.Rendering.CompareFunction.Always);
-            overlayMaterial.renderQueue = 3000;
-            
-            indicatorRenderer.material = overlayMaterial;
-        }
     }
 
     void LateUpdate()
@@ -113,6 +125,10 @@ public class ChamuscaInteractable : MonoBehaviour
         }
 
         bool shouldBeVisible = showIndicator && GlobalIndicatorsEnabled;
+        if (isHovered && hideDotOnHover)
+        {
+            shouldBeVisible = false;
+        }
 
         if (indicatorObj != null)
         {
@@ -145,11 +161,12 @@ public class ChamuscaInteractable : MonoBehaviour
 
     private Sprite CreateCircularSprite()
     {
-        int size = 32;
+        int size = 64;
         Texture2D texture = new Texture2D(size, size, TextureFormat.RGBA32, false);
         Color[] colors = new Color[size * size];
         float center = size / 2.0f;
-        float radius = size / 2.0f;
+        float outerRadius = 26.0f; // Wider halo
+        float coreRadius = 14.0f;  // Larger solid white core
 
         for (int y = 0; y < size; y++)
         {
@@ -159,9 +176,14 @@ public class ChamuscaInteractable : MonoBehaviour
                 float dy = y - center + 0.5f;
                 float distance = Mathf.Sqrt(dx * dx + dy * dy);
 
-                if (distance <= radius)
+                if (distance <= coreRadius)
                 {
-                    float alpha = Mathf.Clamp01(radius - distance);
+                    colors[y * size + x] = new Color(1, 1, 1, 1);
+                }
+                else if (distance <= outerRadius)
+                {
+                    float t = (distance - coreRadius) / (outerRadius - coreRadius);
+                    float alpha = Mathf.Pow(1f - t, 1.2f); // Gentle, dense glow falloff for maximum brightness
                     colors[y * size + x] = new Color(1, 1, 1, alpha);
                 }
                 else
@@ -175,7 +197,7 @@ public class ChamuscaInteractable : MonoBehaviour
         texture.filterMode = FilterMode.Bilinear;
         texture.Apply();
 
-        return Sprite.Create(texture, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f), 32);
+        return Sprite.Create(texture, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f), 64);
     }
 
     public void SetHover(bool hover)
@@ -186,7 +208,7 @@ public class ChamuscaInteractable : MonoBehaviour
 
         if (changeColorOnHover)
         {
-            if (rend != null)
+            if (rend != null && rend != indicatorRenderer)
             {
                 if (isHovered)
                 {
@@ -200,7 +222,17 @@ public class ChamuscaInteractable : MonoBehaviour
 
             if (indicatorRenderer != null)
             {
-                indicatorRenderer.color = isHovered ? hoverColor : Color.white;
+                Color hc = hoverColor * 3.0f; // 3x HDR color boost on hover
+                hc.a = hoverColor.a;
+                indicatorRenderer.color = isHovered ? hc : new Color(3f, 3f, 3f, 1f);
+            }
+        }
+        else
+        {
+            // If color change on hover is disabled, ensure it still keeps its default 3x HDR brightness
+            if (indicatorRenderer != null)
+            {
+                indicatorRenderer.color = new Color(3f, 3f, 3f, 1f);
             }
         }
     }
