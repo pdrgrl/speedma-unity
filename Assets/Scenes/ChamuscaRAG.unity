@@ -1565,9 +1565,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: distribution_fuses
+  displayName: Branch Distribution Fuse
+  customHoverName: Branch Distribution Fuse
   hoverTargetObject: {fileID: 196902525}
   hoverTargetRenderer: {fileID: 2101175058}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 0.011764706}
@@ -1688,9 +1688,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: distribution_fuses
+  displayName: House Distribution Fuse
+  customHoverName: House Distribution Fuse
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 1}
@@ -2637,9 +2637,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: distribution_fuses
+  displayName: Branch Distribution Fuse
+  customHoverName: Branch Distribution Fuse
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 1}
@@ -5017,9 +5017,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: marble_control_board
+  displayName: House Light Switch
+  customHoverName: House Light Switch
   hoverTargetObject: {fileID: 677088881}
   hoverTargetRenderer: {fileID: 2439427014737633893}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 1}
@@ -5214,9 +5214,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: marble_control_board
+  displayName: Board Service Lamp
+  customHoverName: Board Service Lamp
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 1}
@@ -7202,9 +7202,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: tudor_battery_bank
+  displayName: Tudor Open-Cell Battery Bank
+  customHoverName: Tudor Open-Cell Battery Bank
   hoverTargetObject: {fileID: 969808819}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 1}
@@ -7751,9 +7751,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: distribution_fuses
+  displayName: Branch Distribution Fuse
+  customHoverName: Branch Distribution Fuse
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 1}
@@ -8491,9 +8491,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: marble_control_board
+  displayName: Battery LUZ Lever
+  customHoverName: Battery LUZ Lever
   hoverTargetObject: {fileID: 1083684570}
   hoverTargetRenderer: {fileID: 315806130}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 1}
@@ -8599,9 +8599,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: marble_control_board
+  displayName: Battery Charging Lever
+  customHoverName: Battery Charging Lever
   hoverTargetObject: {fileID: 919132149275739035}
   hoverTargetRenderer: {fileID: 8100320773335142071}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 1}
@@ -8884,9 +8884,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: marble_control_board
+  displayName: Spare Lever (Reserva)
+  customHoverName: Spare Lever (Reserva)
   hoverTargetObject: {fileID: 1138024486}
   hoverTargetRenderer: {fileID: 1318480588}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 1}
@@ -8997,9 +8997,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: marble_control_board
+  displayName: Battery Service Lamp
+  customHoverName: Battery Service Lamp
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 1}
@@ -9259,9 +9259,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: distribution_fuses
+  displayName: Main Board Fuse
+  customHoverName: Main Board Fuse
   hoverTargetObject: {fileID: 1175319955}
   hoverTargetRenderer: {fileID: 1597553075}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 1}
@@ -9636,9 +9636,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: sw_bat_luz
-  displayName: 
-  customHoverName: 
+  componentId: marble_control_board
+  displayName: Battery Room Light Switch
+  customHoverName: Battery Room Light Switch
   hoverTargetObject: {fileID: 1206253252}
   hoverTargetRenderer: {fileID: 1536758399}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 1}
@@ -10066,9 +10066,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: distribution_fuses
+  displayName: Branch Distribution Fuse
+  customHoverName: Branch Distribution Fuse
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 1}
@@ -10173,9 +10173,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: marble_control_board
+  displayName: Dynamo LUZ Lever
+  customHoverName: Dynamo LUZ Lever
   hoverTargetObject: {fileID: 8823154889771085302}
   hoverTargetRenderer: {fileID: 1050135702612917049}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 1}
@@ -10655,9 +10655,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: reductor_duplo
+  displayName: Double-Selector Wires
+  customHoverName: Double-Selector Wires
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
@@ -11213,9 +11213,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: reductor_duplo
+  displayName: Double-Selector Switch
+  customHoverName: Double-Selector Switch (Reductor)
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 1, g: 1, b: 1, a: 1}
@@ -11485,9 +11485,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: distribution_fuses
+  displayName: Branch Distribution Fuse
+  customHoverName: Branch Distribution Fuse
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 1}
@@ -12754,9 +12754,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: distribution_fuses
+  displayName: Branch Distribution Fuse
+  customHoverName: Branch Distribution Fuse
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 1}
@@ -12931,9 +12931,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: distribution_fuses
+  displayName: Branch Distribution Fuse
+  customHoverName: Branch Distribution Fuse
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 1}
@@ -14456,9 +14456,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: siemens_meters
+  displayName: Central Line Voltmeter
+  customHoverName: Central Line Voltmeter
   hoverTargetObject: {fileID: 1780111265}
   hoverTargetRenderer: {fileID: 196256454}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 1}
@@ -14664,9 +14664,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: sw_quadro_luz
-  displayName: Quadro Luz
-  customHoverName: Quadro Luz
+  componentId: marble_control_board
+  displayName: Board Service Light Switch
+  customHoverName: Board Service Light Switch
   hoverTargetObject: {fileID: 1796241358}
   hoverTargetRenderer: {fileID: 99252970}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 0.011764706}
@@ -14947,9 +14947,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: tudor_battery_bank
+  displayName: Tudor Battery Rack
+  customHoverName: Tudor Battery Rack
   hoverTargetObject: {fileID: 1826429431}
   hoverTargetRenderer: {fileID: 1683184844}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 1}
@@ -15828,9 +15828,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: marble_control_board
+  displayName: Dependencies Light Switch
+  customHoverName: Dependencies Light Switch
   hoverTargetObject: {fileID: 1915914836}
   hoverTargetRenderer: {fileID: 1326435839}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 1}
@@ -16078,9 +16078,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: marble_control_board
+  displayName: Dependencies Service Lamp
+  customHoverName: Dependencies Service Lamp
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 1}
@@ -16343,9 +16343,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: distribution_fuses
+  displayName: Branch Distribution Fuse
+  customHoverName: Branch Distribution Fuse
   hoverTargetObject: {fileID: 1940543977}
   hoverTargetRenderer: {fileID: 2144504270}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 0.43137255}
@@ -17186,9 +17186,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: b_dijunctor
+  displayName: Main Battery Circuit Breaker
+  customHoverName: Main Battery Circuit Breaker (B. Dijunctor)
   hoverTargetObject: {fileID: 2039593552}
   hoverTargetRenderer: {fileID: 3720538678537378667}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 1}
@@ -17465,9 +17465,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: siemens_meters
+  displayName: Battery Ammeter
+  customHoverName: Battery Ammeter (10A)
   hoverTargetObject: {fileID: 2063461363}
   hoverTargetRenderer: {fileID: 1079616554}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 0}
@@ -18639,9 +18639,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: siemens_meters
+  displayName: Dynamo Ammeter
+  customHoverName: Dynamo Ammeter (30A)
   hoverTargetObject: {fileID: 2119006517}
   hoverTargetRenderer: {fileID: 1585429367}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 1}
