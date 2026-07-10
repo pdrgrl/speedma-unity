@@ -132,9 +132,9 @@ namespace Chamusca.Simulation
                             case 1: // Carga: displays battery voltage (charge branch)
                                 targetV = simManager.GetOutput("batteryVoltageCarga");
                                 break;
-                            case 2: // Dínamo: displays dynamo line voltage
-                                // In Scenario A dynamo is 0V; in B/C it follows v_line
-                                targetV = (scenarioManager.currentScenario == SimulationScenario.ScenarioA) ? 0f : simManager.GetOutput("v_line");
+                            case 2: // Dínamo: displays dynamo terminal voltage
+                                // In Scenario A dynamo is 0V; in B/C it reads dynamo_voltage
+                                targetV = (scenarioManager.currentScenario == SimulationScenario.ScenarioA) ? 0f : simManager.GetOutput("dynamo_voltage");
                                 break;
                         }
                     }

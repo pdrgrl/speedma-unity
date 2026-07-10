@@ -215,7 +215,7 @@ public class ChamuscaUISetup : EditorWindow
         Speedma.Debug.FmuDebugController hudController = managerGO.GetComponent<Speedma.Debug.FmuDebugController>();
         if (hudController == null) hudController = managerGO.AddComponent<Speedma.Debug.FmuDebugController>();
         
-        hudController.SetCanvasUIReferences(debugHudGO, teleText, debugButton, btnA, btnB, btnC);
+        hudController.SetCanvasUIReferences(debugHudGO, teleText, debugButton, btnA, btnB, btnC, null);
 
         Selection.activeGameObject = canvasGO;
         Debug.Log("[UISetup] Responsive RAG UI Canvas successfully generated!");

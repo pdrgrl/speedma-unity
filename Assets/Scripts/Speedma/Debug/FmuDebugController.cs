@@ -41,6 +41,8 @@ namespace Speedma.Debug
         private UnityEngine.UI.Button btnScenarioB;
         [SerializeField]
         private UnityEngine.UI.Button btnScenarioC;
+        [SerializeField]
+        private UnityEngine.UI.Slider rpmSlider;
 
         private bool _showHud = false; // Hidden by default now
 
@@ -49,6 +51,15 @@ namespace Speedma.Debug
             if (toggleButton != null)
             {
                 toggleButton.onClick.AddListener(ToggleHud);
+            }
+            if (rpmSlider != null && chamuscaController != null)
+            {
+                rpmSlider.minValue = 0f;
+                rpmSlider.maxValue = 500f;
+                rpmSlider.value = chamuscaController.engine_rpm;
+                rpmSlider.onValueChanged.AddListener((val) => {
+                    chamuscaController.engine_rpm = val;
+                });
             }
             LinkScenarioButtons();
             UpdateHudVisibility();
@@ -62,9 +73,24 @@ namespace Speedma.Debug
                 ToggleHud();
             }
 
-            if (_showHud && telemetryText != null)
+            if (_showHud)
             {
-                UpdateTelemetryText();
+                if (telemetryText != null)
+                {
+                    UpdateTelemetryText();
+                }
+
+                // Show/hide RPM slider depending on whether we are in Scenario B or C
+                if (rpmSlider != null && scenarioManager != null)
+                {
+                    bool showSlider = scenarioManager.currentScenario == SimulationScenario.ScenarioB ||
+                                      scenarioManager.currentScenario == SimulationScenario.ScenarioC;
+                    GameObject container = rpmSlider.transform.parent.gameObject;
+                    if (container.activeSelf != showSlider)
+                    {
+                        container.SetActive(showSlider);
+                    }
+                }
             }
         }
 
@@ -74,7 +100,8 @@ namespace Speedma.Debug
             UnityEngine.UI.Button button,
             UnityEngine.UI.Button btnA,
             UnityEngine.UI.Button btnB,
-            UnityEngine.UI.Button btnC
+            UnityEngine.UI.Button btnC,
+            UnityEngine.UI.Slider slider
         ) {
             hudPanel = panel;
             telemetryText = text;
@@ -82,11 +109,22 @@ namespace Speedma.Debug
             btnScenarioA = btnA;
             btnScenarioB = btnB;
             btnScenarioC = btnC;
+            rpmSlider = slider;
             
             if (toggleButton != null)
             {
                 toggleButton.onClick.RemoveAllListeners();
                 toggleButton.onClick.AddListener(ToggleHud);
+            }
+            if (rpmSlider != null && chamuscaController != null)
+            {
+                rpmSlider.minValue = 0f;
+                rpmSlider.maxValue = 500f;
+                rpmSlider.value = chamuscaController.engine_rpm;
+                rpmSlider.onValueChanged.RemoveAllListeners();
+                rpmSlider.onValueChanged.AddListener((val) => {
+                    chamuscaController.engine_rpm = val;
+                });
             }
             LinkScenarioButtons();
             UpdateHudVisibility();
