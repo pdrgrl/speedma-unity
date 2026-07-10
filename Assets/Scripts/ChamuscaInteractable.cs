@@ -79,8 +79,8 @@ public class ChamuscaInteractable : MonoBehaviour
             // Create material and force Additive blending via GPU blend states.
             // This is URP/HDRP/Built-in pipeline independent!
             Material overlayMaterial = new Material(Shader.Find("Sprites/Default"));
-            overlayMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
-            overlayMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.One); // Additive
+            overlayMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+            overlayMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.One); // Additive (SrcAlpha + One)
             overlayMaterial.SetInt("_ZWrite", 0);
             overlayMaterial.SetInt("_ZTest", (int)UnityEngine.Rendering.CompareFunction.Always);
             overlayMaterial.renderQueue = 3000;
@@ -212,7 +212,7 @@ public class ChamuscaInteractable : MonoBehaviour
             {
                 if (isHovered)
                 {
-                    rend.material.color = hoverColor;
+                    rend.material.color = Color.Lerp(originalColor, hoverColor, hoverColor.a);
                 }
                 else
                 {
@@ -224,7 +224,10 @@ public class ChamuscaInteractable : MonoBehaviour
             {
                 Color hc = hoverColor * 3.0f; // 3x HDR color boost on hover
                 hc.a = hoverColor.a;
-                indicatorRenderer.color = isHovered ? hc : new Color(3f, 3f, 3f, 1f);
+                // Pre-multiply RGB by Alpha to support Sprites/Default's hardcoded blend mode
+                indicatorRenderer.color = isHovered 
+                    ? new Color(hc.r * hc.a, hc.g * hc.a, hc.b * hc.a, hc.a) 
+                    : new Color(3f, 3f, 3f, 1f);
             }
         }
         else
