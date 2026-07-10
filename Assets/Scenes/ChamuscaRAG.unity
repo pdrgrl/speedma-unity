@@ -637,9 +637,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: rheostat
-  displayName: Rheostat
-  customHoverName: Rheostat
+  componentId: excitation_rheostat
+  displayName: Excitation Rheostat
+  customHoverName: Excitation Rheostat
   hoverTargetObject: {fileID: 53185759}
   hoverTargetRenderer: {fileID: 8521902485890335756}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 0.011764706}
@@ -1047,7 +1047,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
   componentId: crossley_engine
   displayName: Crossley Engine
-  customHoverName: Crossley Engine
+  customHoverName: Crossley Internal Combustion Engine
   hoverTargetObject: {fileID: 919132148023294285}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 1}
@@ -1903,7 +1903,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &240254387
 Transform:
   m_ObjectHideFlags: 0
@@ -2379,7 +2379,7 @@ MeshRenderer:
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &266130111
 MeshFilter:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 8
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -3407,7 +3407,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &412988756
 Transform:
   m_ObjectHideFlags: 0
@@ -7506,9 +7506,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: asea_motor
+  displayName: ASEA Induction Motor
+  customHoverName: ASEA 3-Phase Induction Motor
   hoverTargetObject: {fileID: 0}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 1}
@@ -11372,9 +11372,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b6f07b1afa984d8efd07bbc76128d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChamuscaInteractable
-  componentId: 
-  displayName: 
-  customHoverName: 
+  componentId: asea_dynamo
+  displayName: ASEA DC Dynamo
+  customHoverName: ASEA DC Dynamo
   hoverTargetObject: {fileID: 1443614200}
   hoverTargetRenderer: {fileID: 0}
   hoverColor: {r: 0, g: 0.2, b: 0.2, a: 1}
@@ -12556,7 +12556,7 @@ MeshRenderer:
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1558964684
 MeshFilter:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 8
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
