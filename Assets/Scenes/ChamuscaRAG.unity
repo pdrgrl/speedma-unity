@@ -1534,8 +1534,9 @@ GameObject:
   m_Component:
   - component: {fileID: 196902526}
   - component: {fileID: 196902527}
+  - component: {fileID: 196902528}
   m_Layer: 0
-  m_Name: _SM_Fuzivel_Pivot
+  m_Name: fuseDynamoState_Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1588,6 +1589,33 @@ MonoBehaviour:
   addHotspotCollider: 1
   hotspotColliderRadius: 0.6
   hideDotOnHover: 0
+--- !u!114 &196902528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196902525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01bc5ecc55d0400459f64b70cdcf7026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Chamusca.Simulation.FmuReplaceableFuse
+  simManager: {fileID: 1934691294}
+  controller: {fileID: 1827762973}
+  fuseStateOutput: fuseDynamoState
+  maxInteractDistance: 2
+  fuseBody: {fileID: 2101175059}
+  fuseRenderer: {fileID: 0}
+  intactMaterial: {fileID: 2100000, guid: 5cc0d84b5041ff94baf8963fd14f2ed9, type: 2}
+  blownMaterial: {fileID: 2100000, guid: 1bd65b0702ca29a4b87b29abaac8af5c, type: 2}
+  installedLocalPosition: {x: 0, y: 0, z: -0.014}
+  blownLocalPosition: {x: 0, y: -0.01, z: 0.02}
+  installedLocalRotation: {x: -0, y: -0, z: -0}
+  blownLocalRotation: {x: -20, y: 0, z: 0}
+  animationSpeed: 10
+  installed: 1
+  blown: 0
 --- !u!64 &211428804
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1725,16 +1753,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Chamusca.Simulation.FmuReplaceableFuse
   simManager: {fileID: 1934691294}
   controller: {fileID: 1827762973}
-  fuseStateOutput: fuseDischargeState
+  fuseStateOutput: fuseHouseState
   maxInteractDistance: 2
   fuseBody: {fileID: 1543671318}
   fuseRenderer: {fileID: 1543671319}
   intactMaterial: {fileID: 2100000, guid: 5cc0d84b5041ff94baf8963fd14f2ed9, type: 2}
   blownMaterial: {fileID: 2100000, guid: 1bd65b0702ca29a4b87b29abaac8af5c, type: 2}
-  installedLocalPosition: {x: 0, y: 0, z: -0.0123}
-  blownLocalPosition: {x: 0.003, y: 0, z: 0.003}
-  installedLocalRotation: {x: 0, y: 0, z: 0}
-  blownLocalRotation: {x: 5, y: 45, z: 0}
+  installedLocalPosition: {x: 0, y: 0, z: -0.014}
+  blownLocalPosition: {x: 0, y: -0.01, z: 0.02}
+  installedLocalRotation: {x: -0, y: -0, z: -0}
+  blownLocalRotation: {x: -20, y: 0, z: 0}
   animationSpeed: 10
   installed: 1
   blown: 0
@@ -1954,6 +1982,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 5167679635057518829, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
+--- !u!4 &250369975 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4419246622248461499, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
+  m_PrefabInstance: {fileID: 678338452}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &255489345
 GameObject:
   m_ObjectHideFlags: 0
@@ -2429,6 +2462,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1509932905228599265, guid: 01071c9fa41f2cf49bbae22e5b9418df, type: 3}
+--- !u!4 &269158069 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -5460073385026213122, guid: 01071c9fa41f2cf49bbae22e5b9418df, type: 3}
+  m_PrefabInstance: {fileID: 76581048}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &270717733
 GameObject:
   m_ObjectHideFlags: 0
@@ -2596,8 +2634,9 @@ GameObject:
   m_Component:
   - component: {fileID: 286604943}
   - component: {fileID: 286604944}
+  - component: {fileID: 286604945}
   m_Layer: 0
-  m_Name: _SM_Fuzivel_Pivot
+  m_Name: fuseBatteryRoomState_Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2650,6 +2689,33 @@ MonoBehaviour:
   addHotspotCollider: 1
   hotspotColliderRadius: 0.6
   hideDotOnHover: 0
+--- !u!114 &286604945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286604942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01bc5ecc55d0400459f64b70cdcf7026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Chamusca.Simulation.FmuReplaceableFuse
+  simManager: {fileID: 1934691294}
+  controller: {fileID: 1827762973}
+  fuseStateOutput: fuseBatteryRoomState
+  maxInteractDistance: 2
+  fuseBody: {fileID: 1717132706}
+  fuseRenderer: {fileID: 0}
+  intactMaterial: {fileID: 2100000, guid: 5cc0d84b5041ff94baf8963fd14f2ed9, type: 2}
+  blownMaterial: {fileID: 2100000, guid: 1bd65b0702ca29a4b87b29abaac8af5c, type: 2}
+  installedLocalPosition: {x: 0, y: 0, z: -0.014}
+  blownLocalPosition: {x: 0, y: -0.01, z: 0.02}
+  installedLocalRotation: {x: -0, y: -0, z: -0}
+  blownLocalRotation: {x: -20, y: 0, z: 0}
+  animationSpeed: 10
+  installed: 1
+  blown: 0
 --- !u!1 &315806124 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8823154891176048494, guid: 61668f9a329e984439cd11653aedd59b, type: 3}
@@ -4217,6 +4283,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 5167679635057518829, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
+--- !u!4 &536806450 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4419246622248461499, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
+  m_PrefabInstance: {fileID: 1211482412}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &540880217
 GameObject:
   m_ObjectHideFlags: 0
@@ -4877,6 +4948,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1509932905228599265, guid: 9e8e25527306d1a4682e10bc3f2618e3, type: 3}
+--- !u!4 &612886243 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -5460073385026213122, guid: 9e8e25527306d1a4682e10bc3f2618e3, type: 3}
+  m_PrefabInstance: {fileID: 778089400}
+  m_PrefabAsset: {fileID: 0}
 --- !u!64 &618591560
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5116,7 +5192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
       propertyPath: m_Name
-      value: _SM_Fuzivel
+      value: fuseMachineHouseState
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
       propertyPath: m_IsActive
@@ -5290,6 +5366,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4419246622248461499, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.014
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
       propertyPath: m_Name
@@ -7731,8 +7811,9 @@ GameObject:
   m_Component:
   - component: {fileID: 990717082}
   - component: {fileID: 990717083}
+  - component: {fileID: 990717084}
   m_Layer: 0
-  m_Name: _SM_Fuzivel_Pivot
+  m_Name: fuseDepState_Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7785,6 +7866,33 @@ MonoBehaviour:
   addHotspotCollider: 1
   hotspotColliderRadius: 0.6
   hideDotOnHover: 0
+--- !u!114 &990717084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990717081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01bc5ecc55d0400459f64b70cdcf7026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Chamusca.Simulation.FmuReplaceableFuse
+  simManager: {fileID: 1934691294}
+  controller: {fileID: 1827762973}
+  fuseStateOutput: fuseDepState
+  maxInteractDistance: 2
+  fuseBody: {fileID: 536806450}
+  fuseRenderer: {fileID: 0}
+  intactMaterial: {fileID: 2100000, guid: 5cc0d84b5041ff94baf8963fd14f2ed9, type: 2}
+  blownMaterial: {fileID: 2100000, guid: 1bd65b0702ca29a4b87b29abaac8af5c, type: 2}
+  installedLocalPosition: {x: 0, y: 0, z: -0.014}
+  blownLocalPosition: {x: 0, y: -0.01, z: 0.02}
+  installedLocalRotation: {x: -0, y: -0, z: -0}
+  blownLocalRotation: {x: -20, y: 0, z: 0}
+  animationSpeed: 10
+  installed: 1
+  blown: 0
 --- !u!1001 &992903873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9377,7 +9485,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
       propertyPath: m_Name
-      value: _SM_Fuzivel
+      value: fuseBatteryRoomState
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
       propertyPath: m_IsActive
@@ -9623,6 +9731,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 5167679635057518829, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
+--- !u!4 &1205237131 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4419246622248461499, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
+  m_PrefabInstance: {fileID: 1499181632}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1206253252
 GameObject:
   m_ObjectHideFlags: 0
@@ -9796,7 +9909,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
       propertyPath: m_Name
-      value: _SM_Fuzivel
+      value: fuseDepState
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
       propertyPath: m_IsActive
@@ -10064,8 +10177,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1234498127}
   - component: {fileID: 1234498128}
+  - component: {fileID: 1234498129}
   m_Layer: 0
-  m_Name: _SM_Fuzivel_Pivot
+  m_Name: fuseBatteryState_Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10118,6 +10232,33 @@ MonoBehaviour:
   addHotspotCollider: 1
   hotspotColliderRadius: 0.6
   hideDotOnHover: 0
+--- !u!114 &1234498129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234498126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01bc5ecc55d0400459f64b70cdcf7026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Chamusca.Simulation.FmuReplaceableFuse
+  simManager: {fileID: 1934691294}
+  controller: {fileID: 1827762973}
+  fuseStateOutput: fuseBatteryState
+  maxInteractDistance: 2
+  fuseBody: {fileID: 1205237131}
+  fuseRenderer: {fileID: 0}
+  intactMaterial: {fileID: 2100000, guid: 5cc0d84b5041ff94baf8963fd14f2ed9, type: 2}
+  blownMaterial: {fileID: 2100000, guid: 1bd65b0702ca29a4b87b29abaac8af5c, type: 2}
+  installedLocalPosition: {x: 0, y: 0, z: -0.014}
+  blownLocalPosition: {x: 0, y: -0.01, z: 0.02}
+  installedLocalRotation: {x: -0, y: -0, z: -0}
+  blownLocalRotation: {x: -20, y: 0, z: 0}
+  animationSpeed: 10
+  installed: 1
+  blown: 0
 --- !u!64 &1237705906
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11388,8 +11529,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1463491822}
   - component: {fileID: 1463491823}
+  - component: {fileID: 1463491824}
   m_Layer: 0
-  m_Name: _SM_Fuzivel_Pivot
+  m_Name: fuseDischargeState_Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11442,6 +11584,33 @@ MonoBehaviour:
   addHotspotCollider: 1
   hotspotColliderRadius: 0.6
   hideDotOnHover: 0
+--- !u!114 &1463491824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463491821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01bc5ecc55d0400459f64b70cdcf7026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Chamusca.Simulation.FmuReplaceableFuse
+  simManager: {fileID: 1934691294}
+  controller: {fileID: 1827762973}
+  fuseStateOutput: fuseDischargeState
+  maxInteractDistance: 2
+  fuseBody: {fileID: 1911307663}
+  fuseRenderer: {fileID: 0}
+  intactMaterial: {fileID: 2100000, guid: 5cc0d84b5041ff94baf8963fd14f2ed9, type: 2}
+  blownMaterial: {fileID: 2100000, guid: 1bd65b0702ca29a4b87b29abaac8af5c, type: 2}
+  installedLocalPosition: {x: 0, y: 0, z: -0.014}
+  blownLocalPosition: {x: 0, y: -0.01, z: 0.02}
+  installedLocalRotation: {x: -0, y: -0, z: -0}
+  blownLocalRotation: {x: -20, y: 0, z: 0}
+  animationSpeed: 10
+  installed: 1
+  blown: 0
 --- !u!1 &1464171218 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3103909602174825176, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
@@ -11628,7 +11797,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
       propertyPath: m_Name
-      value: _SM_Fuzivel
+      value: fuseBatteryState
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
       propertyPath: m_IsActive
@@ -11840,7 +12009,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
       propertyPath: m_Name
-      value: _SM_Fuzivel
+      value: fuseChargeState
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
       propertyPath: m_IsActive
@@ -12329,6 +12498,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1509932905228599265, guid: ac11e5b15d7ed6046bcf1a00ad86dcaa, type: 3}
+--- !u!4 &1552655554 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -5460073385026213122, guid: ac11e5b15d7ed6046bcf1a00ad86dcaa, type: 3}
+  m_PrefabInstance: {fileID: 1975133169}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1552875055 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 884462273455494329, guid: 61668f9a329e984439cd11653aedd59b, type: 3}
@@ -12650,8 +12824,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1564678531}
   - component: {fileID: 1564678532}
+  - component: {fileID: 1564678533}
   m_Layer: 0
-  m_Name: _SM_Fuzivel_Pivot
+  m_Name: fuseChargeState_Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12704,6 +12879,33 @@ MonoBehaviour:
   addHotspotCollider: 1
   hotspotColliderRadius: 0.6
   hideDotOnHover: 0
+--- !u!114 &1564678533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564678530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01bc5ecc55d0400459f64b70cdcf7026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Chamusca.Simulation.FmuReplaceableFuse
+  simManager: {fileID: 1934691294}
+  controller: {fileID: 1827762973}
+  fuseStateOutput: fuseChargeState
+  maxInteractDistance: 2
+  fuseBody: {fileID: 1909055491}
+  fuseRenderer: {fileID: 0}
+  intactMaterial: {fileID: 2100000, guid: 5cc0d84b5041ff94baf8963fd14f2ed9, type: 2}
+  blownMaterial: {fileID: 2100000, guid: 1bd65b0702ca29a4b87b29abaac8af5c, type: 2}
+  installedLocalPosition: {x: 0, y: 0, z: -0.014}
+  blownLocalPosition: {x: 0, y: -0.01, z: 0.02}
+  installedLocalRotation: {x: -0, y: -0, z: -0}
+  blownLocalRotation: {x: -20, y: 0, z: 0}
+  animationSpeed: 10
+  installed: 1
+  blown: 0
 --- !u!1 &1567232829
 GameObject:
   m_ObjectHideFlags: 0
@@ -12827,8 +13029,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1573253099}
   - component: {fileID: 1573253100}
+  - component: {fileID: 1573253101}
   m_Layer: 0
-  m_Name: _SM_Fuzivel_Pivot
+  m_Name: fuseMachineHouseState_Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12881,6 +13084,33 @@ MonoBehaviour:
   addHotspotCollider: 1
   hotspotColliderRadius: 0.6
   hideDotOnHover: 0
+--- !u!114 &1573253101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573253098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01bc5ecc55d0400459f64b70cdcf7026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Chamusca.Simulation.FmuReplaceableFuse
+  simManager: {fileID: 1934691294}
+  controller: {fileID: 1827762973}
+  fuseStateOutput: fuseMachineHouseState
+  maxInteractDistance: 2
+  fuseBody: {fileID: 250369975}
+  fuseRenderer: {fileID: 0}
+  intactMaterial: {fileID: 2100000, guid: 5cc0d84b5041ff94baf8963fd14f2ed9, type: 2}
+  blownMaterial: {fileID: 2100000, guid: 1bd65b0702ca29a4b87b29abaac8af5c, type: 2}
+  installedLocalPosition: {x: 0, y: 0, z: -0.014}
+  blownLocalPosition: {x: 0, y: -0.01, z: 0.02}
+  installedLocalRotation: {x: -0, y: -0, z: -0}
+  blownLocalRotation: {x: -20, y: 0, z: 0}
+  animationSpeed: 10
+  installed: 1
+  blown: 0
 --- !u!64 &1573571759
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13619,7 +13849,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
       propertyPath: m_Name
-      value: _SM_Fuzivel
+      value: fuseDischargeState
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
       propertyPath: m_IsActive
@@ -13671,6 +13901,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 5167679635057518829, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
+--- !u!4 &1717132706 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4419246622248461499, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
+  m_PrefabInstance: {fileID: 1184797851}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1717399568
 GameObject:
   m_ObjectHideFlags: 0
@@ -14074,7 +14309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
       propertyPath: m_Name
-      value: _SM_Fuzivel
+      value: fuseDynamoState
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
       propertyPath: m_IsActive
@@ -14473,7 +14708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590be8c534bcc03409644fa40630158b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Chamusca.Simulation.VoltmeterPointer
-  needle: {fileID: 0}
+  needle: {fileID: 1552655554}
   rotationAxis: {x: 0, y: 1, z: 0}
   voltageToAngle:
     serializedVersion: 2
@@ -14807,6 +15042,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -4419246622248461499, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.014
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
       propertyPath: m_Name
       value: _SM_Fuzivel
@@ -15058,12 +15297,12 @@ MonoBehaviour:
   batteryRoomLightController: {fileID: 957574313}
   reductorController: {fileID: 1401045810}
   voltmeterSelector: {fileID: 1175319958}
-  houseLightSwitch: {fileID: 0}
-  dependencyLightSwitch: {fileID: 0}
-  panelLightSwitch: {fileID: 0}
-  batteryRoomLightSwitch: {fileID: 0}
-  dynamoLuzSwitch: {fileID: 0}
-  chargeBatSwitch: {fileID: 0}
+  houseLightSwitch: {fileID: 677088884}
+  dependencyLightSwitch: {fileID: 1915914839}
+  panelLightSwitch: {fileID: 1796241361}
+  batteryRoomLightSwitch: {fileID: 1206253255}
+  dynamoLuzSwitch: {fileID: 1252301974}
+  chargeBatSwitch: {fileID: 1104972617}
   batLuzLeverSwitch: {fileID: 1206253255}
   varLineVoltage: v_line
   varDynamoCurrent: i_din
@@ -15729,6 +15968,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 5167679635057518829, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
+--- !u!4 &1909055491 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4419246622248461499, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
+  m_PrefabInstance: {fileID: 1514464847}
+  m_PrefabAsset: {fileID: 0}
 --- !u!64 &1910041344
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15778,6 +16022,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 5167679635057518829, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
+--- !u!4 &1911307663 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4419246622248461499, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
+  m_PrefabInstance: {fileID: 1700289085}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1915914836
 GameObject:
   m_ObjectHideFlags: 0
@@ -16304,6 +16553,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1940543978}
   - component: {fileID: 1940543979}
+  - component: {fileID: 1940543980}
   m_Layer: 0
   m_Name: _SM_Fuzivel_Pivot
   m_TagString: Untagged
@@ -16358,6 +16608,33 @@ MonoBehaviour:
   addHotspotCollider: 1
   hotspotColliderRadius: 0.6
   hideDotOnHover: 1
+--- !u!114 &1940543980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940543977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01bc5ecc55d0400459f64b70cdcf7026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Chamusca.Simulation.FmuReplaceableFuse
+  simManager: {fileID: 1934691294}
+  controller: {fileID: 1827762973}
+  fuseStateOutput: 
+  maxInteractDistance: 2
+  fuseBody: {fileID: 2101175059}
+  fuseRenderer: {fileID: 2144504270}
+  intactMaterial: {fileID: 2100000, guid: 5cc0d84b5041ff94baf8963fd14f2ed9, type: 2}
+  blownMaterial: {fileID: 2100000, guid: 1bd65b0702ca29a4b87b29abaac8af5c, type: 2}
+  installedLocalPosition: {x: 0, y: 0, z: -0.014}
+  blownLocalPosition: {x: 0, y: -0.01, z: 0.02}
+  installedLocalRotation: {x: -0, y: -0, z: -0}
+  blownLocalRotation: {x: -20, y: 0, z: 0}
+  animationSpeed: 10
+  installed: 1
+  blown: 0
 --- !u!1 &1953196543
 GameObject:
   m_ObjectHideFlags: 0
@@ -17528,7 +17805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd123ffe9f1fc9a4a8973cea4843b164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Speedma.AmpController
-  needleTransform: {fileID: 0}
+  needleTransform: {fileID: 269158069}
   minAmp: 0
   maxAmp: 12
   minAngle: -5.085
@@ -18113,6 +18390,11 @@ MeshCollider:
 --- !u!23 &2101175058 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -108714573566937380, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
+  m_PrefabInstance: {fileID: 1749851088}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2101175059 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4419246622248461499, guid: 5dc3016469eb3ed4ea144ebb86aa5106, type: 3}
   m_PrefabInstance: {fileID: 1749851088}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2105875462
@@ -18702,7 +18984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd123ffe9f1fc9a4a8973cea4843b164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Speedma.AmpController
-  needleTransform: {fileID: 0}
+  needleTransform: {fileID: 612886243}
   minAmp: 0
   maxAmp: 35
   minAngle: -5.064

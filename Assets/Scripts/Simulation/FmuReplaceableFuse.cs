@@ -36,6 +36,7 @@ namespace Chamusca.Simulation
         [Header("State")]
         [SerializeField] private bool installed = true;
         [SerializeField] private bool blown = false;
+        private bool _debugOverridden = false;
 
         private bool lastBlownState;
 
@@ -59,7 +60,16 @@ namespace Chamusca.Simulation
 
         private void Update()
         {
-            if (simManager != null && simManager.IsSessionActive)
+            // Debug trigger: Press F to toggle visual fuse blow override
+            if (Keyboard.current != null && Keyboard.current.fKey.wasPressedThisFrame)
+            {
+                _debugOverridden = !_debugOverridden;
+                blown = _debugOverridden;
+                installed = !_debugOverridden;
+                Debug.Log($"[Debug Fuse] Toggled fuse '{name}' visually. Blown: {blown}");
+            }
+
+            if (!_debugOverridden && simManager != null && simManager.IsSessionActive)
             {
                 blown = simManager.GetOutput(fuseStateOutput) > 0.5f;
                 installed = !blown;
@@ -113,6 +123,7 @@ namespace Chamusca.Simulation
         {
             if (!blown) return;
 
+            _debugOverridden = false; // Reset debug override on replacement
             if (simManager == null || !simManager.IsSessionActive)
             {
                 blown = false;
