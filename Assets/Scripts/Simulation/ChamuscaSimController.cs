@@ -204,17 +204,19 @@ namespace Chamusca.Simulation
                 // Map excitation rheostat position
                 simManager.SetInput("rheostat_pos", rheostat_pos);
 
+                // Unconditionally map protection reset in all scenarios
+                simManager.SetInput(varResetProtection, resetProtectionRequested);
+                resetProtectionRequested = false;
+
                 // Scenario specific logic
                 switch (scenarioManager.currentScenario)
                 {
                     case SimulationScenario.ScenarioA:
-                        simManager.SetInput(varResetProtection, resetProtectionRequested);
                         simManager.SetInput("sw_engine", false);
                         simManager.SetInput("engine_rpm", 0f);
                         simManager.SetInput("sw_ac_mains", false);
                         simManager.SetInput("sw_carga_bat", false);
                         simManager.SetInput("sw_dinamo_luz", false);
-                        resetProtectionRequested = false;
                         break;
 
                     case SimulationScenario.ScenarioB:

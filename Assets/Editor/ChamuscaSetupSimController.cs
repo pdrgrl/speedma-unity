@@ -36,7 +36,26 @@ public class ChamuscaSetupSimController : EditorWindow
             }
             else if (t.name == "sw_bat_luz_Pivot")
             {
-                controller.batLuzLeverSwitch = t.GetComponent<FmuToggleSwitch>();
+                // Note: "sw_bat_luz_Pivot" is the light bulb switch, not the lever.
+                // We keep it mapped to batteryRoomLightSwitch.
+            }
+            else if (t.name == "_SM_SingleSwitch_Pivot")
+            {
+                float x = t.localPosition.x;
+                FmuToggleSwitch toggle = t.GetComponent<FmuToggleSwitch>();
+
+                if (x < -2.00f) // Leftmost -> Dinamo LUZ
+                {
+                    controller.dynamoLuzSwitch = toggle;
+                }
+                else if (x < -1.75f && x >= -2.00f) // Mid-left -> Carga Bateria
+                {
+                    controller.chargeBatSwitch = toggle;
+                }
+                else if (x >= -1.55f) // Rightmost -> Bateria LUZ
+                {
+                    controller.batLuzLeverSwitch = toggle;
+                }
             }
             else if (t.name == "RedutorDuplo_Pivot")
             {
