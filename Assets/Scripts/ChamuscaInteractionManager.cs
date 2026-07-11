@@ -21,29 +21,31 @@ public class ChamuscaInteractionManager : MonoBehaviour
         Vector2 inputPosition = Vector2.zero;
         bool isClickOrTap = false;
 
-        // 1. Check Touch first (Mobile/Web viewports)
-        if (Touchscreen.current != null && Touchscreen.current.touches.Count > 0)
-        {
-            var touch = Touchscreen.current.touches[0];
-            if (touch.isInProgress)
-            {
-                inputPosition = touch.position.ReadValue();
-                hasInput = true;
-            }
-            else if (touch.press.wasReleasedThisFrame)
-            {
-                inputPosition = touch.position.ReadValue();
-                hasInput = true;
-                isClickOrTap = true;
-            }
-        }
-        // 2. Fallback to Mouse (Desktop Editor/Standalone)
-        else if (Mouse.current != null)
+        // 1. Read Mouse input by default
+        if (Mouse.current != null)
         {
             inputPosition = Mouse.current.position.ReadValue();
             hasInput = true;
             if (Mouse.current.leftButton.wasPressedThisFrame)
             {
+                isClickOrTap = true;
+            }
+        }
+
+        // 2. Override with Touch input if active touches are present
+        if (Touchscreen.current != null && Touchscreen.current.touches.Count > 0)
+        {
+            var touch = Touchscreen.current.touches[0];
+            if (touch.press.isPressed)
+            {
+                inputPosition = touch.position.ReadValue();
+                hasInput = true;
+                // Treat touch release as the click trigger to prevent click-through issues
+            }
+            else if (touch.press.wasReleasedThisFrame)
+            {
+                inputPosition = touch.position.ReadValue();
+                hasInput = true;
                 isClickOrTap = true;
             }
         }
